@@ -4,6 +4,9 @@
   | default @import url()
   |============================
 */
+/* Modern-normalize */
+@import "modern-normalize";
+
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
