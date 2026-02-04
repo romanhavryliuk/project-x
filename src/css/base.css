@@ -1,32 +1,87 @@
 :root {
-  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* Font Families */
+  --font-family: 'IBM Plex Sans', sans-serif;
+  --second-family: 'Epilogue', sans-serif;
+  --third-family: 'Roboto', sans-serif;
+
+  /* Brand Colors */
+  --clr-primary: #764191;                      /* Основний фіолетовий */
+  --clr-primary-hover: rgba(118, 65, 145, 0.8);
+  --clr-dark: #060307;                         /* Глибокий чорний */
+  --clr-surface: #1e1c1f;                      /* Колір карток/модалок */
+  --clr-white: #ffffff;
+
+  /* Neutral Palette */
+  --clr-gray-100: #f2f2f2;
+  --clr-gray-400: #b4b3b4;
+  --clr-gray-600: #828183;
+
+  /* Alpha Overlays (Прозорість) */
+  --overlay-light: rgba(255, 255, 255, 0.1);
+  --overlay-border: rgba(255, 255, 255, 0.2);
+
+  /* Status Colors */
+  --clr-error: #af0404;
+  --clr-success: #419853;
+}
+
+/* Base Setup */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
   font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--clr-dark);
+  color: var(--clr-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
-  flex-grow: 1;
+/* Typography Adaptation */
+h1,
+h2,
+h3 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-main:has(.back-link) {
-  text-align: center;
+
+/* Typography Utility Classes */
+.text-muted {
+  color: var(--clr-gray-400);
+}
+
+.text-small {
+  font-size: 0.875rem;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
