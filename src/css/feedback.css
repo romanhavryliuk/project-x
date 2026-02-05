@@ -1,0 +1,81 @@
+
+/* Прихований заголовок для SEO та доступності */
+.feedback-title-hidden {
+    overflow: hidden;
+}
+.feedback-section {
+  padding: 112px 64px;
+  background: #060307;
+}
+.feedbacks-swiper {
+  max-width: 1312px;
+  margin: 0 auto;
+  position: relative;
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+.feedback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 866px;
+  text-align: center;
+}
+.star-rating {
+  display: flex;
+  gap: 4px;
+}
+
+.star-rating i {
+  color: #764191;
+  font-size: 18px;
+}
+.feedback-text {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+ .feedback-author {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 48px;
+  height: 48px;
+  background: #060307;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #fff;
+  font-size: 20px;
+}
+.swiper-pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  opacity: 0.2;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
