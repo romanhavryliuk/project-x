@@ -1,0 +1,66 @@
+.artists-section {
+    padding: 64px 0;
+}
+
+.artists-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.artists-title {
+    font-family: var(--font-family);
+    font-size: 16px;
+}
+
+.artists-subtitle {
+    font-family: var(--second-family);
+    font-size: 44px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.load-more {
+    display: block;
+    align-items: center;
+
+    border-radius: 12px;
+    padding: 10px 24px;
+    width: 170px;
+
+    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    background: #764191;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.load-more:hover {
+    opacity: 0.6;
+}
+
+/* Клас для приховування */
+/* .is-hidden {
+    display: none;
+} */
+
+/* ------- Tablet styles ------- */
+
+@media screen and (min-width: 768px) {
+    
+}
+
+/* ------- Desktop styles ------- */
+
+@media screen and (min-width: 1440px) {
+    .artists-section {
+        padding: 112px 0;
+        min-width: 1440px;
+    }
+
+    .artists-subtitle {
+        font-size: 60px;
+        width: 523px;
+    }
+}
