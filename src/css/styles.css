@@ -21,3 +21,7 @@
 @import url('./about-us.css');
 @import url('./feedback.css');
 @import url('./footer.css');
+
+.icon {
+  fill: white;
+}
