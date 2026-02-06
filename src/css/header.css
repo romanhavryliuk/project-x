@@ -9,11 +9,13 @@
 }
 
 .logo {
-    width: 119px;
     height: 51px;
+    width: 119px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    font-family: var(--second-family);
 }
 
 .page-nav {
@@ -26,15 +28,12 @@
 }
 
 .section-nav {
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 150%;
-
     display: none;
-    flex-direction: column;
 }
 
 .menu-modal {
+    display: none;
+    justify-content: center;
     position: fixed;
     top: 72px;
     left: 0;
@@ -46,24 +45,93 @@
     background-color: black;
 }
 
-.is-hidden {
-    visibility: none;
+.mobile-section-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 39px;
+    gap: 32px;
+    align-items: center;
+}
+
+.mobile-section-link {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 150%;
+}
+
+.section-link:hover,
+.mobile-section-link:hover {
+    opacity: 0.6;
+}
+
+.section-link:active,
+.mobile-section-link:active {
+    opacity: 0.2;
+}
+
+.burger-icon-btn {
+    display: flex;
+}
+
+.close-icon-btn {
     display: none;
 }
 
-@media only screen and (min-width: 768px) {
-    .section-nav {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 150%;
+.burger-icon-btn,
+.close-icon-btn {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
 
+    outline: none;
+    box-shadow: none;
+    background-color: inherit;
+    border: none;
+    width: 16px;
+    height: 16px;
+}
+
+.burger-icon-btn:hover,
+.close-icon-btn:hover {
+    opacity: 0.6;
+}
+
+.burger-icon-btn:active,
+.close-icon-btn:active {
+    opacity: 0.2;
+}
+
+.burger-icon,
+.close-icon {
+    width: 16px;
+    height: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .section-nav {
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 258px;
         padding: 10px 0;
     }
 
-    .burger-icon {
+    .section-link {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+    }
+
+    .burger-icon-btn,
+    .close-icon-btn {
         display: none;
     }
+    
+}
+
+.is-hidden {
+    visibility: none;
+    display: none;
 }

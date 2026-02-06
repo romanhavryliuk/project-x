@@ -1,9 +1,21 @@
 <header class="header">
   <div class="container">
     <nav class="page-nav">
-      <a href="./" class="logo">ArtistsHubLogoPlaceholder</a>
-      <button type="button" class="burger-icon">BurgerIconPlaceholder</button>
-      <button type="button" class="close-icon">CloseIconPlaceholder</button>
+      <a href="./" class="logo"
+        ><svg class="icon logo">
+          <use href="../img/sprite.svg#logo-2"></use>
+        </svg>
+      </a>
+      <button type="button" class="burger-icon-btn">
+        <svg class="icon burger-icon">
+          <use href="../img/sprite.svg#burger"></use>
+        </svg>
+      </button>
+      <button type="button" class="close-icon-btn">
+        <svg class="icon close-icon">
+          <use href="../img/sprite.svg#close-x"></use>
+        </svg>
+      </button>
       <ul class="section-nav">
         <li class="section-name">
           <a href="#artists" class="section-link">Artists</a>
@@ -18,3 +30,19 @@
     </nav>
   </div>
 </header>
+
+<div class="container">
+  <div class="menu-modal" id="menuModal">
+    <ul class="mobile-section-nav">
+      <li class="mobile-section-name">
+        <a href="#artists" class="mobile-section-link">Artists</a>
+      </li>
+      <li class="section-name">
+        <a href="#about-us" class="mobile-section-link">About Us</a>
+      </li>
+      <li class="section-name">
+        <a href="#feedback" class="mobile-section-link">Reviews</a>
+      </li>
+    </ul>
+  </div>
+</div>
