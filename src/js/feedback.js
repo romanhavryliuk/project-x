@@ -3,9 +3,10 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+/* import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
- 
+ import 'jquery.raty'; */
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
@@ -25,7 +26,7 @@ async function fetchFeedbacks() {
 
 function createFeedbackSlide(feedback) {
     const slide = document.createElement('div');
-    slide.classList.add('swiper-slide');
+    slide.classList.add('swiper-slide', 'feedback-content');
 
     const stars = document.createElement('div');
     stars.classList.add('star-rating');
@@ -47,8 +48,7 @@ function createFeedbackSlide(feedback) {
    
 // swiper
 async function initSwiper() {
-
-    const $ = window.jQuery;
+ const $ = window.jQuery;
     
     const container = document.getElementById('feedbacks-container');
     const feedbacks = await fetchFeedbacks();
@@ -65,9 +65,7 @@ if (typeof $(startElement).raty === 'function') {
             starType: 'i',
         hints: []
         });
-    } else { 
-        console.error("Raty plugin is not available.");
-    }
+    } 
 });
 
     const swiper = new Swiper('.feedbacks-swiper', {
@@ -83,24 +81,51 @@ if (typeof $(startElement).raty === 'function') {
   el: '.swiper-pagination',
   clickable: true,
   renderBullet: function (index, className) {
-    if (index === 0) return `<span class="${className} bullet-first"></span>`;
-    if (index === feedbacks.length - 1) return `<span class="${className} bullet-last"></span>`;
-    if (index === 1) return `<span class="${className} bullet-middle"></span>`;
-    return '';
+    if (index < 3) {
+    return `<span class="${className} custom-bullet-${index}"></span>`;
+}
+return '' ;
   }
-
+},
+ on: {
+    init: function () {
+    updateNavButtons(this, feedbacks); 
+        updateCustomPagination(this);
     },
-    on: {
-        init: function() {
-            updateNavButtons(this, feedbacks);
-        },
-        slideChange: function() {
-            updateNavButtons(this, feedbacks);
-        },
+    slideChange: function () {
+    updateNavButtons(this, feedbacks); 
+        updateCustomPagination(this);
     },
+ },
 });
 
+/* document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('swiper-button-prev')) {
+        const bullet = event.target;
+        
+        if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(0);
+if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(3);
+if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(7);
 }
+}); */
+}
+function updateCustomPagination(swiperInstance) {
+    const bullets = swiperInstance.pagination.bullets;
+    if (!bullets || bullets.length === 0) return;
+
+    bullets.forEach(b => b.classList.remove('swiper-pagination-bullet-active'));
+
+    const index= swiperInstance.activeIndex;
+    
+    if (index <= 2) {
+bullets[0].classList.add('swiper-pagination-bullet-active');
+    } else if (index >= 3 && index <= 6) {
+        bullets[1].classList.add('swiper-pagination-bullet-active');
+    } else {
+        bullets[2].classList.add('swiper-pagination-bullet-active');
+    }
+}
+
 function updateNavButtons(swiperInstance, feedbacks) {
     const prevButton = document.querySelector('.swiper-button-prev');
     const nextButton = document.querySelector('.swiper-button-next');
