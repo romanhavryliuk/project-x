@@ -7,7 +7,7 @@ function renderArtistProfile({strArtist, strArtistThumb, intFormedYear, strGende
     const markup = ` 
     <div class="artist-modal-header">
       <h2 class="artist-title">${strArtist}</h2>
-      <button class="close-btn" type="button" aria-label="Close modal"></button>
+      <button class="close-btn" type="button" aria-label="Close modal">X</button>
     </div>
     <div class="arist_form_upper_container">
       <!-- img -->
@@ -52,6 +52,7 @@ function renderArtistProfile({strArtist, strArtistThumb, intFormedYear, strGende
 
 // потрібно ще додади функцію яка буде видаляти весь вміст 
 // також потрібно додати лоадер до загального контейнера 
+//Додати кнопку закриття і зробити робочою
 
 fetch(ARTIST_FORM_URL)
   .then(response => {
