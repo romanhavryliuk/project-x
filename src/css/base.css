@@ -85,3 +85,7 @@ h3 {
   white-space: nowrap;
   border-width: 0;
 }
+
+.icon {
+  fill: white;
+}
