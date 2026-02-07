@@ -42,6 +42,12 @@
   height: 177px;
 }
 
+.artist-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .genres-list {
   display: flex;
   flex-wrap: wrap;
@@ -59,6 +65,55 @@
   padding: 4px 10px;
 
   background: var(--opacity-transparent);
+}
+
+.artist-title-wrapper {
+  width: 288px;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.artist-name {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+}
+
+.artist-description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ← скільки рядків показувати */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.artist-button {
+  background-color: inherit;
+  border-radius: 12px;
+  width: 125px;
+  height: 27px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .load-more {
