@@ -24,6 +24,32 @@ async function fetchFeedbacks() {
     }
 }
 
+const root = document.querySelector('.feedback-root-container');
+
+const markup =`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
+
+  <div class="swiper feedbacks-swiper">
+    <div class="swiper-wrapper" id="feedbacks-container"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-prev">
+      <svg class="icons-arrow">
+        <use href="./img/sprite.svg#arrow-left"></use>
+      </svg>
+    </div>
+
+    <div class="swiper-button-next">
+      <svg class="icons-arrow">
+        <use href="./img/sprite.svg#arrow-right"></use>
+      </svg>
+    </div>
+ <div class="swiper-pagination"></div>
+    </div>
+  `;
+
+root.innerHTML = markup;
+
+
 function createFeedbackSlide(feedback) {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide', 'feedback-content');
