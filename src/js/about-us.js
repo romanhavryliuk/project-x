@@ -4,33 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
         <div class="about-container">
             <div class="about-team-photo">
-                <picture>
-          <source
-            media="(min-width: 1440px)"
-            srcset="
-              /img/about-us/team-desktop-1x.webp 1x,
-              /img/about-us/team-desktop-2x.webp 2x
-            "
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="
-              /img/about-us/team-tablet-1x.webp 1x,
-              /img/about-us/team-tablet-2x.webp 2x
-            "
-          />
-          <source
-            media="(max-width: 767px)"
-            srcset="
-              /img/about-us/team-1x.webp 1x,
-              /img/about-us/team-2x.webp 2x
-            "
-          />
-          <img
-            src="/img/about-us/team-desktop-1x.webp"
-            alt="ArtistsHub team"
-          />
-        </picture>
+            <picture>
+                <source media="(min-width: 1440px)" 
+                srcset="
+                /img/about-us/team-desktop-1x.webp 1x, 
+                /img/about-us/team-desktop-2x.webp 2x" 
+                type="image/webp">
+        
+                <source media="(min-width: 768px)" 
+                srcset="
+                /img/about-us/team-tablet-1x.webp 1x, 
+                /img/about-us/team-tablet-2x.webp 2x"
+                type="image/webp">
+        
+                <source media="(max-width: 767px)" 
+                srcset="
+                /img/about-us/team-1x.webp 1x, 
+                /img/about-us/team-2x.webp 2x" 
+                type="image/webp">
+
+                <img src="/img/about-us/team-desktop-1x.webp"  alt="Team photo"
+                    class="team-photo"  loading="lazy">
+            </picture>
             </div>
 
             <div class="about_logo">
@@ -40,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </svg>
                 </div>
                 <h2 class="about-section-title">About ArtistsHub</h2>
-                <p class="about-artist-text">
+                <p class="about-text">
                     At ArtistsHub, our mission is to connect music lovers with the artists they adore.
                     We strive to create a vibrant community where discovering new music is as
                     enjoyable as listening to it.
