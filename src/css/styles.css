@@ -11,6 +11,7 @@
 @import url('./reset.css');
 @import url('./base.css');
 @import url('./container.css');
+@import url('./loader.css');
 
 /* Sections style */
 @import url('./header.css');
