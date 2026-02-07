@@ -171,6 +171,10 @@ h2.feedback-title-hidden {
   transform: scale(0.9); 
   background: #1a1a1a;
 }
+  .feedbacks-swiper {
+  position: relative;
+  padding-bottom: 26px !important;
+}
 
 .swiper-pagination-bullet {
   width: 8px;
