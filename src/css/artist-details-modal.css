@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 16px;
-    
+
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
@@ -18,7 +18,6 @@
     align-items: center;
     flex-direction: column;
     gap: 16px;
-
 }
 
 .albums-title {
@@ -131,4 +130,163 @@
     &:hover {
         opacity: 0.6;
     }
+}
+
+/* --- UPPER FORM --- */
+
+/* mobile style */
+.close-btn {
+    display: none;
+}
+
+.arist_form_upper_img {
+    border-radius: 16px;
+    max-width: 100%;
+    height: 272px;
+}
+
+.artist-title {
+    font-family: var(--second-family);
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.artist-modal-header {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+}
+
+.artist-modal-header {
+    margin-bottom: 16px;
+}
+
+.artist-modal-img {
+    margin-bottom: 32px;
+}
+
+.artist-modal-biography {
+    margin-bottom: 20px;
+}
+
+.arist_form_upper_info {
+    margin-bottom: 16px;
+}
+
+.stats-item {}
+
+.parent-upper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
+
+.stats-item {
+    display: grid;
+    grid-column: auto;
+}
+
+.stats-list {
+    display: grid;
+}
+
+.stats-label {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.stats-value {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.bio-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: var(--font-family);
+}
+
+.bio-text {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    max-height: 324px;
+    overflow-y: auto;
+}
+
+.genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 16px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.genre-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    height: 32px;
+}
+
+/* ------- Tablet styles ------- */
+
+@media screen and (min-width: 768px) {
+    .artist-title {
+        font-size: 32px;
+    }
+
+    .artist-modal-header {
+        margin-bottom: 42px;
+    }
+
+    .arist_form_upper_container {
+        min-width: 654px;
+
+    }
+
+    .arist_form_upper_img {
+        max-width: 100%;
+    }
+
+    .artist-modal-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .parent-upper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 24px;
+        column-gap: 24px;
+        max-width: 400px;
+    }
+
+    .stats-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bio-text {
+        max-height: 108px;
+    }
+
+    .arist_form_upper_img {
+        height: 402px;
+    }
+}
+
+/* --- DESKTOP --- */
+@media only screen and (min-width: 1440px) {
+
 }
