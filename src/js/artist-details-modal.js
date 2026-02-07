@@ -122,10 +122,10 @@ export async function renderArtistAlbums(artistId) {
           </div>
 
           ${album.tracks.map(track => `
-            <div class="track-row">
-              <span class="track-title">${track.strTrack}</span> 
-              <span class="track-duration">${formatTime(track.intDuration)}</span> 
-              <span class="track-link">
+            <ul class="track-row">
+              <li class="track-title">${track.strTrack}</li> 
+              <li class="track-duration">${formatTime(track.intDuration)}</li> 
+              <li class="track-link">
                 ${track.movie ? 
                   `<a href="${track.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
@@ -133,8 +133,8 @@ export async function renderArtistAlbums(artistId) {
                     </svg>
                     <span class="sr-only">Watch video on YouTube</span>
                    </a>` : ''} 
-              </span>
-            </div>
+              </li>
+            </ul>
           `).join('')}
         </div>
       </div>

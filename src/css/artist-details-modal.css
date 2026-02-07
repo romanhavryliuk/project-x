@@ -1,7 +1,5 @@
 .artist-form {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 16px;
 
@@ -39,8 +37,7 @@
 
     border-radius: 16px;
     padding: 14px 11px;
-    min-width: 250px;
-    max-width: 272px;
+    width: 272px;
 
     background: #1e1c1f;
 }
@@ -113,7 +110,6 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    text-align: center;
     width: 74px;
 }
 
@@ -288,5 +284,72 @@
 
 /* --- DESKTOP --- */
 @media only screen and (min-width: 1440px) {
+/* ------- Tablet styles ------- */
+
+@media screen and (min-width: 768px) {
+    .artist-form {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px 24px;
+        width: 702px;
+    }
+
+    .album-container {
+        padding: 14px 11px;
+        width: 311px;
+    }
+
+    .time-span {
+        width: 135px;
+    }
+
+    .track-row {
+        display: flex;
+        padding: 4px 0px 4px 12px;
+        width: 289px;
+        gap: 16px;
+    }
+
+    .track-title {
+        width: 106px;
+    }
+
+    .track-duration {
+        width: 100px;
+    }
+}
+
+/* ------- Desktop styles ------- */
+
+@media screen and (min-width: 1440px) {
+    .artist-form {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px;
+        width: 1312px;
+    }
+
+    .album-container {
+        width: 272px;
+    }
+
+    .track-row {
+        width: unset;
+    }
+
+    .track-title {
+        width: 97px;
+    }
+
+    .track-duration {
+        width: 74px;
+    }
+
 
 }
