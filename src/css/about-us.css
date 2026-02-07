@@ -1,0 +1,138 @@
+.about-section {
+    color: #ffffff;
+    padding: 64px 16px;
+    text-align: center;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    margin: 0 auto;
+}
+
+.about-team-photo {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.about-team-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about_logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: left;
+    max-width: 280px;
+    gap: 20px;
+}
+
+.about-section-title {
+    font-weight: 700;
+    font-size: 44px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-family: "Epilogue", sans-serif;
+}
+
+
+.about-mission-text {
+    font-weight: 400;
+    font-size: 18px;
+    max-width: 620px;
+}
+
+
+
+.icon-logo-icon {
+    width: 64px;
+    height: 64px;
+}
+
+.icon-logo-icon {
+    fill: #ffffff;
+}
+
+/*================Tablet====================*/
+@media (min-width: 768px) {
+    .about-section {
+        padding: 64px 32px;
+    }
+
+    .about-container {
+        gap: 24px;
+    }
+
+    .about_logo {
+        gap: 24px;
+        max-width: 704px;
+    }
+
+    .about-team-photo {
+        max-width: 420px;
+    }
+
+    .about-section-title {
+        font-weight: 700;
+        font-size: 44px;
+    }
+
+    .about-mission-text {
+        font-weight: 400;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .icon-logo-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/*================Desktop====================*/
+@media (min-width: 1440px) {
+    .about-section {
+        padding: 112px 64px;
+    }
+
+    .about-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .about-team-photo {
+        max-width: 480px;
+        flex-shrink: 0;
+    }
+
+    .about-section-title {
+        font-size: 60px;
+        font-weight: 700;
+    }
+
+    .about_logo {
+        gap: 24px;
+        max-width: 640px;
+    }
+
+    .about-mission-text {
+        font-weight: 400;
+        font-size: 20px;
+        /* max-width: none; */
+    }
+
+    .icon-logo-icon {
+        width: 90px;
+        height: 90px;
+    }
+}
