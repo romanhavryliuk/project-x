@@ -116,8 +116,6 @@ on: {
     });
 }
 
-
-
 function updateCustomPagination(swiperInstance) {
     const bullets = swiperInstance.pagination.bullets;
     if (!bullets || bullets.length === 0) return;
