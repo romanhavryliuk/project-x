@@ -24,25 +24,25 @@ async function fetchFeedbacks() {
     }
 }
 
+
 const root = document.querySelector('.feedback-root-container');
 
 const markup =`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
-    <div class="swiper-wrapper" id="feedbacks-container"></div>
-
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-prev">
-      <svg class="icons-arrow">
+    <div class="swiper-wrapper" id="feedbacks-container">
+    </div>
+      <div class="swiper-button-prev">
+       <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-left"></use>
-      </svg>
-    </div>
+       </svg>
+      </div>
 
-    <div class="swiper-button-next">
-      <svg class="icons-arrow">
+      <div class="swiper-button-next">
+       <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-right"></use>
-      </svg>
-    </div>
+       </svg>
+      </div>
  <div class="swiper-pagination"></div>
     </div>
   `;
@@ -125,15 +125,6 @@ return '' ;
  },
 });
 
-/* document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('swiper-button-prev')) {
-        const bullet = event.target;
-        
-        if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(0);
-if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(3);
-if (bullet.classList.contains('custom-bullet-0')) swiper.slideTo(7);
-}
-}); */
 }
 function updateCustomPagination(swiperInstance) {
     const bullets = swiperInstance.pagination.bullets;

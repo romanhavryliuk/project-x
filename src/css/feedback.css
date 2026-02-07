@@ -1,8 +1,32 @@
-@media (max-width: 767px) {
 
 h2.feedback-title-hidden {
     display: none !important;
 } 
+.feedback-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.feedbacks-swiper {
+  flex-shrink: 0;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 48px;
+  height: 48px;
+  background: #060307;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ position: absolute;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
 
 .feedback-section {
   padding: 64px 16px;
@@ -46,16 +70,13 @@ h2.feedback-title-hidden {
   line-height: 1.5;
   color: #ffffff;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   display: none !important;
 }
-
-.swiper-button-prev {
-    color: #060307 !important;
-} 
 
 .feedbacks-slider {
   display: flex;
@@ -64,7 +85,7 @@ h2.feedback-title-hidden {
 
 .feedbacks-swiper {
   position: relative;
-  padding-bottom: 26px !important;
+ padding-bottom: 26px !important;
 }
 
 .feedbacks-swiper .swiper-pagination {
@@ -97,8 +118,16 @@ h2.feedback-title-hidden {
     display: none !important;
 }
 
+  .feedbacks-swiper {
+width: 704px; 
+  }
+
   .feedback-section {
     padding: 64px 32px;
+  }
+
+.feedback-inner {
+    max-width: 607px !important;
   }
 
   .feedbacks-swiper .feedback-content {
@@ -127,23 +156,13 @@ h2.feedback-title-hidden {
 
   .feedback-author {
     font-size: 16px;
+    margin-bottom: 16px !important;
   }
 
-  .swiper-button-prev,
-.swiper-button-next {
-  width: 48px;
-  height: 48px;
-  background: #060307;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0; 
-  margin: 0;
-}
-.swiper-button-prev {
-    color: #060307 !important;
+.feedbacks-swiper {
+  position: relative;
+  opacity: visible !important;
+  padding-bottom: 26px !important;
 }
 
 .swiper-button-prev::after,
@@ -217,7 +236,12 @@ h2.feedback-title-hidden {
   }
   .feedbacks-swiper {
   position: relative;
+  width: 1216px !important; 
   padding-bottom: 75px !important; 
 }
+.swiper-button-next,
+.swiper-button-prev {
+  top: 98px !important;
   }
+}
 }
