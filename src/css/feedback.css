@@ -1,29 +1,23 @@
+h2.feedback-title-hidden {
+    display: none;
 
-/* Прихований заголовок для SEO та доступності */
-.feedback-title-hidden {
-    overflow: hidden;
-}
+} 
 .feedback-section {
   padding: 112px 64px;
   background: #060307;
 }
-.feedbacks-swiper {
-  max-width: 1312px;
-  margin: 0 auto;
-  position: relative;
-}
+
 .swiper-slide {
   display: flex;
   justify-content: center;
 }
-.feedback-content {
+.feedbacks-swiper .feedback-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  max-width: 866px;
-  text-align: center;
 }
+
 .star-rating {
   display: flex;
   gap: 4px;
@@ -33,21 +27,27 @@
   color: #764191;
   font-size: 18px;
 }
+
 .feedback-text {
+  max-width: 866px;
   font-family: 'Epilogue', sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.3;
   letter-spacing: -0.01em;
   color: #ffffff;
+  text-align: center;
 }
+
  .feedback-author {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
   color: #ffffff;
+  text-align: center;
 }
+
 .swiper-button-prev,
 .swiper-button-next {
   width: 48px;
@@ -55,27 +55,66 @@
   background: #060307;
   border: 1px solid rgba(255,255,255,0.5);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; 
+  margin: 0;
+}
+.swiper-button-prev {
+    color: #060307 !important;
 }
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: #fff;
-  font-size: 20px;
+ display: none !important;
+ opacity: 0 !important;
+ content: "" !important;
 }
-.swiper-pagination {
-  margin-top: 24px;
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  width: 13px !important;
+  height: 13px;
+  fill: #fff !important;
+  transition: fill 0.3s ease;
+}
+
+.swiper-button-prev:not(.disabled):hover svg,
+.swiper-button-next:not(.disabled):hover svg {
+  fill: #d3d3d3 !important;
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: scale(0.9); 
+  background: #1a1a1a;
+}
+
+  .feedbacks-swiper {
+  position: relative;
+  padding-bottom: 75px !important; 
+}
+
+.feedbacks-swiper .swiper-pagination {
   display: flex;
   justify-content: center;
-  gap: 9px;
+  align-items: center;
+  bottom: 0 !important; 
+  left: 0;
+  width: 100%;
 }
 
 .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  background: #ffffff;
-  opacity: 0.2;
+  border-radius: 50%;
+  background-color: #ccc !important;
+  opacity: 1; 
+  cursor: pointer;
+  margin: 0 5px !important; 
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1;
+  background-color: #fff !important; 
 }
