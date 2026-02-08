@@ -1,10 +1,8 @@
 .artist-form {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 16px;
-    
+
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
@@ -18,7 +16,6 @@
     align-items: center;
     flex-direction: column;
     gap: 16px;
-
 }
 
 .albums-title {
@@ -40,8 +37,7 @@
 
     border-radius: 16px;
     padding: 14px 11px;
-    min-width: 250px;
-    max-width: 272px;
+    width: 272px;
 
     background: #1e1c1f;
 }
@@ -114,7 +110,6 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    text-align: center;
     width: 74px;
 }
 
@@ -131,4 +126,221 @@
     &:hover {
         opacity: 0.6;
     }
+}
+
+/* --- UPPER FORM --- */
+
+/* mobile style */
+.close-btn {
+    display: none;
+}
+
+.artist_form_upper_img {
+    border-radius: 16px;
+    max-width: 100%;
+    height: 272px;
+}
+
+.artist-title {
+    font-family: var(--second-family);
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.artist-modal-header {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+}
+
+.artist-modal-header {
+    margin-bottom: 16px;
+}
+
+.artist-modal-img {
+    margin-bottom: 32px;
+}
+
+.artist-modal-biography {
+    margin-bottom: 20px;
+}
+
+.artist_form_upper_info {
+    margin-bottom: 16px;
+}
+
+.parent-upper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
+
+.stats-item {
+    display: grid;
+    grid-column: auto;
+}
+
+.stats-list {
+    display: grid;
+}
+
+.stats-label {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.stats-value {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.bio-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: var(--font-family);
+}
+
+.bio-text {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    max-height: 324px;
+    overflow-y: auto;
+}
+
+.genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 16px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.genre-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    height: 32px;
+}
+/* ------- Tablet styles ------- */
+
+@media screen and (min-width: 768px) {
+
+    .artist-title {
+        font-size: 32px;
+    }
+
+    .artist-modal-header {
+        margin-bottom: 42px;
+    }
+
+    .artist_form_upper_container {
+        min-width: 654px;
+    }
+
+    .artist_form_upper_img {
+        max-width: 100%;
+    }
+
+    .artist-modal-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .parent-upper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 24px;
+        column-gap: 24px;
+        max-width: 400px;
+    }
+
+    .stats-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bio-text {
+        max-height: 108px;
+    }
+
+    .artist_form_upper_img {
+        height: 402px;
+    }
+
+    .artist-form {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px 24px;
+        width: 702px;
+    }
+
+    .album-container {
+        padding: 14px 11px;
+        width: 311px;
+    }
+
+    .time-span {
+        width: 135px;
+    }
+
+    .track-row {
+        display: flex;
+        padding: 4px 0px 4px 12px;
+        width: 289px;
+        gap: 16px;
+    }
+
+    .track-title {
+        width: 106px;
+    }
+
+    .track-duration {
+        width: 100px;
+    }
+}
+
+/* ------- Desktop styles ------- */
+
+@media screen and (min-width: 1440px) {
+    .artist-form {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px;
+        width: 1312px;
+    }
+
+    .album-container {
+        width: 272px;
+    }
+
+    .track-row {
+        width: unset;
+    }
+
+    .track-title {
+        width: 97px;
+    }
+
+    .track-duration {
+        width: 74px;
+    }
+
+
 }
