@@ -1,53 +1,75 @@
 
-/* Прихований заголовок для SEO та доступності */
-.feedback-title-hidden {
-    overflow: hidden;
-}
+h2.feedback-title-hidden {
+    display: none ;
+} 
+
 .feedback-section {
-  padding: 112px 64px;
+  padding: 64px 16px;
   background: #060307;
 }
-.feedbacks-swiper {
-  max-width: 1312px;
-  margin: 0 auto;
-  position: relative;
+
+.feedback-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
+
+.feedbacks-swiper {
+  flex-shrink: 0;
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.feedbacks-swiper .feedback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
 .swiper-slide {
   display: flex;
   justify-content: center;
 }
-.feedback-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  max-width: 866px;
+
+.feedback-text {
+  font-size: 18px;
+  max-width: 288px;
+  font-weight: 700;
+  margin: 0 auto;
   text-align: center;
 }
-.star-rating {
-  display: flex;
-  gap: 4px;
-}
 
-.star-rating i {
-  color: #764191;
-  font-size: 18px;
-}
-.feedback-text {
-  font-family: 'Epilogue', sans-serif;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-}
- .feedback-author {
+.feedback-author {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 14px;
   color: #ffffff;
+  text-align: center;
+ margin-bottom: 26px;
 }
+
+.star-empty {
+  fill: #fff;
+  font-size: 18px;
+}
+
+.star-filled {
+  fill: #764191;
+  font-size: 18px;
+}
+
+.feedback-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.feedbacks-swiper {
+  flex-shrink: 0;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   width: 48px;
@@ -55,27 +77,150 @@
   background: #060307;
   border: 1px solid rgba(255,255,255,0.5);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ position: absolute;
+  flex-shrink: 0;
+}
+
+.feedbacks-slider {
+  display: flex;
+  justify-content: center;
+}
+
+.feedbacks-swiper {
+  position: relative;
+ padding-bottom: 26px;
 }
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  color: #fff;
-  font-size: 20px;
+ display: none !important;
+ opacity: 0 !important;
+ content: "" !important;
 }
-.swiper-pagination {
-  margin-top: 24px;
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  width: 13px !important;
+  height: 13px;
+  fill: #fff !important;
+  transition: fill 0.3s ease;
+}
+
+.swiper-button-prev:not(.disabled):hover svg,
+.swiper-button-next:not(.disabled):hover svg {
+  fill: #d3d3d3 !important;
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: scale(0.9); 
+  background: #1a1a1a;
+}
+
+.feedbacks-swiper .swiper-pagination {
+  position: absolute;
   display: flex;
   justify-content: center;
-  gap: 9px;
+  align-items: center;
+  left: 0;
+  width: 100%;
 }
 
 .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  background: #ffffff;
-  opacity: 0.2;
+  border-radius: 50%;
+  background-color: #ccc !important;
+  opacity: 1; 
+  cursor: pointer;
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1;
+  background-color: #fff !important; 
+}
+
+@media (max-width: 767px) {
+  .swiper-button-prev,
+.swiper-button-next {
+  display: none !important;
+}
+}
+
+@media (min-width: 768px) {
+  .feedback-section {
+    padding: 64px 32px;
+  }
+
+  .feedbacks-swiper {
+    width: 704px;
+  }
+
+  .feedback-text {
+    font-size: 26px;
+    max-width: 518px ;
+  }
+
+  .feedback-author {
+    font-size: 16px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: flex;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+    content: "";
+  }
+
+  .swiper-button-prev svg,
+  .swiper-button-next svg {
+    width: 13px;
+    height: 13px;
+    fill: #fff;
+    transition: fill 0.3s ease;
+  }
+
+  .swiper-button-prev:not(.disabled):hover svg,
+  .swiper-button-next:not(.disabled):hover svg {
+    fill: #d3d3d3;
+  }
+
+  .swiper-button-next:active,
+  .swiper-button-prev:active {
+    transform: scale(0.9);
+    background: #1a1a1a;
+  }
+}
+
+
+@media (min-width: 1440px) {
+  .feedback-section {
+    padding: 112px 64px;
+  }
+
+  .feedbacks-swiper {
+    width: 1216px;
+    padding-bottom: 75px;
+  }
+
+  .feedback-text {
+    max-width: 866px;
+    font-size: 32px;
+  }
+
+  .feedback-author {
+    font-size: 18px;
+    margin-bottom: 75px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 98px;
+  }
 }
