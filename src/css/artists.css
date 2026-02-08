@@ -51,6 +51,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  max-height: none;
+  overflow: visible;
 }
 
 .genres-item {
@@ -62,6 +64,7 @@
   border: 1px solid var(--opacity-white-20);
   border-radius: 6px;
   padding: 4px 10px;
+  white-space: nowrap;
 
   background: var(--opacity-transparent);
 }
@@ -115,6 +118,10 @@
   cursor: pointer;
 }
 
+.learn-more-icon {
+  fill: #fff;
+}
+
 .load-more {
   margin-top: 16px;
   display: block;
@@ -142,9 +149,9 @@
 }
 
 /* Клас для приховування */
-/* .is-hidden {
+.is-hidden {
     display: none;
-} */
+}
 
 /* ------- Tablet styles ------- */
 

@@ -1,85 +1,92 @@
 // artists.js
 import axios from 'axios';
 
-const artistsList = document.querySelector('.artists-list');
-const loadMoreBtn = document.querySelector('.load-more');
+const artistsSection = document.querySelector('#artists');
 
 let page = 1; // стартова сторінка
 const limit = 8; // кількість карток на сторінку
+let allArtists = []; // масив всіх артистів
+
 
 // Функція для отримання артистів
-async function fetchArtists() {
+export async function renderArtistsSection() {
   try {
-    const response = await axios.get(
-      'https://sound-wave.b.goit.study/api/artists',
-      {
-        params: { limit, page },
-      }
-    );
+    const response = await axios.get('https://sound-wave.b.goit.study/api/artists', {
+      params: { limit, page },
+    });
 
-    // Беремо реальний масив артистів
-    const artists = response.data.artists;
+    const { artists, totalPages } = response.data;
+    
+    // Додаю нових артистів до загального списку
+    allArtists = [...allArtists, ...artists];
 
-    // Рендеримо отримані дані
-    renderArtists(artists);
+    // Визначаю, чи потрібно показувати кнопку "Load More"
+    const isHidden = (page >= totalPages || artists.length < limit) ? 'is-hidden' : '';
 
-    // Кнопка Load More робиться неактивною, якщо більше артистів немає
-    if (artists.length < limit) {
-      loadMoreBtn.disabled = true;
-      loadMoreBtn.textContent = 'No more artists';
-    }
-  } catch (error) {
-    console.error('Помилка при завантаженні артистів:', error);
-  }
-}
-
-// Функція для створення HTML карток
-function renderArtists(artists) {
-  const markup = artists
-    .map(
-      artist => `
-    <li class="artist-card">
-      <img
-        class="artist-image"
-        src="${artist.strArtistThumb}"
-        alt="${artist.strArtist}"
-      />
-
-      <div class="artist-content-wrapper">
-        <ul class="genres-list">
-          ${artist.genres.map(genre => `<li class="genres-item">${genre}</li>`).join('')}
+    // Формую повну розмітку секції
+    const markup = `
+      <div class="container artists-container">
+        <h2 class="artists-title">Artist</h2>
+        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+        
+        <ul class="artists-list">
+          ${allArtists.map(artist => `
+            <li class="artist-card" data-id="${artist._id}">
+              <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+              <div class="artist-content-wrapper">
+                <ul class="genres-list">
+                  ${artist.genres.map(genre => `<li class="genres-item">${genre}</li>`).join('')}
+                </ul>
+                <div class="artist-title-wrapper">
+                  <h4 class="artist-name">${artist.strArtist}</h4>
+                  <p class="artist-description">${artist.strBiographyEN}</p>
+                </div>
+                <button class="artist-button" type="button" data-id="${artist._id}">
+                  Learn More 
+                  <svg class="learn-more-icon" width="8" height="14">
+                    <use href="./img/sprite.svg#learn-more"></use>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          `).join('')}
         </ul>
 
-        <div class="artist-title-wrapper">
-          <h4 class="artist-name">${artist.strArtist}</h4>
-          <p class="artist-description">${artist.strBiographyEN}</p>
-        </div>
+        <button type="button" class="load-more ${isHidden}">Load More</button>
       </div>
+    `;
 
-      <button class="artist-button" data-bio="${artist.strBiographyEN}">
-        Learn More
-      </button>
-    </li>
-  `
-    )
-    .join('');
+    // Оновлюю вміст секції
+    artistsSection.innerHTML = markup;
 
-  artistsList.insertAdjacentHTML('beforeend', markup);
+    // Після рендерингу потрібно заново повісити слухачі, 
+    initEventListeners();
+
+  } catch (error) {
+    console.error('Помилка завантаження артистів:', error);
+  }
 }
 
-// Подія для кнопки Learn More
-artistsList.addEventListener('click', event => {
-  if (event.target.classList.contains('artist-button')) {
-    const bio = event.target.dataset.bio;
-    alert(bio); // тимчасово показує біографію
+function initEventListeners() {
+  const loadMoreBtn = document.querySelector('.load-more');
+  const artistsList = document.querySelector('.artists-list');
+
+                                            // Слухач для "Load More"
+  if (loadMoreBtn) {
+    loadMoreBtn.onclick = () => {
+      page += 1;
+      renderArtistsSection();
+    };
   }
-});
 
-// Подія для кнопки Load More
-loadMoreBtn.addEventListener('click', () => {
-  page += 1;
-  fetchArtists();
-});
+                                            // Слухач для "Learn More"
+  if (artistsList) {
+    artistsList.onclick = (event) => {
+      const btn = event.target.closest('.artist-button');
+      if (!btn) return;
+      alert(btn.dataset.bio);
+    };
+  }
+}
 
-// Завантаження стартових 8 артистів
-fetchArtists();
+renderArtistsSection();
