@@ -1,5 +1,4 @@
 .artist-form {
-    display: flex;
     flex-direction: column;
     gap: 16px;
 
@@ -9,6 +8,10 @@
     margin: 0 auto;
 
     background: var(--clr-dark);
+}
+
+.artist-form[open] {
+    display: flex;
 }
 
 .artist_form_albums {
@@ -137,8 +140,8 @@
 
 .artist_form_upper_img {
     border-radius: 16px;
-    max-width: 100%;
-    height: 272px;
+    /* max-width: 100%; */
+    /* height: 272px; */
 }
 
 .artist-title {
@@ -160,6 +163,7 @@
 }
 
 .artist-modal-img {
+    width: 402px;
     margin-bottom: 32px;
 }
 
@@ -249,7 +253,7 @@
     }
 
     .artist_form_upper_img {
-        max-width: 100%;
+        /* max-width: 100%; */
     }
 
     .artist-modal-img {
@@ -279,7 +283,6 @@
     }
 
     .artist-form {
-        display: flex;
         flex-direction: column;
         gap: 48px;
 
@@ -313,11 +316,16 @@
     }
 }
 
+@media screen and (min-width: 1440px) {
+    
+}
+
+
+
 /* ------- Desktop styles ------- */
 
 @media screen and (min-width: 1440px) {
     .artist-form {
-        display: flex;
         flex-direction: column;
         gap: 48px;
 
