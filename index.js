@@ -129,11 +129,11 @@ import{a as g,j as d,S as v,N as f,P as b}from"./assets/vendor-Bwpow0wG.js";(fun
       </div>
  <div class="swiper-pagination"></div>
     </div>
-  `;S.innerHTML=M;function T(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const i=Math.round(Number(e.rating))||0;let r="";for(let t=1;t<=5;t++){const a=t<=i?"star-filled":"star-empty";r+=`
-<svg class="star-icon ${a}" width="18" height="18">
+  `;S.innerHTML=M;function T(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const i=Number(e.rating)||0,r=Math.round(i);let t="";for(let a=1;a<=5;a++){const o=a<=r?"star-filled":"star-empty";t+=`
+<svg class="star-icon ${o}" width="18" height="18">
 <use href="./img/sprite.svg#star"></use>
 </svg>`}return s.innerHTML=`
-<div class="star-rating">${r}</div>
+<div class="star-rating">${t}</div>
 <div class="feedback-text">${e.descr||""}</div>
 <div class="feedback-author">${e.name||""}</div>
 `,s}async function E(){const e=document.getElementById("feedbacks-container"),s=await A();s.forEach(i=>{const r=T(i);e.appendChild(r)}),new v(".feedbacks-swiper",{modules:[f,b],slidesPerView:1,loop:!1,spaceBetween:20,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,renderBullet:function(i,r){return i<3?`<span class="${r} custom-bullet-${i}"></span>`:""}},on:{init:function(){u(this,s),l(this)},slideChange:function(){u(this,s),l(this)}}})}function l(e){const s=e.pagination.bullets;if(!s||s.length===0)return;s.forEach(r=>r.classList.remove("swiper-pagination-bullet-active"));const i=e.activeIndex;i<=2?s[0].classList.add("swiper-pagination-bullet-active"):i>=3&&i<=6?s[1].classList.add("swiper-pagination-bullet-active"):s[2].classList.add("swiper-pagination-bullet-active")}function u(e,s){const i=document.querySelector(".swiper-button-prev"),r=document.querySelector(".swiper-button-next");i.classList.toggle("disabled",e.activeIndex===0),r.classList.toggle("disabled",e.activeIndex===s.length-1)}E();const j=document.querySelector(".footer__container");j.innerHTML=`
