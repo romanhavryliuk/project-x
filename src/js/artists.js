@@ -55,9 +55,12 @@ function renderArtists(artists) {
         </div>
       </div>
 
-      <button class="artist-button" data-bio="${artist.strBiographyEN}">
-        Learn More
-      </button>
+      <button type="button" class="artist-button" data-bio="${artist.strBiographyEN}">
+          Learn More
+          <svg class="icon" width="20" height="20">
+            <use href="img/sprite.svg#learn-more"></use>
+          </svg>
+        </button>
     </li>
   `
     )
@@ -68,10 +71,10 @@ function renderArtists(artists) {
 
 // Подія для кнопки Learn More
 artistsList.addEventListener('click', event => {
-  if (event.target.classList.contains('artist-button')) {
-    const bio = event.target.dataset.bio;
-    alert(bio); // тимчасово показує біографію
-  }
+  const btn = event.target.closest('.artist-button');
+  if (!btn) return;
+
+  alert(btn.dataset.bio);
 });
 
 // Подія для кнопки Load More
