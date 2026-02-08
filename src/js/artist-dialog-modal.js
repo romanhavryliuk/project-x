@@ -4,18 +4,19 @@ import { loadArtistData } from './artist-details-modal.js';
 document.addEventListener('click', (e) => {
   
   // 1. Відкриття
-  const openBtn = e.target.closest('#openModalArtist');
+  const openBtn = e.target.closest('.js-open-modal-artist');
   if (openBtn) {
-    const modal = document.querySelector('#artistModal'); // Шукаємо модалку ТІЛЬКИ коли клікнули
+    const modal = document.querySelector('#artist-modal'); // Шукаємо модалку ТІЛЬКИ коли клікнули
     if (modal) {
+      const artistId = openBtn.dataset.id;
       modal.showModal();
-      loadArtistData();
+      loadArtistData(artistId);
     }
   }
 
   // 2. Закриття
-  const closeBtn = e.target.closest('#closeModalArtist');
-  const modal = document.querySelector('#artistModal'); // Отримуємо доступ до модалки
+  const closeBtn = e.target.closest('#close-modal-artist');
+  const modal = document.querySelector('#artist-modal'); // Отримуємо доступ до модалки
   
   // Перевіряємо, чи модалка взагалі існує і чи вона відкрита
   if (modal && modal.open) {
