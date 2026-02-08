@@ -10,6 +10,12 @@ img {
 .artists-container {
   display: flex;
   flex-direction: column;
+  gap: 32px;
+}
+
+.artists-header-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -123,10 +129,8 @@ img {
 }
 
 .load-more {
-  margin-top: 16px;
   display: block;
   align-items: center;
-
   border-radius: 12px;
   padding: 10px 24px;
   width: 100%;
@@ -161,13 +165,12 @@ img {
   }
 
   .artists-list {
-    margin-top: 16px;
     gap: 32px;
   }
 
   .load-more {
     width: 340px;
-    margin: 16px auto 0;
+    margin: 0 auto;
   }
 }
 
@@ -179,13 +182,25 @@ img {
     min-width: 1440px;
   }
 
+  .artists-container {
+    gap: 64px;
+  }
+
   .artists-subtitle {
     font-size: 60px;
     width: 523px;
   }
 
+  .artists-list {
+    margin-top: 16px;
+  }
+
   .artist-card {
     width: calc((100% - 32px) / 2);
+  }
+
+  .artist-image {
+    height: 393px;
   }
 
   .load-more {
