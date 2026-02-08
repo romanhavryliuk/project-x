@@ -221,6 +221,8 @@
     line-height: 1.5;
     max-height: 324px;
     overflow-y: auto;
+
+
 }
 
 .genre-list {
@@ -239,6 +241,31 @@
     padding: 4px 10px;
     height: 32px;
 }
+
+/* ширина всієї смуги прокрутки */
+.bio-text::-webkit-scrollbar {
+    width: 12px;
+
+}
+
+/* колір скролінгової області */
+.bio-text::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+
+}
+
+.bio-text::-webkit-scrollbar-thumb {
+    /* колір скролбару */
+    background-color: rgb(124, 124, 124);
+
+    /* заокруглення скролбару */
+    border-radius: 20px;
+    /* додає паддінги навколу скролу */
+    border: 3px solid rgb(0, 0, 0);
+
+}
+
+
 
 /* ------- Tablet styles ------- */
 
@@ -322,6 +349,8 @@
         width: 576px;
         height: 354px;
     }
+
+
 }
 
 
