@@ -52,7 +52,9 @@ root.innerHTML = markup;
   function createFeedbackSlide(feedback) {
 const slide = document.createElement('div');
 slide.classList.add('swiper-slide', 'feedback-content');
-const rating = Math.round(Number(feedback.rating)) || 0;
+const rewRating = Number(feedback.rating) || 0;
+const rating = Math.round(rewRating);
+
 let starsMarkup = '';
 
 for (let i = 1; i <= 5; i++) {
@@ -72,7 +74,6 @@ slide.innerHTML = `
 return slide;
 }
    
-// swiper
 async function initSwiper() {
  const $ = window.jQuery;
     
