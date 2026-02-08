@@ -8,6 +8,10 @@
     background-color: inherit;
 }
 
+.header .icon {
+    fill: white;
+}
+
 .logo {
     height: 51px;
     width: 119px;
@@ -21,28 +25,23 @@
 .page-nav {
     color: #fff;
 
-    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.section-nav {
-    display: none;
-}
-
 .menu-modal {
-    display: none;
-    justify-content: center;
+    background-color: var(--clr-dark);
+
     position: fixed;
-    top: 72px;
-    left: 0;
+    display: none;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    z-index: 99;
+}
 
-
-    background-color: black;
+.section-nav {
+    display: none;
 }
 
 .mobile-section-nav {
@@ -68,14 +67,6 @@
 .section-link:active,
 .mobile-section-link:active {
     opacity: 0.2;
-}
-
-.burger-icon-btn {
-    display: flex;
-}
-
-.close-icon-btn {
-    display: none;
 }
 
 .burger-icon-btn,
@@ -108,7 +99,26 @@
     height: 16px;
 }
 
+.burger-icon-btn {
+    display: block;
+}
+
+.close-icon-btn {
+    display: none;
+}
+
+.header.menu-open .burger-icon-btn {
+    display: none;
+}
+
+.header.menu-open .close-icon-btn {
+    display: block;
+}
+
 @media only screen and (min-width: 768px) {
+    .mobile-nav-links {
+        display: none;
+    }
 
     .section-nav {
         display: flex;
@@ -131,7 +141,6 @@
     
 }
 
-.is-hidden {
-    visibility: none;
-    display: none;
+.is-open {
+    display: flex;
 }
