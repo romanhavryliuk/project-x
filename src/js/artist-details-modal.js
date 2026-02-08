@@ -1,7 +1,11 @@
-const artistFormUpper = document.querySelector('.artist_form_upper');
+import axios from 'axios';
 
-const ARTIST_FORM_URL =
-  'https://sound-wave.b.goit.study/api/artists/65ada227af9f6d155db46908';
+const artistFormUpper = document.querySelector('.artist_form_upper');
+const modalAlbumsContainer = document.querySelector('.artist_form_albums');
+
+const api = axios.create({
+  baseURL: 'https://sound-wave.b.goit.study/api',
+});
 
 function renderArtistProfile({
   strArtist,
@@ -15,7 +19,7 @@ function renderArtistProfile({
 }) {
   const markup = ` 
     <div class="artist-modal-header">
-    <button class="close-btn" id="closeModalArtist" type="button" aria-label="Close-modal">
+    <button class="close-btn" id="close-modal-artist" type="button" aria-label="Close-modal">
       <svg class="close-artist">
         <use href="./img/sprite.svg#close-x"></use>
       </svg>
@@ -67,13 +71,12 @@ function renderArtistProfile({
 // також потрібно додати лоадер до загального контейнера
 //Додати кнопку закриття і зробити робочою
 
-let isLoaded = false;
+export function loadArtistData(id) {
+  // Очищуємо попередній вміст
+  if (artistFormUpper) artistFormUpper.innerHTML = '';
+  if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '';
 
-export function loadArtistData() {
-  if (isLoaded) return;
-  isLoaded = true;
-
-  fetch(ARTIST_FORM_URL)
+  fetch(`https://sound-wave.b.goit.study/api/artists/${id}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -83,20 +86,11 @@ export function loadArtistData() {
     .then(data => renderArtistProfile(data))
     .catch(error => console.log('Error fetching artist data:', error));
 
-  renderArtistAlbums(artistId);
+  renderArtistAlbums(id);
 }
 
 /* ======= Modal albums ======= */
 
-const modalAlbumsContainer = document.querySelector('.artist_form_albums');
-
-import axios from 'axios';
-
-const artistId = '65ada227af9f6d155db46908';
-
-const api = axios.create({
-  baseURL: 'https://sound-wave.b.goit.study/api',
-});
 
 export async function fetchArtistAlbums(artistId) {
   try {
@@ -108,13 +102,13 @@ export async function fetchArtistAlbums(artistId) {
   }
 }
 
-export async function renderArtistAlbums(artistId) {
+export async function renderArtistAlbums(id) {
   try {
-    const data = await fetchArtistAlbums(artistId); // Отримую об'єкт з даними
+    const data = await fetchArtistAlbums(id); // Отримую об'єкт з даними
 
     // Перевіряю наявність масиву альбомів
     if (!data.albumsList || data.albumsList.length === 0) {
-      modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
+      if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
       return;
     }
 
@@ -172,7 +166,7 @@ export async function renderArtistAlbums(artistId) {
   </div> 
 `;
 
-    modalAlbumsContainer.innerHTML = markup;
+    if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = markup;
   } catch (error) {
     console.error('Error rendering artist albums:', error);
   }

@@ -8,6 +8,7 @@
     margin: 0 auto;
 
     background: var(--clr-dark);
+    color: var(--clr-white);
 }
 
 .artist-form[open] {
@@ -140,8 +141,10 @@
 
 .artist_form_upper_img {
     border-radius: 16px;
-    /* max-width: 100%; */
-    /* height: 272px; */
+    width: 272px;
+    height: 167px;
+    object-fit: cover;
+
 }
 
 .artist-title {
@@ -236,6 +239,7 @@
     padding: 4px 10px;
     height: 32px;
 }
+
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
@@ -253,7 +257,8 @@
     }
 
     .artist_form_upper_img {
-        /* max-width: 100%; */
+        width: 654px;
+        height: 402px;
     }
 
     .artist-modal-img {
@@ -276,10 +281,6 @@
 
     .bio-text {
         max-height: 108px;
-    }
-
-    .artist_form_upper_img {
-        height: 402px;
     }
 
     .artist-form {
@@ -317,7 +318,10 @@
 }
 
 @media screen and (min-width: 1440px) {
-    
+    .artist-modal-img {
+        width: 576px;
+        height: 354px;
+    }
 }
 
 
@@ -351,4 +355,20 @@
     }
 
 
+}
+
+/* DIALOG SETTRING */
+.artist-form {
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Затінення фону */
+.artist-form::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    /* Легке розмиття */
 }
