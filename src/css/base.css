@@ -5,11 +5,12 @@
   --third-family: 'Roboto', sans-serif;
 
   /* Brand Colors */
-  --clr-primary: #764191;                      /* Основний фіолетовий */
+  --clr-primary: #764191; /* Основний фіолетовий */
   --clr-primary-hover: rgba(118, 65, 145, 0.8);
-  --clr-dark: #060307;                         /* Глибокий чорний */
-  --clr-surface: #1e1c1f;                      /* Колір карток/модалок */
+  --clr-dark: #060307; /* Глибокий чорний */
+  --clr-surface: #1e1c1f; /* Колір карток/модалок */
   --clr-white: #ffffff;
+  --opacity-white-20: rgba(255, 255, 255, 0.2);
 
   /* Neutral Palette */
   --clr-gray-100: #f2f2f2;
