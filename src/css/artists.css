@@ -1,5 +1,7 @@
 .artists-section {
   padding: 64px 0;
+  margin: 0 auto;
+  width: 320px;
 }
 
 .artists-container {
@@ -124,12 +126,14 @@
 
 .load-more {
   margin-top: 16px;
-  display: block;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 12px;
 
   border-radius: 12px;
   padding: 10px 24px;
-  width: 100%;
+  width: 288px;
 
   box-shadow:
     0 1px 2px 0 rgba(6, 3, 7, 0.05),
@@ -148,6 +152,10 @@
   opacity: 0.6;
 }
 
+.load-more-icon {
+  fill: #fff;
+}
+
 /* Клас для приховування */
 .is-hidden {
     display: none;
@@ -156,6 +164,10 @@
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
+  .artists-section {
+    width: 768px;
+  }
+
   .artists-list {
     margin-top: 16px;
     gap: 32px;
@@ -172,7 +184,7 @@
 @media screen and (min-width: 1440px) {
   .artists-section {
     padding: 112px 0;
-    min-width: 1440px;
+    width: 1440px;
   }
 
   .artists-subtitle {

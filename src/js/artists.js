@@ -52,7 +52,10 @@ export async function renderArtistsSection() {
           `).join('')}
         </ul>
 
-        <button type="button" class="load-more ${isHidden}">Load More</button>
+        <button type="button" class="load-more ${isHidden}">Load More
+          <svg class="load-more-icon" width="14" height="14">
+            <use href="./img/sprite.svg#arrow-down"></use>
+          </svg></button>
       </div>
     `;
 
