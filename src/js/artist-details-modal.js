@@ -1,4 +1,4 @@
-const artistFormUpper = document.querySelector('.arist_form_upper');
+const artistFormUpper = document.querySelector('.artist_form_upper');
 
 const ARTIST_FORM_URL = 'https://sound-wave.b.goit.study/api/artists/65ada227af9f6d155db46908';
 
@@ -9,13 +9,13 @@ function renderArtistProfile({strArtist, strArtistThumb, intFormedYear, strGende
       <h2 class="artist-title">${strArtist}</h2>
       <button class="close-btn" type="button" aria-label="Close modal">X</button>
     </div>
-    <div class="arist_form_upper_container">
+    <div class="artist_form_upper_container">
       <!-- img -->
       <div class="artist-modal-img">
-        <img class="arist_form_upper_img" src="${strArtistThumb}" alt="" />
+        <img class="artist_form_upper_img" src="${strArtistThumb}" alt="" />
       </div>
 
-      <div class="arist_form_upper_info">
+      <div class="artist_form_upper_info">
         <ul class="stats-list parent-upper">
           <li class="stats-item upper-grid-one">
             <span class="stats-label">Years active</span>
