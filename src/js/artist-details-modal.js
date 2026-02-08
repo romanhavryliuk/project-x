@@ -15,9 +15,11 @@ function renderArtistProfile({
 }) {
   const markup = ` 
     <div class="artist-modal-header">
-    <button class="close-btn" id="closeModalArtist" type="button" aria-label="Close-modal"><svg class="close-artist"></svg>
+    <button class="close-btn" id="closeModalArtist" type="button" aria-label="Close-modal">
+      <svg class="close-artist">
         <use href="./img/sprite.svg#close-x"></use>
-       </svg></button>
+      </svg>
+    </button>
       <h2 class="artist-title">${strArtist}</h2>
     </div>
     <div class="artist_form_upper_container">
@@ -65,15 +67,24 @@ function renderArtistProfile({
 // також потрібно додати лоадер до загального контейнера
 //Додати кнопку закриття і зробити робочою
 
-fetch(ARTIST_FORM_URL)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  })
-  .then(data => renderArtistProfile(data))
-  .catch(error => console.log('Error fetching artist data:', error));
+let isLoaded = false;
+
+export function loadArtistData() {
+  if (isLoaded) return;
+  isLoaded = true;
+
+  fetch(ARTIST_FORM_URL)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .then(data => renderArtistProfile(data))
+    .catch(error => console.log('Error fetching artist data:', error));
+
+  renderArtistAlbums(artistId);
+}
 
 /* ======= Modal albums ======= */
 
@@ -166,4 +177,3 @@ export async function renderArtistAlbums(artistId) {
     console.error('Error rendering artist albums:', error);
   }
 }
-renderArtistAlbums(artistId);
