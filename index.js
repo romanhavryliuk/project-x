@@ -141,7 +141,7 @@ import{a as g,j as d,S as v,N as f,P as b}from"./assets/vendor-Bwpow0wG.js";(fun
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
     <svg class="footer__logo-icon">
-      <use href="../img/sprite.svg#logo-2"></use>
+      <use href="img/sprite.svg#logo-2"></use>
     </svg>
     </a>
     </div>
@@ -156,17 +156,17 @@ import{a as g,j as d,S as v,N as f,P as b}from"./assets/vendor-Bwpow0wG.js";(fun
     <div class="footer__socials">
       <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link">
         <svg class="footer__social-icon" viewBox="0 0 32 32" width="40" height="40">
-          <use href="../img/sprite.svg#instagram"></use>
+          <use href="img/sprite.svg#instagram"></use>
         </svg>
       </a>
       <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link">
         <svg class="footer__social-icon" viewBox="0 0 32 32" width="40" height="40">
-          <use href="../img/sprite.svg#facebook"></use>
+          <use href="img/sprite.svg#facebook"></use>
         </svg>
       </a>
       <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="footer__social-link">
         <svg class="footer__social-icon" viewBox="0 0 32 32" width="40" height="40">
-          <use href="../img/sprite.svg#youtube"></use>
+          <use href="img/sprite.svg#youtube"></use>
         </svg>
       </a>
     </div>
