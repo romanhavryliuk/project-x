@@ -1,4 +1,3 @@
-// artists.js
 import axios from 'axios';
 
 const artistsSection = document.querySelector('#artists');
