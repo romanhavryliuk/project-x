@@ -86,3 +86,33 @@ h3 {
   white-space: nowrap;
   border-width: 0;
 }
+
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--clr-gray-600) transparent;
+}
+
+
+:root {
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--clr-gray-600);
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--clr-gray-100);
+}
