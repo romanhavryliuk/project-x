@@ -1,4 +1,4 @@
-import{a as f,j as w,S as x,N as $,P as A}from"./assets/vendor-DSl-E_ZZ.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const t of i)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function a(i){const t={};return i.integrity&&(t.integrity=i.integrity),i.referrerPolicy&&(t.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?t.credentials="include":i.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(i){if(i.ep)return;i.ep=!0;const t=a(i);fetch(i.href,t)}})();const c=document.querySelector(".header");c.innerHTML=`
+import{a as f,j as w,S as x,N as $,P as A}from"./assets/vendor-Dz2QzdCe.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const t of i)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function a(i){const t={};return i.integrity&&(t.integrity=i.integrity),i.referrerPolicy&&(t.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?t.credentials="include":i.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(i){if(i.ep)return;i.ep=!0;const t=a(i);fetch(i.href,t)}})();const c=document.querySelector(".header");c.innerHTML=`
 <div class="container">
 
 <nav class="page-nav">
@@ -243,8 +243,8 @@ import{a as f,j as w,S as x,N as $,P as A}from"./assets/vendor-DSl-E_ZZ.js";(fun
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
-    <svg class="footer__logo-icon">
-      <use href="img/sprite.svg#logo-2"></use>
+    <svg class="footer__logo-icon"> 
+    <use href="img/main-logo.svg#icon-logo"></use> 
     </svg>
     </a>
     </div>
