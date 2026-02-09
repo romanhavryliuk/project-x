@@ -1,3 +1,4 @@
+
 const header = document.querySelector(".header")
 
 // markup
@@ -7,18 +8,17 @@ header.innerHTML = `
 <nav class="page-nav">
       <a href="./" class="logo"
         ><svg class="icon logo">
-          <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#logo"></use>
+          <use href="../public/main-logo.svg#icon-logo"></use>
         </svg>
-        ArtistsHub
       </a>
       <button type="button" class="burger-icon-btn" id="burger-icon-btn">
         <svg class="icon burger-icon">
-          <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#burger"></use>
+          <use href="../public/sprite.svg#burger"></use>
         </svg>
       </button>
       <button type="button" class="close-icon-btn" id="close-icon-btn">
           <svg class="icon close-icon">
-            <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#close-x"></use>
+            <use href="../public/sprite.svg#close-x"></use>
           </svg>
         </button>
 
