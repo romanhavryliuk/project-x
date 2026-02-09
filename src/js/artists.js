@@ -74,7 +74,7 @@ export async function renderArtistsSection() {
     // Після рендерингу потрібно заново повісити слухачі,
     initEventListeners();
   } catch (error) {
-    console.error('Помилка завантаження артистів:', error);
+    console.error('Something went wrong while loading artists:', error);
   }
 }
 

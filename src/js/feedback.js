@@ -38,13 +38,15 @@ const markup =`
           <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-left"></use>
-       </svg>
+        </svg>
+        <span class="sr-only">Swipe to previous slide</span>
       </div>
 
       <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-right"></use>
-       </svg>
+        </svg>
+        <span class="sr-only">Swipe to next slide</span>
       </div>
  <div class="swiper-pagination"></div>
     </div>
