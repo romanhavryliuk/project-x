@@ -4,18 +4,17 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
 <nav class="page-nav">
       <a href="./" class="logo"
         ><svg class="icon logo">
-          <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#logo"></use>
+          <use href="/public/main-logo.svg#icon-logo"></use>
         </svg>
-        ArtistsHub
       </a>
       <button type="button" class="burger-icon-btn" id="burger-icon-btn">
         <svg class="icon burger-icon">
-          <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#burger"></use>
+          <use href="/public/sprite.svg#burger"></use>
         </svg>
       </button>
       <button type="button" class="close-icon-btn" id="close-icon-btn">
           <svg class="icon close-icon">
-            <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#close-x"></use>
+            <use href="/public/sprite.svg#close-x"></use>
           </svg>
         </button>
 
@@ -48,7 +47,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
       </ul>
       </div>
 
-      </div>`;const S=document.querySelector(".burger-icon-btn"),E=document.querySelector(".close-icon-btn"),g=document.querySelector(".menu-modal"),j=document.querySelectorAll(".mobile-section-link");S.addEventListener("click",()=>{l.classList.add("menu-open"),g.classList.add("is-open"),document.body.style.overflow="hidden"});E.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"});j.forEach(e=>{e.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"})});const B=document.querySelector("#hero");B.innerHTML=`
+      </div>`;const S=document.querySelector(".burger-icon-btn"),E=document.querySelector(".close-icon-btn"),g=document.querySelector(".menu-modal"),B=document.querySelectorAll(".mobile-section-link");S.addEventListener("click",()=>{l.classList.add("menu-open"),g.classList.add("is-open"),document.body.style.overflow="hidden"});E.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"});B.forEach(e=>{e.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"})});const T=document.querySelector("#hero");T.innerHTML=`
   <div class="container hero_container">
     <div class="hero_blok">
       <h1 class="title_hero">Discover Your Next Favorite Artist Today</h1>
@@ -66,7 +65,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;const T=document.querySelector("#artists");let m=1;const b=8;let d=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;d=[...d,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
+`;const j=document.querySelector("#artists");let m=1;const b=8;let d=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;d=[...d,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
       <div class="container artists-container">
         <div class="artists-header-wrapper">  
           <h2 class="artists-title">Artist</h2>
@@ -102,7 +101,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
             <use href="/project-x/assets/sprite-CNuXn03P.svg#arrow-down"></use>
           </svg></button>
       </div>
-    `;T.innerHTML=i,P()}catch(e){console.error("Помилка завантаження артистів:",e)}}function P(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),q=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function N({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:u,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
+    `;j.innerHTML=i,q()}catch(e){console.error("Помилка завантаження артистів:",e)}}function q(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),H=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function P({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:u,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
     <div class="artist-modal-header">
    
       <h2 class="artist-title">${e}</h2>
@@ -145,7 +144,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
         </ul>
 </div>
     </div>
-  `;v.insertAdjacentHTML("beforeend",x)}function H(e){v&&(v.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(s=>{if(!s.ok)throw new Error(s.status);return s.json()}).then(s=>N(s)).catch(s=>console.log("Error fetching artist data:",s)),I(e)}async function C(e){try{return(await q.get(`/artists/${e}/albums`)).data}catch(s){throw console.error("Error fetching artist albums:",s),s}}async function I(e){try{const s=await C(e);if(!s.albumsList||s.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const a=i=>{const t=Math.floor(Number(i)/1e3),r=Math.floor(t/60),u=t%60;return`${r}:${u.toString().padStart(2,"0")}`},o=`
+  `;v.insertAdjacentHTML("beforeend",x)}function N(e){v&&(v.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(s=>{if(!s.ok)throw new Error(s.status);return s.json()}).then(s=>P(s)).catch(s=>console.log("Error fetching artist data:",s)),I(e)}async function C(e){try{return(await H.get(`/artists/${e}/albums`)).data}catch(s){throw console.error("Error fetching artist albums:",s),s}}async function I(e){try{const s=await C(e);if(!s.albumsList||s.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const a=i=>{const t=Math.floor(Number(i)/1e3),r=Math.floor(t/60),u=t%60;return`${r}:${u.toString().padStart(2,"0")}`},o=`
   <h2 class="albums-title">Albums</h2> 
   <div class="albums-list"> 
     ${s.albumsList.map(i=>`
@@ -217,7 +216,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
                 </p>
             </div>
         </div>
-    `});const h="data:image/svg+xml,%3csvg%20aria-hidden='true'%20style='position:%20absolute;%20width:%200;%20height:%200;%20overflow:%20hidden;'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3csymbol%20id='star'%20viewBox='0%200%2034%2032'%3e%3cpath%20d='M15.277%201.031c0.579-1.375%202.551-1.375%203.13%200l3.417%208.116c0.244%200.58%200.796%200.976%201.43%201.026l8.869%200.702c1.503%200.119%202.112%201.972%200.967%202.941l-6.757%205.718c-0.483%200.408-0.694%201.049-0.546%201.66l2.064%208.55c0.35%201.449-1.245%202.594-2.532%201.817l-7.593-4.582c-0.542-0.327-1.224-0.327-1.767%200l-7.593%204.582c-1.287%200.776-2.882-0.369-2.532-1.817l2.064-8.55c0.147-0.611-0.063-1.252-0.546-1.66l-6.757-5.718c-1.145-0.969-0.536-2.822%200.967-2.941l8.869-0.702c0.633-0.050%201.185-0.446%201.429-1.026l3.417-8.116z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-right'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M12.098%2027.429l3.232%203.232%2015.33-15.33-15.33-15.33-3.232%203.232%209.813%209.813h-21.911v4.571h21.911l-9.813%209.813z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-left'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M18.562%2027.429l-9.813-9.813h21.911v-4.571h-21.911l9.813-9.813-3.232-3.232-15.33%2015.33%2015.33%2015.33%203.232-3.232z'%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3c/svg%3e";window.jQuery=y;window.$=y;const O="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function X(){try{const s=await(await fetch(O)).json();return(Array.isArray(s.data)?s.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}}const D=document.querySelector(".feedback-root-container"),R=`
+    `});const h="data:image/svg+xml,%3csvg%20aria-hidden='true'%20style='position:%20absolute;%20width:%200;%20height:%200;%20overflow:%20hidden;'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3csymbol%20id='star'%20viewBox='0%200%2034%2032'%3e%3cpath%20d='M15.277%201.031c0.579-1.375%202.551-1.375%203.13%200l3.417%208.116c0.244%200.58%200.796%200.976%201.43%201.026l8.869%200.702c1.503%200.119%202.112%201.972%200.967%202.941l-6.757%205.718c-0.483%200.408-0.694%201.049-0.546%201.66l2.064%208.55c0.35%201.449-1.245%202.594-2.532%201.817l-7.593-4.582c-0.542-0.327-1.224-0.327-1.767%200l-7.593%204.582c-1.287%200.776-2.882-0.369-2.532-1.817l2.064-8.55c0.147-0.611-0.063-1.252-0.546-1.66l-6.757-5.718c-1.145-0.969-0.536-2.822%200.967-2.941l8.869-0.702c0.633-0.050%201.185-0.446%201.429-1.026l3.417-8.116z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-right'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M12.098%2027.429l3.232%203.232%2015.33-15.33-15.33-15.33-3.232%203.232%209.813%209.813h-21.911v4.571h21.911l-9.813%209.813z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-left'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M18.562%2027.429l-9.813-9.813h21.911v-4.571h-21.911l9.813-9.813-3.232-3.232-15.33%2015.33%2015.33%2015.33%203.232-3.232z'%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3c/svg%3e";window.jQuery=y;window.$=y;const O="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function D(){try{const s=await(await fetch(O)).json();return(Array.isArray(s.data)?s.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}}const R=document.querySelector(".feedback-root-container"),U=`
 <h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
@@ -237,14 +236,14 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
       </div>
  <div class="swiper-pagination"></div>
     </div>
-  `;D.innerHTML=R;function U(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const a=Number(e.rating)||0,o=Math.round(a);let i="";for(let t=1;t<=5;t++){const r=t<=o?"star-filled":"star-empty";i+=`
+  `;R.innerHTML=U;function F(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const a=Number(e.rating)||0,o=Math.round(a);let i="";for(let t=1;t<=5;t++){const r=t<=o?"star-filled":"star-empty";i+=`
 <svg class="star-icon ${r}" width="18" height="18">
  <use href="${h}#star"></use>
 </svg>`}return s.innerHTML=`
 <div class="star-rating">${i}</div>
 <div class="feedback-text">${e.descr||""}</div>
 <div class="feedback-author">${e.name||""}</div>
-`,s}async function F(){const e=document.getElementById("feedbacks-container"),s=await X();s.forEach(a=>{const o=U(a);e.appendChild(o)}),new L(".feedbacks-swiper",{modules:[A,M],slidesPerView:1,spaceBetween:20,loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0,dynamicMainBullets:1},on:{init:function(){f(this,s),updateCustomPagination(this)},slideChange:function(){f(this,s),updateCustomPagination(this)}}})}function f(e,s){const a=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");a.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}F();const z=document.querySelector(".footer__container");z.innerHTML=`
+`,s}async function z(){const e=document.getElementById("feedbacks-container"),s=await D();s.forEach(a=>{const o=F(a);e.appendChild(o)}),new L(".feedbacks-swiper",{modules:[A,M],slidesPerView:1,spaceBetween:20,loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0,dynamicMainBullets:1},on:{init:function(){f(this,s),updateCustomPagination(this)},slideChange:function(){f(this,s),updateCustomPagination(this)}}})}function f(e,s){const a=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");a.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}z();const X=document.querySelector(".footer__container");X.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
@@ -282,5 +281,5 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
       © ${new Date().getFullYear()} Project-X
     </div>
   </div>
-`;const p=document.querySelector("#artist-modal");document.addEventListener("click",e=>{const s=e.target.closest(".js-open-modal-artist");if(s){const a=s.dataset.id;H(a),p.showModal();return}(e.target.closest("#close-modal-artist")||e.target===p)&&p.close()});
+`;const p=document.querySelector("#artist-modal");document.addEventListener("click",e=>{const s=e.target.closest(".js-open-modal-artist");if(s){const a=s.dataset.id;N(a),p.showModal();return}(e.target.closest("#close-modal-artist")||e.target===p)&&p.close()});
 //# sourceMappingURL=index.js.map
