@@ -47,7 +47,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
       </ul>
       </div>
 
-      </div>`;const S=document.querySelector(".burger-icon-btn"),E=document.querySelector(".close-icon-btn"),h=document.querySelector(".menu-modal"),B=document.querySelectorAll(".mobile-section-link");S.addEventListener("click",()=>{l.classList.add("menu-open"),h.classList.add("is-open"),document.body.style.overflow="hidden"});E.addEventListener("click",()=>{l.classList.remove("menu-open"),h.classList.remove("is-open"),document.body.style.overflow="auto"});B.forEach(e=>{e.addEventListener("click",()=>{l.classList.remove("menu-open"),h.classList.remove("is-open"),document.body.style.overflow="auto"})});const T=document.querySelector("#hero");T.innerHTML=`
+      </div>`;const S=document.querySelector(".burger-icon-btn"),E=document.querySelector(".close-icon-btn"),g=document.querySelector(".menu-modal"),B=document.querySelectorAll(".mobile-section-link");S.addEventListener("click",()=>{l.classList.add("menu-open"),g.classList.add("is-open"),document.body.style.overflow="hidden"});E.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"});B.forEach(e=>{e.addEventListener("click",()=>{l.classList.remove("menu-open"),g.classList.remove("is-open"),document.body.style.overflow="auto"})});const T=document.querySelector("#hero");T.innerHTML=`
   <div class="container hero_container">
     <div class="hero_blok">
       <h1 class="title_hero">Discover Your Next Favorite Artist Today</h1>
@@ -65,7 +65,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;const q=document.querySelector("#artists");let m=1;const b=8;let u=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;u=[...u,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
+`;const j=document.querySelector("#artists");let m=1;const b=8;let u=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;u=[...u,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
       <div class="container artists-container">
         <div class="artists-header-wrapper">  
           <h2 class="artists-title">Artist</h2>
@@ -85,23 +85,23 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
                   <h4 class="artist-name">${t.strArtist}</h4>
                   <p class="artist-description">${t.strBiographyEN}</p>
                 </div>
+                </div>
                 <button class="artist-button js-open-modal-artist" type="button" data-id="${t._id}">
                   Learn More 
                   <svg class="learn-more-icon" width="8" height="14">
-                    <use href="./img/sprite.svg#learn-more"></use>
+                    <use href="/project-x/assets/sprite-CNuXn03P.svg#learn-more"></use>
                   </svg>
                 </button>
-              </div>
             </li>
           `).join("")}
         </ul>
 
         <button type="button"  class="load-more ${o}">Load More
           <svg class="load-more-icon" width="14" height="14">
-            <use href="./img/sprite.svg#arrow-down"></use>
+            <use href="/project-x/assets/sprite-CNuXn03P.svg#arrow-down"></use>
           </svg></button>
       </div>
-    `;q.innerHTML=i,j()}catch(e){console.error("Помилка завантаження артистів:",e)}}function j(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),H=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function P({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:d,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
+    `;j.innerHTML=i,q()}catch(e){console.error("Помилка завантаження артистів:",e)}}function q(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),H=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function P({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:d,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
     <div class="artist-modal-header">
    
       <h2 class="artist-title">${e}</h2>
@@ -216,7 +216,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
                 </p>
             </div>
         </div>
-    `});const g="data:image/svg+xml,%3csvg%20aria-hidden='true'%20style='position:%20absolute;%20width:%200;%20height:%200;%20overflow:%20hidden;'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3csymbol%20id='star'%20viewBox='0%200%2034%2032'%3e%3cpath%20d='M15.277%201.031c0.579-1.375%202.551-1.375%203.13%200l3.417%208.116c0.244%200.58%200.796%200.976%201.43%201.026l8.869%200.702c1.503%200.119%202.112%201.972%200.967%202.941l-6.757%205.718c-0.483%200.408-0.694%201.049-0.546%201.66l2.064%208.55c0.35%201.449-1.245%202.594-2.532%201.817l-7.593-4.582c-0.542-0.327-1.224-0.327-1.767%200l-7.593%204.582c-1.287%200.776-2.882-0.369-2.532-1.817l2.064-8.55c0.147-0.611-0.063-1.252-0.546-1.66l-6.757-5.718c-1.145-0.969-0.536-2.822%200.967-2.941l8.869-0.702c0.633-0.050%201.185-0.446%201.429-1.026l3.417-8.116z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-right'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M12.098%2027.429l3.232%203.232%2015.33-15.33-15.33-15.33-3.232%203.232%209.813%209.813h-21.911v4.571h21.911l-9.813%209.813z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-left'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M18.562%2027.429l-9.813-9.813h21.911v-4.571h-21.911l9.813-9.813-3.232-3.232-15.33%2015.33%2015.33%2015.33%203.232-3.232z'%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3c/svg%3e";window.jQuery=y;window.$=y;const O="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function D(){try{const s=await(await fetch(O)).json();return(Array.isArray(s.data)?s.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}}const R=document.querySelector(".feedback-root-container"),U=`
+    `});const h="data:image/svg+xml,%3csvg%20aria-hidden='true'%20style='position:%20absolute;%20width:%200;%20height:%200;%20overflow:%20hidden;'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3csymbol%20id='star'%20viewBox='0%200%2034%2032'%3e%3cpath%20d='M15.277%201.031c0.579-1.375%202.551-1.375%203.13%200l3.417%208.116c0.244%200.58%200.796%200.976%201.43%201.026l8.869%200.702c1.503%200.119%202.112%201.972%200.967%202.941l-6.757%205.718c-0.483%200.408-0.694%201.049-0.546%201.66l2.064%208.55c0.35%201.449-1.245%202.594-2.532%201.817l-7.593-4.582c-0.542-0.327-1.224-0.327-1.767%200l-7.593%204.582c-1.287%200.776-2.882-0.369-2.532-1.817l2.064-8.55c0.147-0.611-0.063-1.252-0.546-1.66l-6.757-5.718c-1.145-0.969-0.536-2.822%200.967-2.941l8.869-0.702c0.633-0.050%201.185-0.446%201.429-1.026l3.417-8.116z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-right'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M12.098%2027.429l3.232%203.232%2015.33-15.33-15.33-15.33-3.232%203.232%209.813%209.813h-21.911v4.571h21.911l-9.813%209.813z'%3e%3c/path%3e%3c/symbol%3e%3csymbol%20id='arrow-left'%20viewBox='0%200%2032%2032'%3e%3cpath%20d='M18.562%2027.429l-9.813-9.813h21.911v-4.571h-21.911l9.813-9.813-3.232-3.232-15.33%2015.33%2015.33%2015.33%203.232-3.232z'%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3c/svg%3e";window.jQuery=y;window.$=y;const O="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function D(){try{const s=await(await fetch(O)).json();return(Array.isArray(s.data)?s.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}}const R=document.querySelector(".feedback-root-container"),U=`
 <h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
@@ -225,25 +225,25 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
     </div>
           <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
-        <use href="${g}#arrow-left"></use>
+        <use href="${h}#arrow-left"></use>
        </svg>
       </div>
 
       <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
-        <use href="${g}#arrow-right"></use>
+        <use href="${h}#arrow-right"></use>
        </svg>
       </div>
  <div class="swiper-pagination"></div>
     </div>
   `;R.innerHTML=U;function F(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const a=Number(e.rating)||0,o=Math.round(a);let i="";for(let t=1;t<=5;t++){const r=t<=o?"star-filled":"star-empty";i+=`
 <svg class="star-icon ${r}" width="18" height="18">
- <use href="${g}#star"></use>
+ <use href="${h}#star"></use>
 </svg>`}return s.innerHTML=`
 <div class="star-rating">${i}</div>
 <div class="feedback-text">${e.descr||""}</div>
 <div class="feedback-author">${e.name||""}</div>
-`,s}async function z(){const e=document.getElementById("feedbacks-container"),s=await D();s.forEach(a=>{const o=F(a);e.appendChild(o)}),new L(".feedbacks-swiper",{modules:[A,M],slidesPerView:1,spaceBetween:20,loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0,dynamicMainBullets:1},on:{init:function(){f(this,s),updateCustomPagination(this)},slideChange:function(){f(this,s),updateCustomPagination(this)}}})}function f(e,s){const a=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");a.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}z();const Q=document.querySelector(".footer__container");Q.innerHTML=`
+`,s}async function z(){const e=document.getElementById("feedbacks-container"),s=await D();s.forEach(a=>{const o=F(a);e.appendChild(o)}),new L(".feedbacks-swiper",{modules:[A,M],slidesPerView:1,spaceBetween:20,loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0,dynamicMainBullets:1},on:{init:function(){f(this,s),updateCustomPagination(this)},slideChange:function(){f(this,s),updateCustomPagination(this)}}})}function f(e,s){const a=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");a.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}z();const X=document.querySelector(".footer__container");X.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
