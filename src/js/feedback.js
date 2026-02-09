@@ -51,6 +51,10 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
         <span class="sr-only">Swipe to next slide</span>
       </div>
  <div class="swiper-pagination"></div>
+<button type="button" class="feedback-button" id="Leave feedback">
+         Leave feedback
+        </button>
+ 
     </div>
   `;
 
