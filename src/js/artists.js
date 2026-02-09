@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { mountLoader, showLoader, hideLoader } from './loader.js';
 
 const artistsSection = document.querySelector('#artists');
+mountLoader('#artists');
 
 let page = 1; // стартова сторінка
 const limit = 8; // кількість карток на сторінку
@@ -8,6 +10,8 @@ let allArtists = []; // масив всіх артистів
 
 // Функція для отримання артистів
 export async function renderArtistsSection() {
+  showLoader('#artists');
+
   try {
     const response = await axios.get(
       'https://sound-wave.b.goit.study/api/artists',
@@ -75,6 +79,8 @@ export async function renderArtistsSection() {
     initEventListeners();
   } catch (error) {
     console.error('Помилка завантаження артистів:', error);
+  } finally {
+    hideLoader('#artists');
   }
 }
 

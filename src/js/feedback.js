@@ -7,29 +7,31 @@ import $ from 'jquery';
 import 'raty-js';
 window.jQuery = $;
 window.$ = $;
+import { mountLoader, showLoader, hideLoader } from './loader.js';
+mountLoader('.feedback-section');
 
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
-
 async function fetchFeedbacks() {
-    try {
-        const response = await fetch(API_URL);
-        const result = await response.json();
+  showLoader('.feedback-section');
+  try {
+    const response = await fetch(API_URL);
+    const result = await response.json();
 
-        const feedbackArray = Array.isArray(result.data) ? result.data : [];
-       
-        return feedbackArray.slice(0, 10); 
-    }   catch (error) {
-        console.error('Error fetching feedbacks:', error);
-        return [];
-    }
+    const feedbackArray = Array.isArray(result.data) ? result.data : [];
+    return feedbackArray.slice(0, 10);
+  } catch (error) {
+    console.error('Error fetching feedbacks:', error);
+    return [];
+  } finally {
+    hideLoader('.feedback-section');
+  }
 }
 
 const root = document.querySelector('.feedback-root-container');
 
-const markup =`
-<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
+const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
     <div class="swiper-wrapper" id="feedbacks-container">
@@ -52,35 +54,35 @@ const markup =`
 
 root.innerHTML = markup;
 
-  function createFeedbackSlide(feedback) {
-const slide = document.createElement('div');
-slide.classList.add('swiper-slide', 'feedback-content');
-const rewRating = Number(feedback.rating) || 0;
-const rating = Math.round(rewRating);
+function createFeedbackSlide(feedback) {
+  const slide = document.createElement('div');
+  slide.classList.add('swiper-slide', 'feedback-content');
+  const rewRating = Number(feedback.rating) || 0;
+  const rating = Math.round(rewRating);
 
-let starsMarkup = '';
+  let starsMarkup = '';
 
-for (let i = 1; i <= 5; i++) {
-const starClass = i <= rating ? 'star-filled' : 'star-empty';
-starsMarkup += `
+  for (let i = 1; i <= 5; i++) {
+    const starClass = i <= rating ? 'star-filled' : 'star-empty';
+    starsMarkup += `
 <svg class="star-icon ${starClass}" width="18" height="18">
  <use href="sprite.svg#star"></use>
 </svg>`;
-}
+  }
 
-slide.innerHTML = `
+  slide.innerHTML = `
 <div class="star-rating">${starsMarkup}</div>
 <div class="feedback-text">${feedback.descr || ''}</div>
 <div class="feedback-author">${feedback.name || ''}</div>
 `;
 
-return slide;
+  return slide;
 }
 
-   
 async function initSwiper() {
-  const container = document.getElementById('feedbacks-container');
+  const $ = window.jQuery;
 
+  const container = document.getElementById('feedbacks-container');
   const feedbacks = await fetchFeedbacks();
 
   feedbacks.forEach(feedback => {
@@ -91,41 +93,61 @@ async function initSwiper() {
   const swiper = new Swiper('.feedbacks-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
-    spaceBetween: 20,
     loop: false,
-
+    spaceBetween: 20,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-      dynamicBullets: true,
-      dynamicMainBullets: 1
+      renderBullet: function (index, className) {
+        if (index < 3) {
+          return `<span class="${className} custom-bullet-${index}"></span>`;
+        }
+        return '';
+      },
     },
     on: {
-    init: function () {
-    updateNavButtons(this, feedbacks); 
+      init: function () {
+        updateNavButtons(this, feedbacks);
         updateCustomPagination(this);
+      },
+      slideChange: function () {
+        updateNavButtons(this, feedbacks);
+        updateCustomPagination(this);
+      },
     },
-    slideChange: function () {
-    updateNavButtons(this, feedbacks); 
-        updateCustomPagination(this);
-    }
- },
   });
 }
 
+function updateCustomPagination(swiperInstance) {
+  const bullets = swiperInstance.pagination.bullets;
+  if (!bullets || bullets.length === 0) return;
 
-function updateNavButtons(swiperInstance, feedbacks) {
-    const prevButton = document.querySelector('.swiper-button-prev');
-    const nextButton = document.querySelector('.swiper-button-next');
+  bullets.forEach(b => b.classList.remove('swiper-pagination-bullet-active'));
 
-    prevButton.classList.toggle('disabled', swiperInstance.activeIndex === 0);
-    nextButton.classList.toggle('disabled', swiperInstance.activeIndex === feedbacks.length - 1);
+  const index = swiperInstance.activeIndex;
+
+  if (index <= 2) {
+    bullets[0].classList.add('swiper-pagination-bullet-active');
+  } else if (index >= 3 && index <= 6) {
+    bullets[1].classList.add('swiper-pagination-bullet-active');
+  } else {
+    bullets[2].classList.add('swiper-pagination-bullet-active');
+  }
 }
 
+function updateNavButtons(swiperInstance, feedbacks) {
+  const prevButton = document.querySelector('.swiper-button-prev');
+  const nextButton = document.querySelector('.swiper-button-next');
+
+  prevButton.classList.toggle('disabled', swiperInstance.activeIndex === 0);
+  nextButton.classList.toggle(
+    'disabled',
+    swiperInstance.activeIndex === feedbacks.length - 1
+  );
+}
 
 initSwiper();

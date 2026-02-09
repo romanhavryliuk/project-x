@@ -1,18 +1,34 @@
-let pending = 0;
+import loaderMarkup from '../partials/loader.html?raw';
 
-function getLoaderEl() {
-  return document.querySelector('[data-loader="global"]');
+const pendingByContainer = new Map();
+
+export function mountLoader(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  if (container.querySelector('[data-loader]')) return;
+
+  container.insertAdjacentHTML('afterbegin', loaderMarkup);
 }
 
-export function showLoader() {
-  pending += 1;
-  getLoaderEl()?.classList.remove('is-hidden');
+function getLoaderEl(containerSelector) {
+  return document.querySelector(`${containerSelector} [data-loader]`);
 }
 
-export function hideLoader() {
-  pending -= 1;
+export function showLoader(containerSelector) {
+  const pending = (pendingByContainer.get(containerSelector) ?? 0) + 1;
+  pendingByContainer.set(containerSelector, pending);
+
+  getLoaderEl(containerSelector)?.classList.remove('is-hidden');
+}
+
+export function hideLoader(containerSelector) {
+  const pending = (pendingByContainer.get(containerSelector) ?? 0) - 1;
+
   if (pending <= 0) {
-    pending = 0;
-    getLoaderEl()?.classList.add('is-hidden');
+    pendingByContainer.set(containerSelector, 0);
+    getLoaderEl(containerSelector)?.classList.add('is-hidden');
+  } else {
+    pendingByContainer.set(containerSelector, pending);
   }
 }
