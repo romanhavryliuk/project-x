@@ -174,7 +174,7 @@
 }
 
 .artist-modal-img {
-    width: 402px;
+    /* width: 402px; */
     margin-bottom: 32px;
     overflow: hidden;
     border-radius: 16px;
@@ -301,6 +301,7 @@
     .artist-modal-img {
         display: flex;
         justify-content: center;
+         
     }
 
     .parent-upper {
