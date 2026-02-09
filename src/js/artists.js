@@ -6,7 +6,6 @@ let page = 1; // стартова сторінка
 const limit = 8; // кількість карток на сторінку
 let allArtists = []; // масив всіх артистів
 
-
 // Функція для отримання артистів
 export async function renderArtistsSection() {
   try {
@@ -40,7 +39,7 @@ export async function renderArtistsSection() {
                   <h4 class="artist-name">${artist.strArtist}</h4>
                   <p class="artist-description">${artist.strBiographyEN}</p>
                 </div>
-                <button class="artist-button" type="button" data-id="${artist._id}">
+                <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
                   Learn More 
                   <svg class="learn-more-icon" width="8" height="14">
                     <use href="./img/sprite.svg#learn-more"></use>
@@ -51,7 +50,7 @@ export async function renderArtistsSection() {
           `).join('')}
         </ul>
 
-        <button type="button" class="load-more ${isHidden}">Load More
+        <button type="button"  class="load-more ${isHidden}">Load More
           <svg class="load-more-icon" width="14" height="14">
             <use href="./img/sprite.svg#arrow-down"></use>
           </svg></button>
@@ -81,14 +80,7 @@ function initEventListeners() {
     };
   }
 
-                                            // Слухач для "Learn More"
-  if (artistsList) {
-    artistsList.onclick = (event) => {
-      const btn = event.target.closest('.artist-button');
-      if (!btn) return;
-      alert(btn.dataset.bio);
-    };
-  }
 }
+
 
 renderArtistsSection();
