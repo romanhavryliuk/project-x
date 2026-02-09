@@ -26,10 +26,6 @@
     font-family: var(--second-family);
 }
 
-.logo .icon {
-    padding-bottom: 5px;
-}
-
 .page-nav {
     color: #fff;
 
