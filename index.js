@@ -58,7 +58,7 @@ import{a as f,j as w,S as x,N as $,P as A}from"./assets/vendor-Dz2QzdCe.js";(fun
       </p>
       <button type="button" class="hero_button" id="hero_explore">
         Explore Artists
-        <svg class="icon" width="24" height="24">
+        <svg class="icon_hero" width="24" height="24">
           <use href="/img/sprite.svg#explore"></use>
         </svg>
       </button>
