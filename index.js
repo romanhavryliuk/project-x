@@ -1,21 +1,70 @@
-import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))r(a);new MutationObserver(a=>{for(const e of a)if(e.type==="childList")for(const o of e.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function i(a){const e={};return a.integrity&&(e.integrity=a.integrity),a.referrerPolicy&&(e.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?e.credentials="include":a.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function r(a){if(a.ep)return;a.ep=!0;const e=i(a);fetch(a.href,e)}})();const $=document.querySelector("#artists");let u=1;const p=8;let l=[];async function h(){try{const s=await v.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:p,page:u}}),{artists:t,totalPages:i}=s.data;l=[...l,...t];const r=u>=i||t.length<p?"is-hidden":"",a=`
+import{a as f,j as h,S as k,N as L,P as $}from"./assets/vendor-DSl-E_ZZ.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const t of a)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function i(a){const t={};return a.integrity&&(t.integrity=a.integrity),a.referrerPolicy&&(t.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?t.credentials="include":a.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(a){if(a.ep)return;a.ep=!0;const t=i(a);fetch(a.href,t)}})();const c=document.querySelector(".header");c.innerHTML=`
+<div class="container">
+
+<nav class="page-nav">
+      <a href="./" class="logo"
+        ><svg class="icon logo">
+          <use href="../img/sprite.svg#logo-2"></use>
+        </svg>
+      </a>
+      <button type="button" class="burger-icon-btn" id="burger-icon-btn">
+        <svg class="icon burger-icon">
+          <use href="../img/sprite.svg#burger"></use>
+        </svg>
+      </button>
+      <button type="button" class="close-icon-btn" id="close-icon-btn">
+          <svg class="icon close-icon">
+            <use href="../img/sprite.svg#close-x"></use>
+          </svg>
+        </button>
+
+      <ul class="section-nav">
+        <li class="section-name">
+          <a href="#artists" class="section-link">Artists</a>
+        </li>
+        <li class="section-name">
+          <a href="#about" class="section-link">About Us</a>
+        </li>
+        <li class="section-name">
+          <a href="#reviews" class="section-link">Reviews</a>
+        </li>
+      </ul>
+    </nav>
+    </div>
+
+    <div class="menu-modal">
+    <div class="container mobile-menu">
+      <ul class="mobile-section-nav">
+        <li class="mobile-section-name">
+          <a href="#artists" class="mobile-section-link">Artists</a>
+        </li>
+        <li class="section-name">
+          <a href="#about" class="mobile-section-link">About Us</a>
+        </li>
+        <li class="section-name">
+          <a href="#reviews" class="mobile-section-link">Reviews</a>
+        </li>
+      </ul>
+      </div>
+
+      </div>`;const x=document.querySelector(".burger-icon-btn"),A=document.querySelector(".close-icon-btn"),m=document.querySelector(".menu-modal"),S=document.querySelectorAll(".mobile-section-link");x.addEventListener("click",()=>{c.classList.add("menu-open"),m.classList.add("is-open"),document.body.style.overflow="hidden"});A.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"});S.forEach(e=>{e.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"})});const M=document.querySelector("#artists");let d=1;const v=8;let u=[];async function w(){try{const e=await f.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:v,page:d}}),{artists:s,totalPages:i}=e.data;u=[...u,...s];const o=d>=i||s.length<v?"is-hidden":"",a=`
       <div class="container artists-container">
         <h2 class="artists-title">Artist</h2>
         <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
         
         <ul class="artists-list">
-          ${l.map(e=>`
-            <li class="artist-card" data-id="${e._id}">
-              <img class="artist-image" src="${e.strArtistThumb}" alt="${e.strArtist}" />
+          ${u.map(t=>`
+            <li class="artist-card" data-id="${t._id}">
+              <img class="artist-image" src="${t.strArtistThumb}" alt="${t.strArtist}" />
               <div class="artist-content-wrapper">
                 <ul class="genres-list">
-                  ${e.genres.map(o=>`<li class="genres-item">${o}</li>`).join("")}
+                  ${t.genres.map(r=>`<li class="genres-item">${r}</li>`).join("")}
                 </ul>
                 <div class="artist-title-wrapper">
-                  <h4 class="artist-name">${e.strArtist}</h4>
-                  <p class="artist-description">${e.strBiographyEN}</p>
+                  <h4 class="artist-name">${t.strArtist}</h4>
+                  <p class="artist-description">${t.strBiographyEN}</p>
                 </div>
-                <button class="artist-button js-open-modal-artist" type="button" data-id="${e._id}">
+                <button class="artist-button js-open-modal-artist" type="button" data-id="${t._id}">
                   Learn More 
                   <svg class="learn-more-icon" width="8" height="14">
                     <use href="./img/sprite.svg#learn-more"></use>
@@ -26,24 +75,24 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
           `).join("")}
         </ul>
 
-        <button type="button"  class="load-more ${r}">Load More
+        <button type="button"  class="load-more ${o}">Load More
           <svg class="load-more-icon" width="14" height="14">
             <use href="./img/sprite.svg#arrow-down"></use>
           </svg></button>
       </div>
-    `;$.innerHTML=a,x()}catch(s){console.error("Помилка завантаження артистів:",s)}}function x(){const s=document.querySelector(".load-more");document.querySelector(".artists-list"),s&&(s.onclick=()=>{u+=1,h()})}h();const d=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),L=v.create({baseURL:"https://sound-wave.b.goit.study/api"});function A({strArtist:s,strArtistThumb:t,intFormedYear:i,strGender:r,intMembers:a,strCountry:e,strBiographyEN:o,genres:c}){const b=` 
+    `;M.innerHTML=a,E()}catch(e){console.error("Помилка завантаження артистів:",e)}}function E(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{d+=1,w()})}w();const p=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),q=f.create({baseURL:"https://sound-wave.b.goit.study/api"});function T({strArtist:e,strArtistThumb:s,intFormedYear:i,strGender:o,intMembers:a,strCountry:t,strBiographyEN:r,genres:l}){const y=` 
     <div class="artist-modal-header">
     <button class="close-btn" id="close-modal-artist" type="button" aria-label="Close-modal">
       <svg class="close-artist">
         <use href="./img/sprite.svg#close-x"></use>
       </svg>
     </button>
-      <h2 class="artist-title">${s}</h2>
+      <h2 class="artist-title">${e}</h2>
     </div>
     <div class="artist_form_upper_container">
       <!-- img -->
       <div class="artist-modal-img">
-        <img class="artist_form_upper_img" src="${t}" alt="" />
+        <img class="artist_form_upper_img" src="${s}" alt="" />
       </div>
 
       <div class="artist_form_upper_info">
@@ -54,7 +103,7 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
           </li>
           <li class="stats-item upper-grid-two">
             <span class="stats-label">Sex</span>
-            <span class="stats-value">${r}</span>
+            <span class="stats-value">${o}</span>
           </li>
           <li class="stats-item upper-grid-three">
             <span class="stats-label">Members</span>
@@ -62,24 +111,24 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
           </li>
           <li class="stats-item upper-grid-four">
             <span class="stats-label">Country</span>
-            <span class="stats-value">${e}</span>
+            <span class="stats-value">${t}</span>
           </li>
         </ul>
       </div>
       <div class="artist-modal-biography">
         <h3 class="bio-title">Biography</h3>
         <p class="bio-text">
-          ${o}
+          ${r}
         </p>
       </div>
       <ul class="genre-list">
-      ${c.map(w=>`<li class="genre-item"><p class="genre-name">${w}</p></li>`).join("")}
+      ${l.map(_=>`<li class="genre-item"><p class="genre-name">${_}</p></li>`).join("")}
       </ul>
     </div>
-  `;d.insertAdjacentHTML("beforeend",b)}function S(s){d&&(d.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${s}`).then(t=>{if(!t.ok)throw new Error(t.status);return t.json()}).then(t=>A(t)).catch(t=>console.log("Error fetching artist data:",t)),E(s)}async function M(s){try{return(await L.get(`/artists/${s}/albums`)).data}catch(t){throw console.error("Error fetching artist albums:",t),t}}async function E(s){try{const t=await M(s);if(!t.albumsList||t.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const i=a=>{const e=Math.floor(Number(a)/1e3),o=Math.floor(e/60),c=e%60;return`${o}:${c.toString().padStart(2,"0")}`},r=`
+  `;p.insertAdjacentHTML("beforeend",y)}function B(e){p&&(p.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(s=>{if(!s.ok)throw new Error(s.status);return s.json()}).then(s=>T(s)).catch(s=>console.log("Error fetching artist data:",s)),H(e)}async function j(e){try{return(await q.get(`/artists/${e}/albums`)).data}catch(s){throw console.error("Error fetching artist albums:",s),s}}async function H(e){try{const s=await j(e);if(!s.albumsList||s.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const i=a=>{const t=Math.floor(Number(a)/1e3),r=Math.floor(t/60),l=t%60;return`${r}:${l.toString().padStart(2,"0")}`},o=`
   <h2 class="albums-title">Albums</h2> 
   <div class="albums-list"> 
-    ${t.albumsList.map(a=>`
+    ${s.albumsList.map(a=>`
       <div class="album-container">
         <h3 class="album-name">${a.strAlbum}</h3>
         <div class="tracks-list">
@@ -89,12 +138,12 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
             <span class="link-span">Link</span>
           </div>
 
-          ${a.tracks.map(e=>`
+          ${a.tracks.map(t=>`
             <ul class="track-row">
-              <li class="track-title">${e.strTrack}</li> 
-              <li class="track-duration">${i(e.intDuration)}</li> 
+              <li class="track-title">${t.strTrack}</li> 
+              <li class="track-duration">${i(t.intDuration)}</li> 
               <li class="track-link">
-                ${e.movie?`<a href="${e.movie}" target="_blank">
+                ${t.movie?`<a href="${t.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
                       <use href="/img/sprite.svg#youtube"></use>
                     </svg>
@@ -107,7 +156,7 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
       </div>
     `).join("")}
   </div> 
-`;n&&(n.innerHTML=r)}catch(t){console.error("Error rendering artist albums:",t)}}document.addEventListener("DOMContentLoaded",()=>{const s=document.querySelector(".about-section");s.innerHTML=`
+`;n&&(n.innerHTML=o)}catch(s){console.error("Error rendering artist albums:",s)}}document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".about-section");e.innerHTML=`
         <div class="about-container">
             <div class="about-team-photo">
             <picture>
@@ -148,7 +197,7 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
                 </p>
             </div>
         </div>
-    `});window.jQuery=f;window.$=f;const T="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function j(){try{const t=await(await fetch(T)).json();return(Array.isArray(t.data)?t.data:[]).slice(0,10)}catch(s){return console.error("Error fetching feedbacks:",s),[]}}const B=document.querySelector(".feedback-root-container"),q=`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
+    `});window.jQuery=h;window.$=h;const P="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function N(){try{const s=await(await fetch(P)).json();return(Array.isArray(s.data)?s.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}}const C=document.querySelector(".feedback-root-container"),F=`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
     <div class="swiper-wrapper" id="feedbacks-container">
@@ -166,14 +215,14 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
       </div>
  <div class="swiper-pagination"></div>
     </div>
-  `;B.innerHTML=q;function H(s){const t=document.createElement("div");t.classList.add("swiper-slide","feedback-content");const i=Number(s.rating)||0,r=Math.round(i);let a="";for(let e=1;e<=5;e++){const o=e<=r?"star-filled":"star-empty";a+=`
-<svg class="star-icon ${o}" width="18" height="18">
+  `;C.innerHTML=F;function O(e){const s=document.createElement("div");s.classList.add("swiper-slide","feedback-content");const i=Number(e.rating)||0,o=Math.round(i);let a="";for(let t=1;t<=5;t++){const r=t<=o?"star-filled":"star-empty";a+=`
+<svg class="star-icon ${r}" width="18" height="18">
 <use href="./img/sprite.svg#star"></use>
-</svg>`}return t.innerHTML=`
+</svg>`}return s.innerHTML=`
 <div class="star-rating">${a}</div>
-<div class="feedback-text">${s.descr||""}</div>
-<div class="feedback-author">${s.name||""}</div>
-`,t}async function P(){const s=document.getElementById("feedbacks-container"),t=await j();t.forEach(i=>{const r=H(i);s.appendChild(r)}),new y(".feedbacks-swiper",{modules:[_,k],slidesPerView:1,loop:!1,spaceBetween:20,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,renderBullet:function(i,r){return i<3?`<span class="${r} custom-bullet-${i}"></span>`:""}},on:{init:function(){g(this,t),m(this)},slideChange:function(){g(this,t),m(this)}}})}function m(s){const t=s.pagination.bullets;if(!t||t.length===0)return;t.forEach(r=>r.classList.remove("swiper-pagination-bullet-active"));const i=s.activeIndex;i<=2?t[0].classList.add("swiper-pagination-bullet-active"):i>=3&&i<=6?t[1].classList.add("swiper-pagination-bullet-active"):t[2].classList.add("swiper-pagination-bullet-active")}function g(s,t){const i=document.querySelector(".swiper-button-prev"),r=document.querySelector(".swiper-button-next");i.classList.toggle("disabled",s.activeIndex===0),r.classList.toggle("disabled",s.activeIndex===t.length-1)}P();const N=document.querySelector(".footer__container");N.innerHTML=`
+<div class="feedback-text">${e.descr||""}</div>
+<div class="feedback-author">${e.name||""}</div>
+`,s}async function R(){const e=document.getElementById("feedbacks-container"),s=await N();s.forEach(i=>{const o=O(i);e.appendChild(o)}),new k(".feedbacks-swiper",{modules:[L,$],slidesPerView:1,loop:!1,spaceBetween:20,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,renderBullet:function(i,o){return i<3?`<span class="${o} custom-bullet-${i}"></span>`:""}},on:{init:function(){b(this,s),g(this)},slideChange:function(){b(this,s),g(this)}}})}function g(e){const s=e.pagination.bullets;if(!s||s.length===0)return;s.forEach(o=>o.classList.remove("swiper-pagination-bullet-active"));const i=e.activeIndex;i<=2?s[0].classList.add("swiper-pagination-bullet-active"):i>=3&&i<=6?s[1].classList.add("swiper-pagination-bullet-active"):s[2].classList.add("swiper-pagination-bullet-active")}function b(e,s){const i=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");i.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}R();const I=document.querySelector(".footer__container");I.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
@@ -211,5 +260,5 @@ import{a as v,j as f,S as y,N as _,P as k}from"./assets/vendor-Bwpow0wG.js";(fun
       © ${new Date().getFullYear()} Project-X
     </div>
   </div>
-`;document.addEventListener("click",s=>{const t=s.target.closest(".js-open-modal-artist");if(t){const a=document.querySelector("#artist-modal");if(a){const e=t.dataset.id;a.showModal(),S(e)}}const i=s.target.closest("#close-modal-artist"),r=document.querySelector("#artist-modal");r&&r.open&&(i||s.target===r)&&r.close()});
+`;document.addEventListener("click",e=>{const s=e.target.closest(".js-open-modal-artist");if(s){const a=document.querySelector("#artist-modal");if(a){const t=s.dataset.id;a.showModal(),B(t)}}const i=e.target.closest("#close-modal-artist"),o=document.querySelector("#artist-modal");o&&o.open&&(i||e.target===o)&&o.close()});
 //# sourceMappingURL=index.js.map
