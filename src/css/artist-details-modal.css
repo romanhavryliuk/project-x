@@ -1,16 +1,18 @@
 .artist-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 16px;
-    
+
     border-radius: 16px;
     padding: 52px 8px;
     width: 288px;
     margin: 0 auto;
 
     background: var(--clr-dark);
+    color: var(--clr-white);
+}
+
+.artist-form[open] {
+    display: flex;
 }
 
 .artist_form_albums {
@@ -18,7 +20,6 @@
     align-items: center;
     flex-direction: column;
     gap: 16px;
-
 }
 
 .albums-title {
@@ -40,8 +41,7 @@
 
     border-radius: 16px;
     padding: 14px 11px;
-    min-width: 250px;
-    max-width: 272px;
+    width: 272px;
 
     background: #1e1c1f;
 }
@@ -114,7 +114,6 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    text-align: center;
     width: 74px;
 }
 
@@ -131,4 +130,313 @@
     &:hover {
         opacity: 0.6;
     }
+}
+
+/* --- UPPER FORM --- */
+
+/* mobile style */
+.close-btn {
+    width: 32px;
+    height: 32px;
+    background: inherit;
+    fill: var(--clr-white);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+
+
+.artist_form_upper_img {
+    border-radius: 16px;
+    width: 272px;
+    height: 167px;
+    object-fit: cover;
+    object-position: top;
+}
+ 
+.artist-title {
+    font-family: var(--second-family);
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.artist-modal-header {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+}
+
+.artist-modal-header {
+    margin-bottom: 16px;
+}
+
+.artist-modal-img {
+    /* width: 402px; */
+    margin-bottom: 32px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.artist-modal-biography {
+    margin-bottom: 20px;
+}
+
+.artist_form_upper_info {
+    margin-bottom: 16px;
+}
+
+.parent-upper {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+}
+
+.stats-item {
+    display: grid;
+    grid-column: auto;
+}
+
+.stats-list {
+    display: grid;
+}
+
+.stats-label {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.stats-value {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.bio-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: var(--font-family);
+}
+
+.bio-text {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    max-height: 324px;
+    overflow-y: auto;
+
+
+}
+
+.genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 16px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.genre-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    height: 32px;
+}
+
+/* ширина всієї смуги прокрутки */
+.bio-text::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* колір скролінгової області */
+.bio-text::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+
+}
+
+.bio-text::-webkit-scrollbar-thumb {
+    /* колір скролбару */
+    background-color: rgb(124, 124, 124);
+
+    /* заокруглення скролбару */
+    border-radius: 20px;
+    /* додає паддінги навколу скролу */
+    border: 3px solid rgb(0, 0, 0);
+
+}
+
+
+
+
+/* ------- Tablet styles ------- */
+
+@media screen and (min-width: 768px) {
+
+    .artist-title {
+        font-size: 32px;
+    }
+
+    .artist-modal-header {
+        margin-bottom: 42px;
+    }
+
+    .artist_form_upper_container {
+        min-width: 654px;
+    }
+
+    .artist_form_upper_img {
+        width: 654px;
+        height: 402px;
+    }
+
+    .artist-modal-img {
+        display: flex;
+        justify-content: center;
+         
+    }
+
+    .parent-upper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 24px;
+        column-gap: 24px;
+        max-width: 400px;
+    }
+
+    .stats-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bio-text {
+        max-height: 108px;
+    }
+
+    .artist-form {
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px 24px;
+        width: 702px;
+    }
+
+    .album-container {
+        padding: 14px 11px;
+        width: 311px;
+    }
+
+    .time-span {
+        width: 135px;
+    }
+
+    .track-row {
+        display: flex;
+        padding: 4px 0px 4px 12px;
+        width: 289px;
+        gap: 16px;
+    }
+
+    .track-title {
+        width: 106px;
+    }
+
+    .track-duration {
+        width: 100px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .artist-modal-img {
+        width: 576px;
+        height: 354px;
+    }
+
+     .artist_form_upper_container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 32px;
+        
+    }
+
+   .artist_form_upper_info_container{
+      display: flex;
+      flex-direction: column;
+      width: 576px;
+    }
+    .artist-modal-biography {
+        margin-bottom: 24px;
+    }
+
+    .artist_form_upper_info{
+        margin-bottom: 24px;
+    }
+
+    .artist-modal-img {
+        margin-bottom: 0;
+    }
+    .bio-text {
+        max-height: 135px;
+    }
+    .artist-modal-header{
+        margin-bottom: 48px;
+    }
+}
+
+
+
+/* ------- Desktop styles ------- */
+
+@media screen and (min-width: 1440px) {
+    .artist-form {
+        flex-direction: column;
+        gap: 48px;
+
+        border-radius: 16px;
+        padding: 64px;
+        width: 1312px;
+    }
+
+    .album-container {
+        width: 272px;
+    }
+
+    .track-row {
+        width: unset;
+    }
+
+    .track-title {
+        width: 97px;
+    }
+
+    .track-duration {
+        width: 74px;
+    }
+
+
+}
+
+/* DIALOG SETTRING */
+.artist-form {
+    /* overflow: hidden; */
+    /* padding: 20px; */
+    /* border-radius: 8px; */
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Затінення фону */
+.artist-form::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    /* Легке розмиття */
 }
