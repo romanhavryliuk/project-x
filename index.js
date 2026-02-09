@@ -67,13 +67,16 @@ import{a as w,j as y,S as $,N as A,P as S}from"./assets/vendor-Dz2QzdCe.js";(fun
   </div>
 `;const B=document.querySelector("#artists");let m=1;const h=8;let d=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:h,page:m}}),{artists:s,totalPages:a}=e.data;d=[...d,...s];const o=m>=a||s.length<h?"is-hidden":"",i=`
       <div class="container artists-container">
-        <h2 class="artists-title">Artist</h2>
-        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
-        
+        <div class="artists-header-wrapper">  
+          <h2 class="artists-title">Artist</h2>
+          <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+        </div>
         <ul class="artists-list">
           ${d.map(t=>`
             <li class="artist-card" data-id="${t._id}">
-              <img class="artist-image" src="${t.strArtistThumb}" alt="${t.strArtist}" />
+            <div class="artist-image-wrapper">
+            <img class="artist-image" src="${t.strArtistThumb}" alt="${t.strArtist}" />
+            </div>  
               <div class="artist-content-wrapper">
                 <ul class="genres-list">
                   ${t.genres.map(r=>`<li class="genres-item">${r}</li>`).join("")}
