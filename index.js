@@ -4,17 +4,17 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
 <nav class="page-nav">
       <a href="./" class="logo"
         ><svg class="icon logo">
-          <use href="/public/main-logo.svg#icon-logo"></use>
+          <use href="main-logo.svg#icon-logo"></use>
         </svg>
       </a>
       <button type="button" class="burger-icon-btn" id="burger-icon-btn">
         <svg class="icon burger-icon">
-          <use href="/public/sprite.svg#burger"></use>
+          <use href="sprite.svg#burger"></use>
         </svg>
       </button>
       <button type="button" class="close-icon-btn" id="close-icon-btn">
           <svg class="icon close-icon">
-            <use href="/public/sprite.svg#close-x"></use>
+            <use href="sprite.svg#close-x"></use>
           </svg>
         </button>
 
@@ -65,14 +65,14 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;const j=document.querySelector("#artists");let m=1;const b=8;let d=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;d=[...d,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
+`;const j=document.querySelector("#artists");let m=1;const b=8;let u=[];async function _(){try{const e=await w.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:b,page:m}}),{artists:s,totalPages:a}=e.data;u=[...u,...s];const o=m>=a||s.length<b?"is-hidden":"",i=`
       <div class="container artists-container">
         <div class="artists-header-wrapper">  
           <h2 class="artists-title">Artist</h2>
           <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
         </div>
         <ul class="artists-list">
-          ${d.map(t=>`
+          ${u.map(t=>`
             <li class="artist-card" data-id="${t._id}">
             <div class="artist-image-wrapper">
             <img class="artist-image" src="${t.strArtistThumb}" alt="${t.strArtist}" />
@@ -101,7 +101,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
             <use href="/project-x/assets/sprite-CNuXn03P.svg#arrow-down"></use>
           </svg></button>
       </div>
-    `;j.innerHTML=i,q()}catch(e){console.error("Помилка завантаження артистів:",e)}}function q(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),H=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function P({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:u,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
+    `;j.innerHTML=i,q()}catch(e){console.error("Помилка завантаження артистів:",e)}}function q(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{m+=1,_()})}_();const v=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums"),H=w.create({baseURL:"https://sound-wave.b.goit.study/api"});function P({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:o,strGender:i,intMembers:t,strCountry:r,strBiographyEN:d,genres:k}){let c;a&&a!=="null"?o&&o!=="null"?c=`${a}–${o}`:c=`${a}–present`:c="Information missing";const x=` 
     <div class="artist-modal-header">
    
       <h2 class="artist-title">${e}</h2>
@@ -136,7 +136,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
         <div class="artist-modal-biography">
           <h3 class="bio-title">Biography</h3>
           <p class="bio-text">
-            ${u}
+            ${d}
           </p>
         </div>
         <ul class="genre-list">
@@ -144,7 +144,7 @@ import{a as w,j as y,S as L,N as A,P as M}from"./assets/vendor-Dz2QzdCe.js";(fun
         </ul>
 </div>
     </div>
-  `;v.insertAdjacentHTML("beforeend",x)}function N(e){v&&(v.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(s=>{if(!s.ok)throw new Error(s.status);return s.json()}).then(s=>P(s)).catch(s=>console.log("Error fetching artist data:",s)),I(e)}async function C(e){try{return(await H.get(`/artists/${e}/albums`)).data}catch(s){throw console.error("Error fetching artist albums:",s),s}}async function I(e){try{const s=await C(e);if(!s.albumsList||s.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const a=i=>{const t=Math.floor(Number(i)/1e3),r=Math.floor(t/60),u=t%60;return`${r}:${u.toString().padStart(2,"0")}`},o=`
+  `;v.insertAdjacentHTML("beforeend",x)}function N(e){v&&(v.innerHTML=""),n&&(n.innerHTML=""),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(s=>{if(!s.ok)throw new Error(s.status);return s.json()}).then(s=>P(s)).catch(s=>console.log("Error fetching artist data:",s)),I(e)}async function C(e){try{return(await H.get(`/artists/${e}/albums`)).data}catch(s){throw console.error("Error fetching artist albums:",s),s}}async function I(e){try{const s=await C(e);if(!s.albumsList||s.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const a=i=>{const t=Math.floor(Number(i)/1e3),r=Math.floor(t/60),d=t%60;return`${r}:${d.toString().padStart(2,"0")}`},o=`
   <h2 class="albums-title">Albums</h2> 
   <div class="albums-list"> 
     ${s.albumsList.map(i=>`
