@@ -199,14 +199,15 @@ import{a as h,j as w,S as L,N as $,P as x}from"./assets/vendor-DSl-E_ZZ.js";(fun
 
   <div class="swiper feedbacks-swiper">
     <div class="swiper-wrapper" id="feedbacks-container">
+    
     </div>
-      <div class="swiper-button-prev">
+          <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-left"></use>
        </svg>
       </div>
 
-      <div class="swiper-button-next">
+      <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-right"></use>
        </svg>
