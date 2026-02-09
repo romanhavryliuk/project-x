@@ -7,7 +7,6 @@ import $ from 'jquery';
 import 'raty-js';
 window.jQuery = $;
 window.$ = $;
-import spriteUrl from '../assets/feedback-sprite.svg';
 
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
@@ -38,13 +37,13 @@ const markup =`
     </div>
           <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
-        <use href="${spriteUrl}#arrow-left"></use>
+        <use href="sprite.svg#arrow-left"></use>
        </svg>
       </div>
 
       <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
-        <use href="${spriteUrl}#arrow-right"></use>
+        <use href="sprite.svg#arrow-right"></use>
        </svg>
       </div>
  <div class="swiper-pagination"></div>
@@ -65,7 +64,7 @@ for (let i = 1; i <= 5; i++) {
 const starClass = i <= rating ? 'star-filled' : 'star-empty';
 starsMarkup += `
 <svg class="star-icon ${starClass}" width="18" height="18">
- <use href="${spriteUrl}#star"></use>
+ <use href="sprite.svg#star"></use>
 </svg>`;
 }
 

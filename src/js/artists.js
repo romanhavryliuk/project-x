@@ -52,7 +52,7 @@ export async function renderArtistsSection() {
                 <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
                   Learn More 
                   <svg class="learn-more-icon" width="8" height="14">
-                    <use href="/project-x/assets/sprite-CNuXn03P.svg#learn-more"></use>
+                    <use href="sprite.svg#learn-more"></use>
                   </svg>
                 </button>
             </li>
@@ -63,7 +63,7 @@ export async function renderArtistsSection() {
 
         <button type="button"  class="load-more ${isHidden}">Load More
           <svg class="load-more-icon" width="14" height="14">
-            <use href="/project-x/assets/sprite-CNuXn03P.svg#arrow-down"></use>
+            <use href="sprite.svg#arrow-down"></use>
           </svg></button>
       </div>
     `;
