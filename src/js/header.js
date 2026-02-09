@@ -7,7 +7,7 @@ header.innerHTML = `
 <nav class="page-nav">
       <a href="./" class="logo"
         ><svg class="icon logo">
-          <use href="../img/sprite.svg#logo-2"></use>
+          <use href="../img/main-logo.svg#icon-logo"></use>
         </svg>
       </a>
       <button type="button" class="burger-icon-btn" id="burger-icon-btn">
