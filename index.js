@@ -4,7 +4,7 @@ import{a as f,j as h,S as k,N as L,P as $}from"./assets/vendor-DSl-E_ZZ.js";(fun
 <nav class="page-nav">
       <a href="./" class="logo"
         ><svg class="icon logo">
-          <use href="../img/sprite.svg#logo-2"></use>
+          <use href="../img/main-logo.svg#icon-logo"></use>
         </svg>
       </a>
       <button type="button" class="burger-icon-btn" id="burger-icon-btn">
@@ -47,7 +47,7 @@ import{a as f,j as h,S as k,N as L,P as $}from"./assets/vendor-DSl-E_ZZ.js";(fun
       </ul>
       </div>
 
-      </div>`;const x=document.querySelector(".burger-icon-btn"),A=document.querySelector(".close-icon-btn"),m=document.querySelector(".menu-modal"),S=document.querySelectorAll(".mobile-section-link");x.addEventListener("click",()=>{c.classList.add("menu-open"),m.classList.add("is-open"),document.body.style.overflow="hidden"});A.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"});S.forEach(e=>{e.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"})});const M=document.querySelector("#artists");let d=1;const v=8;let u=[];async function w(){try{const e=await f.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:v,page:d}}),{artists:s,totalPages:i}=e.data;u=[...u,...s];const o=d>=i||s.length<v?"is-hidden":"",a=`
+      </div>`;const x=document.querySelector(".burger-icon-btn"),A=document.querySelector(".close-icon-btn"),m=document.querySelector(".menu-modal"),S=document.querySelectorAll(".mobile-section-link");x.addEventListener("click",()=>{c.classList.add("menu-open"),m.classList.add("is-open"),document.body.style.overflow="hidden"});A.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"});S.forEach(e=>{e.addEventListener("click",()=>{c.classList.remove("menu-open"),m.classList.remove("is-open"),document.body.style.overflow="auto"})});const M=document.querySelector("#artists");let d=1;const g=8;let u=[];async function w(){try{const e=await f.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:g,page:d}}),{artists:s,totalPages:i}=e.data;u=[...u,...s];const o=d>=i||s.length<g?"is-hidden":"",a=`
       <div class="container artists-container">
         <h2 class="artists-title">Artist</h2>
         <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
@@ -222,7 +222,7 @@ import{a as f,j as h,S as k,N as L,P as $}from"./assets/vendor-DSl-E_ZZ.js";(fun
 <div class="star-rating">${a}</div>
 <div class="feedback-text">${e.descr||""}</div>
 <div class="feedback-author">${e.name||""}</div>
-`,s}async function R(){const e=document.getElementById("feedbacks-container"),s=await N();s.forEach(i=>{const o=O(i);e.appendChild(o)}),new k(".feedbacks-swiper",{modules:[L,$],slidesPerView:1,loop:!1,spaceBetween:20,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,renderBullet:function(i,o){return i<3?`<span class="${o} custom-bullet-${i}"></span>`:""}},on:{init:function(){b(this,s),g(this)},slideChange:function(){b(this,s),g(this)}}})}function g(e){const s=e.pagination.bullets;if(!s||s.length===0)return;s.forEach(o=>o.classList.remove("swiper-pagination-bullet-active"));const i=e.activeIndex;i<=2?s[0].classList.add("swiper-pagination-bullet-active"):i>=3&&i<=6?s[1].classList.add("swiper-pagination-bullet-active"):s[2].classList.add("swiper-pagination-bullet-active")}function b(e,s){const i=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");i.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}R();const I=document.querySelector(".footer__container");I.innerHTML=`
+`,s}async function R(){const e=document.getElementById("feedbacks-container"),s=await N();s.forEach(i=>{const o=O(i);e.appendChild(o)}),new k(".feedbacks-swiper",{modules:[L,$],slidesPerView:1,loop:!1,spaceBetween:20,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,renderBullet:function(i,o){return i<3?`<span class="${o} custom-bullet-${i}"></span>`:""}},on:{init:function(){b(this,s),v(this)},slideChange:function(){b(this,s),v(this)}}})}function v(e){const s=e.pagination.bullets;if(!s||s.length===0)return;s.forEach(o=>o.classList.remove("swiper-pagination-bullet-active"));const i=e.activeIndex;i<=2?s[0].classList.add("swiper-pagination-bullet-active"):i>=3&&i<=6?s[1].classList.add("swiper-pagination-bullet-active"):s[2].classList.add("swiper-pagination-bullet-active")}function b(e,s){const i=document.querySelector(".swiper-button-prev"),o=document.querySelector(".swiper-button-next");i.classList.toggle("disabled",e.activeIndex===0),o.classList.toggle("disabled",e.activeIndex===s.length-1)}R();const I=document.querySelector(".footer__container");I.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
