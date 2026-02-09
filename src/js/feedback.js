@@ -48,6 +48,10 @@ const markup =`
        </svg>
       </div>
  <div class="swiper-pagination"></div>
+<button type="button" class="feedback-button" id="Leave feedback">
+         Leave feedback
+        </button>
+ 
     </div>
   `;
 
