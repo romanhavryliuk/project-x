@@ -20,6 +20,25 @@ function renderArtistProfile({
   strBiographyEN,
   genres,
 }) {
+
+  let yearsInfo;
+
+  // Перевірка: чи рік існує І чи це не слово "null"
+  const isBorn = intFormedYear && intFormedYear !== 'null';
+  const isDead = intDiedYear && intDiedYear !== 'null';
+
+  if (!isBorn) {
+    // Якщо немає року заснування - інформація відсутня
+    yearsInfo = 'Information missing';
+  } else if (isDead) {
+    // Є і початок, і кінець
+    yearsInfo = `${intFormedYear}–${intDiedYear}`;
+  } else {
+    // Є початок, але немає кінця (або там написано "null")
+    yearsInfo = `${intFormedYear}–present`;
+  }
+
+
   const markup = ` 
     <div class="artist-modal-header">
    
@@ -36,7 +55,7 @@ function renderArtistProfile({
           <ul class="stats-list parent-upper">
             <li class="stats-item upper-grid-one">
               <span class="stats-label">Years active</span>
-              <span class="stats-value">${intFormedYear}-present</span>
+              <span class="stats-value">${yearsInfo}</span>
             </li>
             <li class="stats-item upper-grid-two">
               <span class="stats-label">Sex</span>
@@ -150,7 +169,7 @@ export async function renderArtistAlbums(id) {
                   track.movie
                     ? `<a href="${track.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
-                      <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#youtube"></use>
+                      <use href="sprite.svg#youtube"></use>
                     </svg>
                     <span class="sr-only">Watch video on YouTube</span>
                    </a>`

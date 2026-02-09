@@ -115,27 +115,31 @@ h2.feedback-title-hidden {
 }
   .feedbacks-swiper {
   position: relative;
-  padding-bottom: 26px !important;
+  padding-bottom: 26px;
 }
 
+
 .feedbacks-swiper .swiper-pagination {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  margin-top: 24px;
 }
 
 .feedbacks-swiper .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background-color: #2B2B2B;
-  opacity: 1; 
-  cursor: pointer;
+  background-color: #fff;
+  opacity: 0.2;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .feedbacks-swiper .swiper-pagination-bullet-active {
-  background-color: #fff; 
+  background-color: #fff;
+  transform: scale(1.4);
+   opacity: 1;
+}
+
+.feedbacks-swiper .swiper-pagination-bullets-dynamic {
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {

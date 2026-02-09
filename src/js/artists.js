@@ -32,15 +32,18 @@ export async function renderArtistsSection() {
     // Формую повну розмітку секції
     const markup = `
       <div class="container artists-container">
-        <h2 class="artists-title">Artist</h2>
-        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
-        
+        <div class="artists-header-wrapper">  
+          <h2 class="artists-title">Artist</h2>
+          <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+        </div>
         <ul class="artists-list">
           ${allArtists
             .map(
               artist => `
             <li class="artist-card" data-id="${artist._id}">
-              <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+            <div class="artist-image-wrapper">
+            <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+            </div>  
               <div class="artist-content-wrapper">
                 <ul class="genres-list">
                   ${artist.genres.map(genre => `<li class="genres-item">${genre}</li>`).join('')}
@@ -49,13 +52,13 @@ export async function renderArtistsSection() {
                   <h4 class="artist-name">${artist.strArtist}</h4>
                   <p class="artist-description">${artist.strBiographyEN}</p>
                 </div>
+                </div>
                 <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
                   Learn More 
                   <svg class="learn-more-icon" width="8" height="14">
-                    <use href="./img/sprite.svg#learn-more"></use>
+                    <use href="sprite.svg#learn-more"></use>
                   </svg>
                 </button>
-              </div>
             </li>
           `
             )
@@ -64,7 +67,7 @@ export async function renderArtistsSection() {
 
         <button type="button"  class="load-more ${isHidden}">Load More
           <svg class="load-more-icon" width="14" height="14">
-            <use href="./img/sprite.svg#arrow-down"></use>
+            <use href="sprite.svg#arrow-down"></use>
           </svg></button>
       </div>
     `;
