@@ -7,23 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
             <picture>
                 <source media="(min-width: 1440px)" 
                 srcset="
-                /img/about/team-desktop-1x.webp 1x, 
-                /img/about/team-desktop-2x.webp 2x" 
+                about/team-desktop-1x.webp 1x, 
+                about/team-desktop-2x.webp 2x" 
                 type="image/webp">
         
                 <source media="(min-width: 768px)" 
                 srcset="
-                /img/about/team-tablet-1x.webp 1x, 
-                /img/about/team-tablet-2x.webp 2x"
+                about/team-tablet-1x.webp 1x, 
+                about/team-tablet-2x.webp 2x"
                 type="image/webp">
         
                 <source media="(max-width: 767px)" 
                 srcset="
-                /img/about/team-1x.webp 1x, 
-                /img/about/team-2x.webp 2x" 
+                about/team-1x.webp 1x, 
+                about/team-2x.webp 2x" 
                 type="image/webp">
 
-                <img src="/img/about/team-desktop-1x.webp"  alt="Team photo"
+                <img src="about/team-desktop-1x.webp"  alt="Team photo"
                     class="team-photo"  loading="lazy">
             </picture>
             </div>
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="about_logo">
                 <div class="about-logo-wrapper">
                     <svg class="icon-logo-icon" width="64" height="64">
-                        <use href="/img/sprite.svg#logo"></use>
+                        <use href="sprite.svg#logo"></use>
                     </svg>
                 </div>
                 <h2 class="about-section-title">About ArtistsHub</h2>

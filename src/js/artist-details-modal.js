@@ -165,7 +165,7 @@ export async function renderArtistAlbums(id) {
                   track.movie
                     ? `<a href="${track.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
-                      <use href="https://romanhavryliuk.github.io/project-x/assets/sprite-CNuXn03P.svg#youtube"></use>
+                      <use href="sprite.svg#youtube"></use>
                     </svg>
                     <span class="sr-only">Watch video on YouTube</span>
                    </a>`
