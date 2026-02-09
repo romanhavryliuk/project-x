@@ -154,7 +154,7 @@
     object-fit: cover;
     object-position: top;
 }
- 
+
 .artist-title {
     font-family: var(--second-family);
     font-size: 20px;
@@ -252,26 +252,14 @@
     height: 32px;
 }
 
-/* ширина всієї смуги прокрутки */
-.bio-text::-webkit-scrollbar {
-    width: 12px;
+.genre-item {
+    align-items: center;
+    display: flex
 }
-
-/* колір скролінгової області */
-.bio-text::-webkit-scrollbar-track {
-    background: rgb(0, 0, 0);
-
-}
-
-.bio-text::-webkit-scrollbar-thumb {
-    /* колір скролбару */
-    background-color: rgb(124, 124, 124);
-
-    /* заокруглення скролбару */
-    border-radius: 20px;
-    /* додає паддінги навколу скролу */
-    border: 3px solid rgb(0, 0, 0);
-
+ 
+ .artist-form {
+    margin: auto;
+     overflow-x: hidden;
 }
 
 
@@ -280,6 +268,9 @@
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
+    .artist_form_albums {
+        width: 654px;
+    }
 
     .artist-title {
         font-size: 32px;
@@ -301,7 +292,7 @@
     .artist-modal-img {
         display: flex;
         justify-content: center;
-         
+
     }
 
     .parent-upper {
@@ -355,49 +346,48 @@
     }
 }
 
+/* ------- Desktop styles ------- */
+
 @media screen and (min-width: 1440px) {
     .artist-modal-img {
         width: 576px;
         height: 354px;
     }
-
-     .artist_form_upper_container{
+    .artist_form_albums{
+        width: 1184px;
+    }
+    .artist_form_upper_container {
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 32px;
-        
     }
 
-   .artist_form_upper_info_container{
-      display: flex;
-      flex-direction: column;
-      width: 576px;
+    .artist_form_upper_info_container {
+        display: flex;
+        flex-direction: column;
+        width: 576px;
     }
+
     .artist-modal-biography {
         margin-bottom: 24px;
     }
 
-    .artist_form_upper_info{
+    .artist_form_upper_info {
         margin-bottom: 24px;
     }
 
     .artist-modal-img {
         margin-bottom: 0;
     }
+
     .bio-text {
         max-height: 135px;
     }
-    .artist-modal-header{
+
+    .artist-modal-header {
         margin-bottom: 48px;
     }
-}
-
-
-
-/* ------- Desktop styles ------- */
-
-@media screen and (min-width: 1440px) {
-    .artist-form {
+        .artist-form {
         flex-direction: column;
         gap: 48px;
 
@@ -421,7 +411,6 @@
     .track-duration {
         width: 74px;
     }
-
 
 }
 
