@@ -129,7 +129,7 @@ h2.feedback-title-hidden {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #2B2B2B;
   opacity: 1; 
   cursor: pointer;
 }
@@ -227,8 +227,8 @@ h2.feedback-title-hidden {
     font-size: 18px;
   }
 
-.swiper-button-next,
-.swiper-button-prev {
-  top: 98px !important;
+#feedbacks-button-n,
+ #feedbacks-button-p  {
+  top: 98px;
   }
 }

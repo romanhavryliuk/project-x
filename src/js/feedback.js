@@ -10,6 +10,7 @@ window.$ = $;
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
+
 async function fetchFeedbacks() {
     try {
         const response = await fetch(API_URL);
@@ -30,14 +31,15 @@ const markup =`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
     <div class="swiper-wrapper" id="feedbacks-container">
+    
     </div>
-      <div class="swiper-button-prev">
+          <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-left"></use>
        </svg>
       </div>
 
-      <div class="swiper-button-next">
+      <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
         <use href="./img/sprite.svg#arrow-right"></use>
        </svg>
@@ -47,7 +49,6 @@ const markup =`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
   `;
 
 root.innerHTML = markup;
-
 
   function createFeedbackSlide(feedback) {
 const slide = document.createElement('div');
@@ -73,6 +74,7 @@ slide.innerHTML = `
 
 return slide;
 }
+
    
 async function initSwiper() {
  const $ = window.jQuery;
@@ -116,6 +118,7 @@ on: {
  }
     });
 }
+
 
 function updateCustomPagination(swiperInstance) {
     const bullets = swiperInstance.pagination.bullets;
