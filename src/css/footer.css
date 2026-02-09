@@ -31,6 +31,16 @@
 font-weight: 600;
 font-size: 16px;
 line-height: 150%;
+transition: opacity 0.3s ease; 
+opacity: 1;
+}
+
+.footer__nav-link:hover { 
+  opacity: 0.6; 
+} 
+
+.footer__nav-link:active { 
+  opacity: 0.2; 
 }
 
 .footer__socials {
@@ -47,9 +57,22 @@ line-height: 150%;
   transition: fill 0.3s;
 }
 
-.footer__social-link:hover .footer__social-icon {
-  fill: #764191; 
+
+.footer__social-link .footer__social-icon {
+  transition: opacity 0.3s ease;
+  opacity: 1; 
 }
+
+.footer__social-link:hover .footer__social-icon {
+  opacity: 0.6; 
+}
+
+.footer__social-link:active .footer__social-icon {
+  opacity: 0.2; 
+}
+
+
+
 
 .footer__copyright {
   text-align: center;
