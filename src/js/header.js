@@ -26,10 +26,10 @@ header.innerHTML = `
           <a href="#artists" class="section-link">Artists</a>
         </li>
         <li class="section-name">
-          <a href="#about-us" class="section-link">About Us</a>
+          <a href="#about" class="section-link">About Us</a>
         </li>
         <li class="section-name">
-          <a href="#feedback" class="section-link">Reviews</a>
+          <a href="#reviews" class="section-link">Reviews</a>
         </li>
       </ul>
     </nav>
@@ -42,10 +42,10 @@ header.innerHTML = `
           <a href="#artists" class="mobile-section-link">Artists</a>
         </li>
         <li class="section-name">
-          <a href="#about-us" class="mobile-section-link">About Us</a>
+          <a href="#about" class="mobile-section-link">About Us</a>
         </li>
         <li class="section-name">
-          <a href="#feedback" class="mobile-section-link">Reviews</a>
+          <a href="#reviews" class="mobile-section-link">Reviews</a>
         </li>
       </ul>
       </div>
