@@ -136,17 +136,25 @@
 
 /* mobile style */
 .close-btn {
-    display: none;
+    width: 32px;
+    height: 32px;
+    background: inherit;
+    fill: var(--clr-white);
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
+
+
 
 .artist_form_upper_img {
     border-radius: 16px;
     width: 272px;
     height: 167px;
     object-fit: cover;
-
+    object-position: top;
 }
-
+ 
 .artist-title {
     font-family: var(--second-family);
     font-size: 20px;
@@ -166,8 +174,10 @@
 }
 
 .artist-modal-img {
-    width: 402px;
+    /* width: 402px; */
     margin-bottom: 32px;
+    overflow: hidden;
+    border-radius: 16px;
 }
 
 .artist-modal-biography {
@@ -221,6 +231,8 @@
     line-height: 1.5;
     max-height: 324px;
     overflow-y: auto;
+
+
 }
 
 .genre-list {
@@ -239,6 +251,31 @@
     padding: 4px 10px;
     height: 32px;
 }
+
+/* ширина всієї смуги прокрутки */
+.bio-text::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* колір скролінгової області */
+.bio-text::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+
+}
+
+.bio-text::-webkit-scrollbar-thumb {
+    /* колір скролбару */
+    background-color: rgb(124, 124, 124);
+
+    /* заокруглення скролбару */
+    border-radius: 20px;
+    /* додає паддінги навколу скролу */
+    border: 3px solid rgb(0, 0, 0);
+
+}
+
+
+
 
 /* ------- Tablet styles ------- */
 
@@ -264,6 +301,7 @@
     .artist-modal-img {
         display: flex;
         justify-content: center;
+         
     }
 
     .parent-upper {
@@ -322,6 +360,36 @@
         width: 576px;
         height: 354px;
     }
+
+     .artist_form_upper_container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 32px;
+        
+    }
+
+   .artist_form_upper_info_container{
+      display: flex;
+      flex-direction: column;
+      width: 576px;
+    }
+    .artist-modal-biography {
+        margin-bottom: 24px;
+    }
+
+    .artist_form_upper_info{
+        margin-bottom: 24px;
+    }
+
+    .artist-modal-img {
+        margin-bottom: 0;
+    }
+    .bio-text {
+        max-height: 135px;
+    }
+    .artist-modal-header{
+        margin-bottom: 48px;
+    }
 }
 
 
@@ -359,9 +427,9 @@
 
 /* DIALOG SETTRING */
 .artist-form {
-    overflow: hidden;
-    padding: 20px;
-    border-radius: 8px;
+    /* overflow: hidden; */
+    /* padding: 20px; */
+    /* border-radius: 8px; */
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
