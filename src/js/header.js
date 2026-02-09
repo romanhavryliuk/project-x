@@ -61,20 +61,23 @@ const mobileNav = document.querySelectorAll(".mobile-section-link")
 
 // open Menu
 openMenuBtn.addEventListener("click", () => {
-    header.classList.add("menu-open")
-    menuModal.classList.add("is-open")
+  header.classList.add("menu-open")
+  menuModal.classList.add("is-open")
+  document.body.style.overflow = "hidden";
 })
 
 // close Menu
 closeMenuBtn.addEventListener("click", () => {
-    header.classList.remove("menu-open")
-    menuModal.classList.remove("is-open")
+  header.classList.remove("menu-open")
+  menuModal.classList.remove("is-open")
+  document.body.style.overflow = "auto";
 })
 
 // close Menu when clicking on internal links
 mobileNav.forEach(link => {
     link.addEventListener("click", () => {
-        header.classList.remove("menu-open")
-        menuModal.classList.remove("is-open")
+      header.classList.remove("menu-open")
+      menuModal.classList.remove("is-open")
+      document.body.style.overflow = "auto";
     })
 })
