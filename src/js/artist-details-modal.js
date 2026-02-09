@@ -11,6 +11,7 @@ function renderArtistProfile({
   strArtist,
   strArtistThumb,
   intFormedYear,
+  intDiedYear,
   strGender,
   intMembers,
   strCountry,

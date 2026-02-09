@@ -256,25 +256,10 @@
     align-items: center;
     display: flex
 }
-
-/* ширина всієї смуги прокрутки */
-/* .bio-text::-webkit-scrollbar {
-    width: 12px;
-}
-
-/* колір скролінгової області */
-/* .bio-text::-webkit-scrollbar-track {
-    background: rgb(0, 0, 0);
-
-} */
-
-/* .bio-text::-webkit-scrollbar-thumb {
-    background-color: rgb(124, 124, 124);
-    border-radius: 20px;
-    border: 3px solid rgb(0, 0, 0);
-} */
+ 
  .artist-form {
     margin: auto;
+     overflow-x: hidden;
 }
 
 
