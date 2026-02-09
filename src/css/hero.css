@@ -10,11 +10,6 @@
 .hero_container {
   margin-bottom: 64px;
 }
-.container {
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
 
 .hero_blok {
   display: flex;
@@ -121,10 +116,6 @@
 /*========tablet 768 ========*/
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    margin: 0 auto;
-  }
   .hero_container {
     display: flex;
     flex-direction: column;
@@ -170,10 +161,6 @@
 
 /* ========descktop 1440 MAIN========*/
 @media (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-  }
-
   .hero_container {
     flex-direction: row;
   }

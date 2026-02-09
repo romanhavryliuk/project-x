@@ -9,28 +9,37 @@ let allArtists = []; // масив всіх артистів
 // Функція для отримання артистів
 export async function renderArtistsSection() {
   try {
-    const response = await axios.get('https://sound-wave.b.goit.study/api/artists', {
-      params: { limit, page },
-    });
+    const response = await axios.get(
+      'https://sound-wave.b.goit.study/api/artists',
+      {
+        params: { limit, page },
+      }
+    );
 
     const { artists, totalPages } = response.data;
-    
+
     // Додаю нових артистів до загального списку
     allArtists = [...allArtists, ...artists];
 
     // Визначаю, чи потрібно показувати кнопку "Load More"
-    const isHidden = (page >= totalPages || artists.length < limit) ? 'is-hidden' : '';
+    const isHidden =
+      page >= totalPages || artists.length < limit ? 'is-hidden' : '';
 
     // Формую повну розмітку секції
     const markup = `
       <div class="container artists-container">
-        <h2 class="artists-title">Artist</h2>
-        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
-        
+        <div class="artists-header-wrapper">  
+          <h2 class="artists-title">Artist</h2>
+          <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+        </div>
         <ul class="artists-list">
-          ${allArtists.map(artist => `
+          ${allArtists
+            .map(
+              artist => `
             <li class="artist-card" data-id="${artist._id}">
-              <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+            <div class="artist-image-wrapper">
+            <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+            </div>  
               <div class="artist-content-wrapper">
                 <ul class="genres-list">
                   ${artist.genres.map(genre => `<li class="genres-item">${genre}</li>`).join('')}
@@ -47,7 +56,9 @@ export async function renderArtistsSection() {
                 </button>
               </div>
             </li>
-          `).join('')}
+          `
+            )
+            .join('')}
         </ul>
 
         <button type="button"  class="load-more ${isHidden}">Load More
@@ -60,9 +71,8 @@ export async function renderArtistsSection() {
     // Оновлюю вміст секції
     artistsSection.innerHTML = markup;
 
-    // Після рендерингу потрібно заново повісити слухачі, 
+    // Після рендерингу потрібно заново повісити слухачі,
     initEventListeners();
-
   } catch (error) {
     console.error('Помилка завантаження артистів:', error);
   }
@@ -72,15 +82,13 @@ function initEventListeners() {
   const loadMoreBtn = document.querySelector('.load-more');
   const artistsList = document.querySelector('.artists-list');
 
-                                            // Слухач для "Load More"
+  // Слухач для "Load More"
   if (loadMoreBtn) {
     loadMoreBtn.onclick = () => {
       page += 1;
       renderArtistsSection();
     };
   }
-
 }
-
 
 renderArtistsSection();
