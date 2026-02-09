@@ -4,8 +4,8 @@ footerContainer.innerHTML = `
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link">
-    <svg class="footer__logo-icon">
-      <use href="img/sprite.svg#logo-2"></use>
+    <svg class="footer__logo-icon"> 
+    <use href="img/main-logo.svg#icon-logo"></use> 
     </svg>
     </a>
     </div>
