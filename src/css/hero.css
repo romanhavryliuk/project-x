@@ -117,7 +117,7 @@
   background-color: #23132b;
   width: 280px;
   height: 385px;
-  margin: auto;
+  /* margin: auto; */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -185,6 +185,7 @@
   .hero_container {
     flex-direction: row;
     padding: 0 64px;
+    gap: 30px;
   }
 
   .hero_blok {
