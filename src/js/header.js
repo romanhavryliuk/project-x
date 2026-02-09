@@ -36,7 +36,7 @@ header.innerHTML = `
     </div>
 
     <div class="menu-modal">
-    <div class="container">
+    <div class="container mobile-menu">
       <ul class="mobile-section-nav">
         <li class="mobile-section-name">
           <a href="#artists" class="mobile-section-link">Artists</a>
