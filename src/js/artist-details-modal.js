@@ -19,11 +19,7 @@ function renderArtistProfile({
 }) {
   const markup = ` 
     <div class="artist-modal-header">
-    <button class="close-btn" id="close-modal-artist" type="button" aria-label="Close-modal">
-      <svg class="close-artist">
-        <use href="./img/sprite.svg#close-x"></use>
-      </svg>
-    </button>
+   
       <h2 class="artist-title">${strArtist}</h2>
     </div>
     <div class="artist_form_upper_container">
@@ -31,36 +27,38 @@ function renderArtistProfile({
       <div class="artist-modal-img">
         <img class="artist_form_upper_img" src="${strArtistThumb}" alt="" />
       </div>
-
-      <div class="artist_form_upper_info">
-        <ul class="stats-list parent-upper">
-          <li class="stats-item upper-grid-one">
-            <span class="stats-label">Years active</span>
-            <span class="stats-value">${intFormedYear}-present</span>
-          </li>
-          <li class="stats-item upper-grid-two">
-            <span class="stats-label">Sex</span>
-            <span class="stats-value">${strGender}</span>
-          </li>
-          <li class="stats-item upper-grid-three">
-            <span class="stats-label">Members</span>
-            <span class="stats-value">${intMembers}</span>
-          </li>
-          <li class="stats-item upper-grid-four">
-            <span class="stats-label">Country</span>
-            <span class="stats-value">${strCountry}</span>
-          </li>
+<div class="artist_form_upper_info_container">
+  
+        <div class="artist_form_upper_info">
+          <ul class="stats-list parent-upper">
+            <li class="stats-item upper-grid-one">
+              <span class="stats-label">Years active</span>
+              <span class="stats-value">${intFormedYear}-present</span>
+            </li>
+            <li class="stats-item upper-grid-two">
+              <span class="stats-label">Sex</span>
+              <span class="stats-value">${strGender}</span>
+            </li>
+            <li class="stats-item upper-grid-three">
+              <span class="stats-label">Members</span>
+              <span class="stats-value">${intMembers}</span>
+            </li>
+            <li class="stats-item upper-grid-four">
+              <span class="stats-label">Country</span>
+              <span class="stats-value">${strCountry}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="artist-modal-biography">
+          <h3 class="bio-title">Biography</h3>
+          <p class="bio-text">
+            ${strBiographyEN}
+          </p>
+        </div>
+        <ul class="genre-list">
+        ${genres.map(genre => `<li class="genre-item"><p class="genre-name">${genre}</p></li>`).join('')}
         </ul>
-      </div>
-      <div class="artist-modal-biography">
-        <h3 class="bio-title">Biography</h3>
-        <p class="bio-text">
-          ${strBiographyEN}
-        </p>
-      </div>
-      <ul class="genre-list">
-      ${genres.map(genre => `<li class="genre-item"><p class="genre-name">${genre}</p></li>`).join('')}
-      </ul>
+</div>
     </div>
   `;
 
