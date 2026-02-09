@@ -7,11 +7,13 @@
     justify-content: center;
 }
 
-.feedback-section {
+.feedback-section,
+.artists-section {
     position: relative;
 }
 
-.feedback-section .loader-backdrop {
+.feedback-section .loader-backdrop,
+.artists-section .loader-backdrop {
     position: absolute;
     inset: 0;
     z-index: 10;

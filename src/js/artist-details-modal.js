@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { mountLoader, showLoader, hideLoader } from './loader.js';
 
 const artistFormUpper = document.querySelector('.artist_form_upper');
 const modalAlbumsContainer = document.querySelector('.artist_form_albums');
+mountLoader('#artist-modal');
 
 const api = axios.create({
   baseURL: 'https://sound-wave.b.goit.study/api',
@@ -75,6 +77,8 @@ export function loadArtistData(id) {
   if (artistFormUpper) artistFormUpper.innerHTML = '';
   if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '';
 
+  showLoader('#artist-modal');
+
   fetch(`https://sound-wave.b.goit.study/api/artists/${id}`)
     .then(response => {
       if (!response.ok) {
@@ -89,7 +93,6 @@ export function loadArtistData(id) {
 }
 
 /* ======= Modal albums ======= */
-
 
 export async function fetchArtistAlbums(artistId) {
   try {
@@ -107,7 +110,8 @@ export async function renderArtistAlbums(id) {
 
     // Перевіряю наявність масиву альбомів
     if (!data.albumsList || data.albumsList.length === 0) {
-      if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
+      if (modalAlbumsContainer)
+        modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
       return;
     }
 
@@ -168,5 +172,7 @@ export async function renderArtistAlbums(id) {
     if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = markup;
   } catch (error) {
     console.error('Error rendering artist albums:', error);
+  } finally {
+    hideLoader('#artist-modal');
   }
 }
