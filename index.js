@@ -80,6 +80,7 @@ import{a as E,j as S,S as B,N as H,P as j}from"./assets/vendor-Dz2QzdCe.js";(fun
           <h2 class="artists-title">Artist</h2>
           <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
         </div>
+        <div class="artists-list-wrapper">
         <ul class="artists-list">
           ${h.map(t=>`
             <li class="artist-card" data-id="${t._id}">
@@ -104,11 +105,11 @@ import{a as E,j as S,S as B,N as H,P as j}from"./assets/vendor-Dz2QzdCe.js";(fun
             </li>
           `).join("")}
         </ul>
-
         <button type="button"  class="load-more ${i}">Load More
-          <svg class="load-more-icon" width="14" height="14">
-            <use href="sprite.svg#arrow-down"></use>
-          </svg></button>
+        <svg class="load-more-icon" width="14" height="14">
+        <use href="sprite.svg#arrow-down"></use>
+        </svg></button>
+        </div>
       </div>
     `;D.innerHTML=o,F()}catch(e){console.error("Помилка завантаження артистів:",e)}finally{A("#artists")}}function F(){const e=document.querySelector(".load-more");document.querySelector(".artists-list"),e&&(e.onclick=()=>{w+=1,q()})}q();const y=document.querySelector(".artist_form_upper"),p=document.querySelector(".artist_form_albums");L("#artist-modal");const R=E.create({baseURL:"https://sound-wave.b.goit.study/api"});function U({strArtist:e,strArtistThumb:s,intFormedYear:a,intDiedYear:i,strGender:o,intMembers:t,strCountry:r,strBiographyEN:c,genres:l}){let n;a&&a!=="null"?i&&i!=="null"?n=`${a}–${i}`:n=`${a}–present`:n="Information missing";const m=` 
     <div class="artist-modal-header">
@@ -185,7 +186,7 @@ import{a as E,j as S,S as B,N as H,P as j}from"./assets/vendor-Dz2QzdCe.js";(fun
     `).join("")}
   </div> 
 `;p&&(p.innerHTML=i)}catch(s){console.error("Error rendering artist albums:",s)}finally{A("#artist-modal")}}document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".about-section");e.innerHTML=`
-        <div class="about-container">
+        <div class="about-container container">
             <div class="about-team-photo">
             <picture>
                 <source media="(min-width: 1440px)" 
