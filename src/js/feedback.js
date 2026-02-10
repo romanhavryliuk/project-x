@@ -41,34 +41,6 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
         <span class="sr-only">Swipe to next slide</span>
       </div>
  <div class="swiper-pagination"></div>
-<button type="button" class="feedback-button" id="Leave-feedback">
-         Leave feedback
-        </button>
-    </div>
-
-    <div class="feedback-modal-backdrop" hidden>
-  <div class="feedback-modal">
-
-    <button class="feedback-modal-close"></button>
-
-    <h2 class="feedback-modal-title">Submit feedback</h2>
-
-    <form class="feedback-modal-form">
-      <label>
-        Name
-        <input type="text" class="feedback-modal-input" placeholder="Emily">
-      </label>
-
-      <label>
-        Message
-        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
-      </label>
-<div class="feedback-modal-stars"></div>
-
-      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
-    </form>
-  </div>
-</div>
   `;
 
 root.innerHTML = markup;
@@ -162,108 +134,138 @@ if (feedbackSection) {
   initSwiper();
 }
 
-(() => {
-  const openBtn = document.querySelector('#Leave-feedback');
-  const closeBtn = document.querySelector('.feedback-modal-close');
-  const modal = document.querySelector('.feedback-modal-backdrop');
-  const body = document.body;
+// (() => {
+//   const openBtn = document.querySelector('#Leave-feedback');
+//   const closeBtn = document.querySelector('.feedback-modal-close');
+//   const modal = document.querySelector('.feedback-modal-backdrop');
+//   const body = document.body;
 
-  if (!openBtn || !closeBtn || !modal) {
-    console.log('not found');
-    return;
-  }
+//   if (!openBtn || !closeBtn || !modal) {
+//     console.log('not found');
+//     return;
+//   }
 
-  openBtn.addEventListener('click', () => {
-    modal.removeAttribute('hidden');
+//   openBtn.addEventListener('click', () => {
+//     modal.removeAttribute('hidden');
 
-    // compensate for scrollbar width to prevent layout shift
-    const sb = window.innerWidth - document.documentElement.clientWidth;
-    if (sb > 0) body.style.paddingRight = `${sb}px`;
+//     // compensate for scrollbar width to prevent layout shift
+//     const sb = window.innerWidth - document.documentElement.clientWidth;
+//     if (sb > 0) body.style.paddingRight = `${sb}px`;
 
-    body.classList.add('no-scroll');
-    createModalStars();
-  });
+//     body.classList.add('no-scroll');
+//     createModalStars();
+//   });
 
-  const closeModal = () => {
-    modal.setAttribute('hidden', '');
-    body.classList.remove('no-scroll');
-    body.style.paddingRight = '';
-  };
+//   const closeModal = () => {
+//     modal.setAttribute('hidden', '');
+//     body.classList.remove('no-scroll');
+//     body.style.paddingRight = '';
+//   };
 
-  closeBtn.addEventListener('click', closeModal);
+//   closeBtn.addEventListener('click', closeModal);
 
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
-      closeModal();
-    }
-  });
+//   window.addEventListener('keydown', e => {
+//     if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+//       closeModal();
+//     }
+//   });
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+//   modal.addEventListener('click', e => {
+//     if (e.target === modal) {
+//       closeModal();
+//     }
+//   });
 
-  function createModalStars(rating = 0) {
-    const starsContainer = document.querySelector('.feedback-modal-stars');
-    if (!starsContainer) return;
+//   function createModalStars(rating = 0) {
+//     const starsContainer = document.querySelector('.feedback-modal-stars');
+//     if (!starsContainer) return;
 
-    starsContainer.innerHTML = '';
+//     starsContainer.innerHTML = '';
 
-    for (let i = 1; i <= 5; i++) {
-      const starClass = i <= rating ? 'star-filled' : 'star-empty';
+//     for (let i = 1; i <= 5; i++) {
+//       const starClass = i <= rating ? 'star-filled' : 'star-empty';
 
-      starsContainer.insertAdjacentHTML(
-        'beforeend',
-        `<svg class="star-icon ${starClass}" width="18" height="18">
- <use href="sprite.svg#star"></use>
-</svg>`
-      );
-    }
+//       starsContainer.insertAdjacentHTML(
+//         'beforeend',
+//         `<svg class="star-icon ${starClass}" width="18" height="18">
+//  <use href="sprite.svg#star"></use>
+// </svg>`
+//       );
+//     }
 
-    const stars = starsContainer.querySelectorAll('.star-icon');
-    stars.forEach((star, index) => {
-      star.addEventListener('click', () => {
-        stars.forEach((s, i) => {
-          if (i <= index) s.classList.add('selected');
-          else s.classList.remove('selected');
-        });
-      });
-    });
-  }
-  const form = document.querySelector('.feedback-modal-form');
-  const input = form.querySelector('.feedback-modal-input');
-  const textarea = form.querySelector('.feedback-modal-textarea');
+//     const stars = starsContainer.querySelectorAll('.star-icon');
+//     stars.forEach((star, index) => {
+//       star.addEventListener('click', () => {
+//         stars.forEach((s, i) => {
+//           if (i <= index) s.classList.add('selected');
+//           else s.classList.remove('selected');
+//         });
+//       });
+//     });
+//   }
+//   const form = document.querySelector('.feedback-modal-form');
+//   const input = form.querySelector('.feedback-modal-input');
+//   const textarea = form.querySelector('.feedback-modal-textarea');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+//   form.addEventListener('submit', e => {
+//     e.preventDefault();
 
-    let hasError = false;
+//     let hasError = false;
 
-    if (!input.value.trim()) {
-      input.classList.add('error');
-      hasError = true;
-    } else {
-      input.classList.remove('error');
-    }
+//     if (!input.value.trim()) {
+//       input.classList.add('error');
+//       hasError = true;
+//     } else {
+//       input.classList.remove('error');
+//     }
 
-    if (!textarea.value.trim()) {
-      textarea.classList.add('error');
-      hasError = true;
-    } else {
-      textarea.classList.remove('error');
-    }
+//     if (!textarea.value.trim()) {
+//       textarea.classList.add('error');
+//       hasError = true;
+//     } else {
+//       textarea.classList.remove('error');
+//     }
 
-    [input, textarea].forEach(el => {
-      if (!el) return;
+//     [input, textarea].forEach(el => {
+//       if (!el) return;
 
-      el.addEventListener('input', () => {
-        el.classList.remove('error');
-      });
-    });
+//       el.addEventListener('input', () => {
+//         el.classList.remove('error');
+//       });
+//     });
 
-    if (!hasError) {
-      form.submit();
-    }
-  });
-})();
+//     if (!hasError) {
+//       form.submit();
+//     }
+//   });
+// })();
+
+
+/* <button type="button" class="feedback-button" id="Leave-feedback">
+         Leave feedback
+        </button>
+    </div>
+
+    <div class="feedback-modal-backdrop" hidden>
+  <div class="feedback-modal">
+
+    <button class="feedback-modal-close"></button>
+
+    <h2 class="feedback-modal-title">Submit feedback</h2>
+
+    <form class="feedback-modal-form">
+      <label>
+        Name
+        <input type="text" class="feedback-modal-input" placeholder="Emily">
+      </label>
+
+      <label>
+        Message
+        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+      </label>
+<div class="feedback-modal-stars"></div>
+
+      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
+    </form>
+  </div>
+</div> */
