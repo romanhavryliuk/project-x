@@ -43,7 +43,7 @@ export async function renderArtistsSection() {
               artist => `
             <li class="artist-card" data-id="${artist._id}">
             <div class="artist-image-wrapper">
-            <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
+            <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" loading="lazy" width="343" height="432"/>
             </div>  
               <div class="artist-content-wrapper">
                 <ul class="genres-list">

@@ -52,6 +52,8 @@
   width: 100%;
   object-fit: cover;
   object-position: top;
+  background-color: #2c2c2c;
+  aspect-ratio: 343 / 432;
 }
 
 .artist-content-wrapper {
