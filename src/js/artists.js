@@ -1,83 +1,111 @@
 import axios from 'axios';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
 import { mountLoader, showLoader, hideLoader } from './loader.js';
 
 const artistsSection = document.querySelector('#artists');
 mountLoader('#artists');
 
-let page = 1; // стартова сторінка
-const limit = 8; // кількість карток на сторінку
-let allArtists = []; // масив всіх артистів
+const limit = 8;
+let page = 1;
+let pagination = null;
 
-// Функція для отримання артистів
-export async function renderArtistsSection() {
+function ensureLayout() {
+  if (artistsSection.querySelector('.artists-container')) return;
+
+  artistsSection.insertAdjacentHTML(
+    'beforeend',
+    `
+    <div class="container artists-container">
+      <div class="artists-header-wrapper">  
+        <h2 class="artists-title">Artist</h2>
+        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+      </div>
+
+      <div class="artists-list-wrapper">
+        <ul class="artists-list"></ul>
+        <div id="artists-pagination" class="tui-pagination"></div>
+      </div>
+    </div>
+    `
+  );
+}
+
+function renderArtistsList(artists) {
+  const listEl = artistsSection.querySelector('.artists-list');
+  listEl.innerHTML = artists
+    .map(
+      artist => `
+      <li class="artist-card" data-id="${artist._id}">
+        <div class="artist-image-wrapper">
+          <img class="artist-image"
+            src="${artist.strArtistThumb}"
+            alt="${artist.strArtist}"
+            loading="lazy"
+            width="343" height="432"
+          />
+        </div>  
+
+        <div class="artist-content-wrapper">
+          <ul class="genres-list">
+            ${(artist.genres ?? []).map(g => `<li class="genres-item">${g}</li>`).join('')}
+          </ul>
+
+          <div class="artist-title-wrapper">
+            <h4 class="artist-name">${artist.strArtist}</h4>
+            <p class="artist-description">${artist.strBiographyEN}</p>
+          </div>
+        </div>
+
+        <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
+          Learn More 
+          <svg class="learn-more-icon" width="8" height="14">
+            <use href="sprite.svg#learn-more"></use>
+          </svg>
+        </button>
+      </li>
+    `
+    )
+    .join('');
+}
+
+export async function renderArtistsSection(pageToRender = 1) {
+  ensureLayout();
   showLoader('#artists');
 
   try {
     const response = await axios.get(
       'https://sound-wave.b.goit.study/api/artists',
       {
-        params: { limit, page },
+        params: { limit, page: pageToRender },
       }
     );
 
-    const { artists, totalPages } = response.data;
+    const { artists, totalArtists } = response.data;
 
-    // Додаю нових артистів до загального списку
-    allArtists = [...allArtists, ...artists];
+    renderArtistsList(artists);
 
-    // Визначаю, чи потрібно показувати кнопку "Load More"
-    const isHidden =
-      page >= totalPages || artists.length < limit ? 'is-hidden' : '';
+    const paginationEl = artistsSection.querySelector('#artists-pagination');
 
-    // Формую повну розмітку секції
-    const markup = `
-      <div class="container artists-container">
-        <div class="artists-header-wrapper">  
-          <h2 class="artists-title">Artist</h2>
-          <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
-        </div>
-        <div class="artists-list-wrapper">
-        <ul class="artists-list">
-          ${allArtists
-            .map(
-              artist => `
-            <li class="artist-card" data-id="${artist._id}">
-            <div class="artist-image-wrapper">
-            <img class="artist-image" src="${artist.strArtistThumb}" alt="${artist.strArtist}" loading="lazy" width="343" height="432"/>
-            </div>  
-              <div class="artist-content-wrapper">
-                <ul class="genres-list">
-                  ${artist.genres.map(genre => `<li class="genres-item">${genre}</li>`).join('')}
-                </ul>
-                <div class="artist-title-wrapper">
-                  <h4 class="artist-name">${artist.strArtist}</h4>
-                  <p class="artist-description">${artist.strBiographyEN}</p>
-                </div>
-                </div>
-                <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
-                  Learn More 
-                  <svg class="learn-more-icon" width="8" height="14">
-                    <use href="sprite.svg#learn-more"></use>
-                  </svg>
-                </button>
-            </li>
-          `
-            )
-            .join('')}
-        </ul>
-        <button type="button"  class="load-more ${isHidden}">Load More
-        <svg class="load-more-icon" width="14" height="14">
-        <use href="sprite.svg#arrow-down"></use>
-        </svg></button>
-        </div>
-      </div>
-    `;
+    if (!pagination) {
+      pagination = new Pagination(paginationEl, {
+        totalItems: totalArtists,
+        itemsPerPage: limit,
+        visiblePages: 5,
+        page: pageToRender,
+        centerAlign: true,
+      });
 
-    // Оновлюю вміст секції
-    artistsSection.innerHTML = markup;
+      pagination.on('afterMove', evt => {
+        page = evt.page;
+        renderArtistsSection(page);
+        artistsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
 
-    // Після рендерингу потрібно заново повісити слухачі,
-    initEventListeners();
+    const totalPages = Math.ceil(totalArtists / limit);
+    paginationEl.style.display = totalPages <= 1 ? 'none' : '';
   } catch (error) {
     console.error('Помилка завантаження артистів:', error);
   } finally {
@@ -85,17 +113,4 @@ export async function renderArtistsSection() {
   }
 }
 
-function initEventListeners() {
-  const loadMoreBtn = document.querySelector('.load-more');
-  const artistsList = document.querySelector('.artists-list');
-
-  // Слухач для "Load More"
-  if (loadMoreBtn) {
-    loadMoreBtn.onclick = () => {
-      page += 1;
-      renderArtistsSection();
-    };
-  }
-}
-
-renderArtistsSection();
+renderArtistsSection(page);
