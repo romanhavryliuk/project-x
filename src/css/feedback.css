@@ -5,6 +5,7 @@ h2.feedback-title-hidden {
 .feedback-section {
   padding: 64px 16px 171px;
   background: #060307;
+  min-height: 374px;
 }
 
 .feedback-section-wrapper {
@@ -342,6 +343,7 @@ h2.feedback-title-hidden {
 @media (min-width: 768px) {
   .feedback-section {
     padding: 64px 32px;
+    min-height: 396px;
   }
 
   .feedbacks-swiper {
@@ -417,6 +419,7 @@ h2.feedback-title-hidden {
 @media (min-width: 1440px) {
    .feedback-section {
     padding: 112px 64px;
+    min-height: 587px;
   }
 
   .feedback-section .feedbacks-swiper {

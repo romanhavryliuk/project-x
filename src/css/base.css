@@ -62,6 +62,12 @@ svg {
   display: block;
 }
 
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Typography Utility Classes */
 .text-muted {
   color: var(--clr-gray-400);

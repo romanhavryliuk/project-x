@@ -12,6 +12,10 @@
 .about-team-photo {
     width: 280px;
     height: 168px;
+    border-radius: 16px;
+    aspect-ratio: 280 / 168;
+    object-fit: cover;
+    background-color: #2c2c2c;
 }
 
 
@@ -78,7 +82,7 @@
     .about-team-photo {
         width: 640px;
         height: 665px;
-        /* flex-shrink: 0; */
+        flex-shrink: 0;
     }
 
     .about-section-title {
