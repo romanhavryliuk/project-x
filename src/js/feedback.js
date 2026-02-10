@@ -27,18 +27,16 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
     <div class="swiper-wrapper" id="feedbacks-container">
     
     </div>
-          <div class="swiper-button-prev" id="feedbacks-button-p">
+          <div class="swiper-button-prev" id="feedbacks-button-p" aria-label="Previous feedback">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-left"></use>
         </svg>
-        <span class="sr-only">Swipe to previous slide</span>
       </div>
 
-      <div class="swiper-button-next" id="feedbacks-button-n">
+      <div class="swiper-button-next" id="feedbacks-button-n" aria-label="Next feedback">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-right"></use>
         </svg>
-        <span class="sr-only">Swipe to next slide</span>
       </div>
  <div class="swiper-pagination"></div>
   `;
