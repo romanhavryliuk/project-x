@@ -107,9 +107,11 @@ async function initSwiper() {
   const container = document.getElementById('feedbacks-container');
   const feedbacks = await fetchFeedbacks();
 
+  const fragment = document.createDocumentFragment();
   feedbacks.forEach(feedback => {
-    container.appendChild(createFeedbackSlide(feedback));
+    fragment.appendChild(createFeedbackSlide(feedback));
   });
+  container.appendChild(fragment);
 
   const swiper = new Swiper('.feedbacks-swiper', {
     modules: [Navigation, Pagination],
@@ -128,7 +130,27 @@ async function initSwiper() {
   });
 }
 
-initSwiper();
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1,
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      initSwiper();
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+const feedbackSection = document.querySelector('.feedback-section');
+if (feedbackSection) {
+  observer.observe(feedbackSection);
+} else {
+  initSwiper();
+}
 
 (() => {
   const openBtn = document.querySelector('#Leave-feedback');
