@@ -4,6 +4,7 @@
     height: 64px;
     z-index: 100;
     display: flex;
+    z-index: 999;
 
     background-color: inherit;
 }
