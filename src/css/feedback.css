@@ -1,3 +1,4 @@
+
 h2.feedback-title-hidden {
     display: none ;
 } 
@@ -169,17 +170,17 @@ h2.feedback-title-hidden {
   z-index: 9999;
 }
 
+.feedback-modal-backdrop:not([hidden]) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 [hidden] {
   display: none;
 }
  
 .no-scroll {
   overflow: hidden;
-}
-
-.feedback-modal-backdrop:not([hidden]) {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .feedback-modal {
@@ -192,6 +193,9 @@ h2.feedback-title-hidden {
   flex-direction: column;
   align-items: center;
   position: relative;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.7),
+    0 0 40px rgba(255,255,255,0.10);
 }
 
 .feedback-modal-close {
@@ -388,6 +392,7 @@ h2.feedback-title-hidden {
 .feedback-modal {
    width: 704px;
   height: 688px;
+   padding: 64px 32px;
 }
 
 .feedback-modal .feedback-modal-form {
@@ -444,6 +449,7 @@ h2.feedback-title-hidden {
 .feedback-modal {
    width: 864px;
   height: 688px;
+   padding: 64px 64px;
 }
 
 #submit-button {

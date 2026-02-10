@@ -83,8 +83,6 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
 root.innerHTML = markup;
 
-
-
 function createFeedbackSlide(feedback) {
   const slide = document.createElement('div');
   slide.classList.add('swiper-slide', 'feedback-content');
@@ -122,7 +120,7 @@ async function initSwiper() {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 20,
-    loop: true,
+    loop: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -136,18 +134,13 @@ async function initSwiper() {
     on: {
     init: function () {
     updateNavButtons(this, feedbacks); 
-     
     },
     slideChange: function () {
-    updateNavButtons(this, feedbacks); 
-        updateCustomPagination(this);
+    updateNavButtons(this, feedbacks);
     }
  },
   });
 }
-
-
-
 
 function updateNavButtons(swiperInstance) {
   const prevButton = document.querySelector('.swiper-button-prev');
@@ -207,13 +200,16 @@ initSwiper();
   starsContainer.innerHTML = "";
 
    for (let i = 1; i <= 5; i++) {
+    const starClass = i <= rating ? 'star-filled' : 'star-empty';
+
     starsContainer.insertAdjacentHTML(
       "beforeend",
-      `<svg class="star-icon ${i <= rating ? "selected" : ""}" width="18" height="18">
-         <use href="${spriteUrl}#star"></use>
-       </svg>`
+      `<svg class="star-icon ${starClass}" width="18" height="18">
+ <use href="sprite.svg#star"></use>
+</svg>`
     );
   }
+  
 
   const stars = starsContainer.querySelectorAll(".star-icon");
   stars.forEach((star, index) => {
