@@ -20,7 +20,6 @@ function renderArtistProfile({
   strBiographyEN,
   genres,
 }) {
-
   let yearsInfo;
 
   // Перевірка: чи рік існує І чи це не слово "null"
@@ -38,7 +37,6 @@ function renderArtistProfile({
     yearsInfo = `${intFormedYear}–present`;
   }
 
-
   const markup = ` 
     <div class="artist-modal-header">
    
@@ -47,7 +45,7 @@ function renderArtistProfile({
     <div class="artist_form_upper_container">
       <!-- img -->
       <div class="artist-modal-img">
-        <img class="artist_form_upper_img" src="${strArtistThumb}" alt="" />
+        <img class="artist_form_upper_img" src="${strArtistThumb}" alt="" width="654" height="402" />
       </div>
 <div class="artist_form_upper_info_container">
   
