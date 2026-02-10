@@ -19,3 +19,14 @@ heroContainer.innerHTML = `
     <div class="hero_image"></div>
   </div>
 `;
+
+//  скролл к секции артистов при клике на кнопку "Explore Artists"
+document.getElementById('hero_explore').addEventListener('click', function () {
+  const artistsSection = document.getElementById('artists');
+  if (artistsSection) {
+    artistsSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+});
