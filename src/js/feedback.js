@@ -1,8 +1,3 @@
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { mountLoader, showLoader, hideLoader } from './loader.js';
 mountLoader('.feedback-section');
 
@@ -113,6 +108,21 @@ async function initSwiper() {
   });
   container.appendChild(fragment);
 
+  // Dynamic import of Swiper + modules + CSS to reduce initial bundle size
+  const [{ default: Swiper }, modules] = await Promise.all([
+    import('swiper'),
+    import('swiper/modules'),
+  ]);
+
+  // Load CSS (can be deferred)
+  await Promise.all([
+    import('swiper/css'),
+    import('swiper/css/navigation'),
+    import('swiper/css/pagination'),
+  ]);
+
+  const { Navigation, Pagination } = modules;
+
   const swiper = new Swiper('.feedbacks-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
@@ -165,26 +175,32 @@ if (feedbackSection) {
 
   openBtn.addEventListener('click', () => {
     modal.removeAttribute('hidden');
+
+    // compensate for scrollbar width to prevent layout shift
+    const sb = window.innerWidth - document.documentElement.clientWidth;
+    if (sb > 0) body.style.paddingRight = `${sb}px`;
+
     body.classList.add('no-scroll');
     createModalStars();
   });
 
-  closeBtn.addEventListener('click', () => {
+  const closeModal = () => {
     modal.setAttribute('hidden', '');
     body.classList.remove('no-scroll');
-  });
+    body.style.paddingRight = '';
+  };
+
+  closeBtn.addEventListener('click', closeModal);
 
   window.addEventListener('keydown', e => {
     if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
-      modal.setAttribute('hidden', '');
-      body.classList.remove('no-scroll');
+      closeModal();
     }
   });
 
   modal.addEventListener('click', e => {
     if (e.target === modal) {
-      modal.setAttribute('hidden', '');
-      body.classList.remove('no-scroll');
+      closeModal();
     }
   });
 

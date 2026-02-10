@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const section = document.querySelector('.about-section');  
+  const section = document.querySelector('.about-section');
 
-    section.innerHTML = `
+  section.innerHTML = `
         <div class="about-container container">
             <div class="about-team-photo">
             <picture>
@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 about/team-2x.webp 2x" 
                 type="image/webp">
 
-                <img src="about/team-desktop-1x.webp"  alt="Team photo"
-                    class="team-photo"  loading="lazy">
+                <img src="about/team-desktop-1x.webp" alt="Team photo"
+                    class="team-photo" loading="lazy" width="640" height="665">
             </picture>
             </div>
 
