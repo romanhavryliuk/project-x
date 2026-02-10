@@ -145,6 +145,71 @@
   display: none;
 }
 
+/* ------- Pagination styles ------- */
+
+
+#artists-pagination.tui-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  gap: 1px;
+  margin: 16px auto 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+#artists-pagination .tui-page-btn {
+  min-width: 26px;
+  height: 26px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#artists-pagination .tui-page-btn.tui-is-selected {
+  background: #764191;
+  border-color: #764191;
+}
+
+#artists-pagination .tui-page-btn.tui-is-disabled {
+  opacity: 0.4;
+}
+
+#artists-pagination .tui-prev,
+#artists-pagination .tui-next {
+  min-width: 24px;
+  height: 26px;
+  font-size: 0;
+  position: relative;
+}
+
+#artists-pagination .tui-prev::after,
+#artists-pagination .tui-next::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+}
+
+#artists-pagination .tui-prev::after {
+  transform: rotate(135deg);
+}
+
+#artists-pagination .tui-next::after {
+  transform: rotate(-45deg);
+}
+
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
@@ -163,6 +228,30 @@
   .load-more {
     width: 340px;
     margin: 0 auto;
+  }
+
+  #artists-pagination.tui-pagination {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  #artists-pagination .tui-page-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  #artists-pagination .tui-prev,
+  #artists-pagination .tui-next {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  #artists-pagination .tui-prev::after,
+  #artists-pagination .tui-next::after {
+    display: none;
   }
 }
 
@@ -195,3 +284,5 @@
     width: 170px;
   }
 }
+
+
