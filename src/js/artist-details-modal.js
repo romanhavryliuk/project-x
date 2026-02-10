@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { mountLoader, showLoader, hideLoader } from './loader.js';
 
 const artistFormUpper = document.querySelector('.artist_form_upper');
 const modalAlbumsContainer = document.querySelector('.artist_form_albums');
+mountLoader('#artist-modal');
 
 const api = axios.create({
   baseURL: 'https://sound-wave.b.goit.study/api',
@@ -11,12 +13,32 @@ function renderArtistProfile({
   strArtist,
   strArtistThumb,
   intFormedYear,
+  intDiedYear,
   strGender,
   intMembers,
   strCountry,
   strBiographyEN,
   genres,
 }) {
+
+  let yearsInfo;
+
+  // Перевірка: чи рік існує І чи це не слово "null"
+  const isBorn = intFormedYear && intFormedYear !== 'null';
+  const isDead = intDiedYear && intDiedYear !== 'null';
+
+  if (!isBorn) {
+    // Якщо немає року заснування - інформація відсутня
+    yearsInfo = 'Information missing';
+  } else if (isDead) {
+    // Є і початок, і кінець
+    yearsInfo = `${intFormedYear}–${intDiedYear}`;
+  } else {
+    // Є початок, але немає кінця (або там написано "null")
+    yearsInfo = `${intFormedYear}–present`;
+  }
+
+
   const markup = ` 
     <div class="artist-modal-header">
    
@@ -33,7 +55,7 @@ function renderArtistProfile({
           <ul class="stats-list parent-upper">
             <li class="stats-item upper-grid-one">
               <span class="stats-label">Years active</span>
-              <span class="stats-value">${intFormedYear}-present</span>
+              <span class="stats-value">${yearsInfo}</span>
             </li>
             <li class="stats-item upper-grid-two">
               <span class="stats-label">Sex</span>
@@ -74,6 +96,8 @@ export function loadArtistData(id) {
   if (artistFormUpper) artistFormUpper.innerHTML = '';
   if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '';
 
+  showLoader('#artist-modal');
+
   fetch(`https://sound-wave.b.goit.study/api/artists/${id}`)
     .then(response => {
       if (!response.ok) {
@@ -88,7 +112,6 @@ export function loadArtistData(id) {
 }
 
 /* ======= Modal albums ======= */
-
 
 export async function fetchArtistAlbums(artistId) {
   try {
@@ -106,7 +129,8 @@ export async function renderArtistAlbums(id) {
 
     // Перевіряю наявність масиву альбомів
     if (!data.albumsList || data.albumsList.length === 0) {
-      if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
+      if (modalAlbumsContainer)
+        modalAlbumsContainer.innerHTML = '<p>Альбомів не знайдено</p>';
       return;
     }
 
@@ -145,7 +169,7 @@ export async function renderArtistAlbums(id) {
                   track.movie
                     ? `<a href="${track.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
-                      <use href="/img/sprite.svg#youtube"></use>
+                      <use href="sprite.svg#youtube"></use>
                     </svg>
                     <span class="sr-only">Watch video on YouTube</span>
                    </a>`
@@ -167,5 +191,7 @@ export async function renderArtistAlbums(id) {
     if (modalAlbumsContainer) modalAlbumsContainer.innerHTML = markup;
   } catch (error) {
     console.error('Error rendering artist albums:', error);
+  } finally {
+    hideLoader('#artist-modal');
   }
 }
