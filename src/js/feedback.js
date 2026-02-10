@@ -3,13 +3,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import $ from 'jquery';
-import 'raty-js';
-window.jQuery = $;
-window.$ = $;
 import { mountLoader, showLoader, hideLoader } from './loader.js';
 mountLoader('.feedback-section');
-
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
@@ -128,132 +123,109 @@ async function initSwiper() {
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-      dynamicBullets: true, 
+      dynamicBullets: true,
     },
-
-    on: {
-    init: function () {
-    updateNavButtons(this, feedbacks); 
-    },
-    slideChange: function () {
-    updateNavButtons(this, feedbacks);
-    }
- },
   });
-}
-
-function updateNavButtons(swiperInstance) {
-  const prevButton = document.querySelector('.swiper-button-prev');
-  const nextButton = document.querySelector('.swiper-button-next');
-
-  if (prevButton && nextButton) {
-    prevButton.classList.toggle('disabled', swiperInstance.isBeginning);
-    nextButton.classList.toggle('disabled', swiperInstance.isEnd);
-  }
 }
 
 initSwiper();
 
 (() => {
-  const openBtn = document.querySelector("#Leave-feedback");
-  const closeBtn = document.querySelector(".feedback-modal-close");
-  const modal = document.querySelector(".feedback-modal-backdrop");
+  const openBtn = document.querySelector('#Leave-feedback');
+  const closeBtn = document.querySelector('.feedback-modal-close');
+  const modal = document.querySelector('.feedback-modal-backdrop');
   const body = document.body;
-   
 
   if (!openBtn || !closeBtn || !modal) {
-    console.log("not found");
+    console.log('not found');
     return;
   }
 
-  
-  openBtn.addEventListener("click", () => {
-    modal.removeAttribute("hidden");
-    body.classList.add("no-scroll");
+  openBtn.addEventListener('click', () => {
+    modal.removeAttribute('hidden');
+    body.classList.add('no-scroll');
     createModalStars();
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.setAttribute("hidden", "");
-    body.classList.remove("no-scroll");
+  closeBtn.addEventListener('click', () => {
+    modal.setAttribute('hidden', '');
+    body.classList.remove('no-scroll');
   });
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hasAttribute("hidden")) {
-      modal.setAttribute("hidden", "");
-      body.classList.remove("no-scroll");
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+      modal.setAttribute('hidden', '');
+      body.classList.remove('no-scroll');
     }
   });
 
-  modal.addEventListener("click", (e) => {
+  modal.addEventListener('click', e => {
     if (e.target === modal) {
-      modal.setAttribute("hidden", "");
-      body.classList.remove("no-scroll");
+      modal.setAttribute('hidden', '');
+      body.classList.remove('no-scroll');
     }
   });
 
+  function createModalStars(rating = 0) {
+    const starsContainer = document.querySelector('.feedback-modal-stars');
+    if (!starsContainer) return;
 
- function createModalStars(rating = 0) {
-  const starsContainer = document.querySelector(".feedback-modal-stars");
-  if (!starsContainer) return;
+    starsContainer.innerHTML = '';
 
-  starsContainer.innerHTML = "";
+    for (let i = 1; i <= 5; i++) {
+      const starClass = i <= rating ? 'star-filled' : 'star-empty';
 
-   for (let i = 1; i <= 5; i++) {
-    const starClass = i <= rating ? 'star-filled' : 'star-empty';
-
-    starsContainer.insertAdjacentHTML(
-      "beforeend",
-      `<svg class="star-icon ${starClass}" width="18" height="18">
+      starsContainer.insertAdjacentHTML(
+        'beforeend',
+        `<svg class="star-icon ${starClass}" width="18" height="18">
  <use href="sprite.svg#star"></use>
 </svg>`
-    );
-  }
-  
+      );
+    }
 
-  const stars = starsContainer.querySelectorAll(".star-icon");
-  stars.forEach((star, index) => {
-    star.addEventListener("click", () => {
-      stars.forEach((s, i) => {
-        if (i <= index) s.classList.add("selected");
-        else s.classList.remove("selected");
+    const stars = starsContainer.querySelectorAll('.star-icon');
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+          if (i <= index) s.classList.add('selected');
+          else s.classList.remove('selected');
+        });
       });
     });
+  }
+  const form = document.querySelector('.feedback-modal-form');
+  const input = form.querySelector('.feedback-modal-input');
+  const textarea = form.querySelector('.feedback-modal-textarea');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let hasError = false;
+
+    if (!input.value.trim()) {
+      input.classList.add('error');
+      hasError = true;
+    } else {
+      input.classList.remove('error');
+    }
+
+    if (!textarea.value.trim()) {
+      textarea.classList.add('error');
+      hasError = true;
+    } else {
+      textarea.classList.remove('error');
+    }
+
+    [input, textarea].forEach(el => {
+      if (!el) return;
+
+      el.addEventListener('input', () => {
+        el.classList.remove('error');
+      });
+    });
+
+    if (!hasError) {
+      form.submit();
+    }
   });
-}
-const form = document.querySelector(".feedback-modal-form");
-const input = form.querySelector(".feedback-modal-input");
-const textarea = form.querySelector(".feedback-modal-textarea");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
-
-  let hasError = false;
-
-  if (!input.value.trim()) {
-    input.classList.add("error");
-    hasError = true;
-  } else {
-    input.classList.remove("error");
-  }
-
-  if (!textarea.value.trim()) {
-    textarea.classList.add("error");
-    hasError = true;
-  } else {
-    textarea.classList.remove("error");
-  }
-
-  [input, textarea].forEach((el) => {
-  if (!el) return;
-
-  el.addEventListener("input", () => {
-    el.classList.remove("error");
-  });
-});
-  
-  if (!hasError) {
-    form.submit(); 
-  }
-});
 })();
