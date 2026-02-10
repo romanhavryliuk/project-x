@@ -24,6 +24,7 @@
     "modern-normalize": "^3.0.1",
     "raty-js": "^4.3.0",
     "swiper": "^12.1.0",
+    "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   }
