@@ -130,8 +130,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--clr-gray-100);
 }
-
-/* Prevent layout shift when modals open/close by keeping scrollbar always visible */
-html {
-  overflow-y: scroll;
-}
