@@ -1,5 +1,15 @@
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import $ from 'jquery';
+import 'raty-js';
+window.jQuery = $;
+window.$ = $;
 import { mountLoader, showLoader, hideLoader } from './loader.js';
 mountLoader('.feedback-section');
+
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
@@ -39,15 +49,45 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
         </svg>
       </div>
  <div class="swiper-pagination"></div>
+ </div>
+ <button type="button" class="feedback-button" id="Leave-feedback">
+          Leave feedback
+         </button>
+
+    <div class="feedback-modal-backdrop" hidden>
+  <div class="feedback-modal">
+
+    <button class="feedback-modal-close"></button>
+
+    <h2 class="feedback-modal-title">Submit feedback</h2>
+
+    <form class="feedback-modal-form">
+      <label>
+        Name
+        <input type="text" class="feedback-modal-input" placeholder="Emily">
+      </label>
+
+      <label>
+        Message
+        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+      </label>
+<div class="feedback-modal-stars"></div>
+
+      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
+    </form>
+  </div>
+</div>
   `;
 
 root.innerHTML = markup;
 
-function createFeedbackSlide(feedback) {
-  const slide = document.createElement('div');
-  slide.classList.add('swiper-slide', 'feedback-content');
-  const rewRating = Number(feedback.rating) || 0;
-  const rating = Math.round(rewRating);
+
+
+  function createFeedbackSlide(feedback) {
+const slide = document.createElement('div');
+slide.classList.add('swiper-slide', 'feedback-content');
+const rewRating = Number(feedback.rating) || 0;
+const rating = Math.round(rewRating);
 
   let starsMarkup = '';
 
@@ -72,32 +112,15 @@ async function initSwiper() {
   const container = document.getElementById('feedbacks-container');
   const feedbacks = await fetchFeedbacks();
 
-  const fragment = document.createDocumentFragment();
   feedbacks.forEach(feedback => {
-    fragment.appendChild(createFeedbackSlide(feedback));
+    container.appendChild(createFeedbackSlide(feedback));
   });
-  container.appendChild(fragment);
-
-  // Dynamic import of Swiper + modules + CSS to reduce initial bundle size
-  const [{ default: Swiper }, modules] = await Promise.all([
-    import('swiper'),
-    import('swiper/modules'),
-  ]);
-
-  // Load CSS (can be deferred)
-  await Promise.all([
-    import('swiper/css'),
-    import('swiper/css/navigation'),
-    import('swiper/css/pagination'),
-  ]);
-
-  const { Navigation, Pagination } = modules;
 
   const swiper = new Swiper('.feedbacks-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 20,
-    loop: false,
+    loop: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -107,163 +130,130 @@ async function initSwiper() {
       clickable: true,
       dynamicBullets: true,
     },
-  });
-}
 
-const observerOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.1,
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      initSwiper();
-      observer.unobserve(entry.target);
+    on: {
+      init: function () {
+        updateNavButtons(this, feedbacks);
+     
+      },
     }
   });
-}, observerOptions);
-
-const feedbackSection = document.querySelector('.feedback-section');
-if (feedbackSection) {
-  observer.observe(feedbackSection);
-} else {
-  initSwiper();
 }
 
-// (() => {
-//   const openBtn = document.querySelector('#Leave-feedback');
-//   const closeBtn = document.querySelector('.feedback-modal-close');
-//   const modal = document.querySelector('.feedback-modal-backdrop');
-//   const body = document.body;
-
-//   if (!openBtn || !closeBtn || !modal) {
-//     console.log('not found');
-//     return;
-//   }
-
-//   openBtn.addEventListener('click', () => {
-//     modal.removeAttribute('hidden');
-
-//     // compensate for scrollbar width to prevent layout shift
-//     const sb = window.innerWidth - document.documentElement.clientWidth;
-//     if (sb > 0) body.style.paddingRight = `${sb}px`;
-
-//     body.classList.add('no-scroll');
-//     createModalStars();
-//   });
-
-//   const closeModal = () => {
-//     modal.setAttribute('hidden', '');
-//     body.classList.remove('no-scroll');
-//     body.style.paddingRight = '';
-//   };
-
-//   closeBtn.addEventListener('click', closeModal);
-
-//   window.addEventListener('keydown', e => {
-//     if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
-//       closeModal();
-//     }
-//   });
-
-//   modal.addEventListener('click', e => {
-//     if (e.target === modal) {
-//       closeModal();
-//     }
-//   });
-
-//   function createModalStars(rating = 0) {
-//     const starsContainer = document.querySelector('.feedback-modal-stars');
-//     if (!starsContainer) return;
-
-//     starsContainer.innerHTML = '';
-
-//     for (let i = 1; i <= 5; i++) {
-//       const starClass = i <= rating ? 'star-filled' : 'star-empty';
-
-//       starsContainer.insertAdjacentHTML(
-//         'beforeend',
-//         `<svg class="star-icon ${starClass}" width="18" height="18">
-//  <use href="sprite.svg#star"></use>
-// </svg>`
-//       );
-//     }
-
-//     const stars = starsContainer.querySelectorAll('.star-icon');
-//     stars.forEach((star, index) => {
-//       star.addEventListener('click', () => {
-//         stars.forEach((s, i) => {
-//           if (i <= index) s.classList.add('selected');
-//           else s.classList.remove('selected');
-//         });
-//       });
-//     });
-//   }
-//   const form = document.querySelector('.feedback-modal-form');
-//   const input = form.querySelector('.feedback-modal-input');
-//   const textarea = form.querySelector('.feedback-modal-textarea');
-
-//   form.addEventListener('submit', e => {
-//     e.preventDefault();
-
-//     let hasError = false;
-
-//     if (!input.value.trim()) {
-//       input.classList.add('error');
-//       hasError = true;
-//     } else {
-//       input.classList.remove('error');
-//     }
-
-//     if (!textarea.value.trim()) {
-//       textarea.classList.add('error');
-//       hasError = true;
-//     } else {
-//       textarea.classList.remove('error');
-//     }
-
-//     [input, textarea].forEach(el => {
-//       if (!el) return;
-
-//       el.addEventListener('input', () => {
-//         el.classList.remove('error');
-//       });
-//     });
-
-//     if (!hasError) {
-//       form.submit();
-//     }
-//   });
-// })();
 
 
-/* <button type="button" class="feedback-button" id="Leave-feedback">
-         Leave feedback
-        </button>
-    </div>
 
-    <div class="feedback-modal-backdrop" hidden>
-  <div class="feedback-modal">
+function updateNavButtons(swiperInstance) {
+  const prevButton = document.querySelector('.swiper-button-prev');
+  const nextButton = document.querySelector('.swiper-button-next');
 
-    <button class="feedback-modal-close"></button>
+  if (prevButton && nextButton) {
+    // isBeginning і isEnd — це вбудовані стани Swiper
+    prevButton.classList.toggle('disabled', swiperInstance.isBeginning);
+    nextButton.classList.toggle('disabled', swiperInstance.isEnd);
+  }
+}
 
-    <h2 class="feedback-modal-title">Submit feedback</h2>
+initSwiper();
 
-    <form class="feedback-modal-form">
-      <label>
-        Name
-        <input type="text" class="feedback-modal-input" placeholder="Emily">
-      </label>
+(() => {
+  const openBtn = document.querySelector("#Leave-feedback");
+  const closeBtn = document.querySelector(".feedback-modal-close");
+  const modal = document.querySelector(".feedback-modal-backdrop");
+  const body = document.body;
+   
 
-      <label>
-        Message
-        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
-      </label>
-<div class="feedback-modal-stars"></div>
+  if (!openBtn || !closeBtn || !modal) {
+    console.log("not found");
+    return;
+  }
 
-      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
-    </form>
-  </div>
-</div> */
+  
+  openBtn.addEventListener("click", () => {
+    modal.removeAttribute("hidden");
+    body.classList.add("no-scroll");
+    createModalStars();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.setAttribute("hidden", "");
+    body.classList.remove("no-scroll");
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hasAttribute("hidden")) {
+      modal.setAttribute("hidden", "");
+      body.classList.remove("no-scroll");
+    }
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.setAttribute("hidden", "");
+      body.classList.remove("no-scroll");
+    }
+  });
+
+
+ function createModalStars(rating = 0) {
+  const starsContainer = document.querySelector(".feedback-modal-stars");
+  if (!starsContainer) return;
+
+  starsContainer.innerHTML = "";
+
+   for (let i = 1; i <= 5; i++) {
+    starsContainer.insertAdjacentHTML(
+      "beforeend",
+      `<svg class="star-icon ${i <= rating ? "selected" : ""}" width="18" height="18">
+         <use href="${spriteUrl}#star"></use>
+       </svg>`
+    );
+  }
+
+  const stars = starsContainer.querySelectorAll(".star-icon");
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      stars.forEach((s, i) => {
+        if (i <= index) s.classList.add("selected");
+        else s.classList.remove("selected");
+      });
+    });
+  });
+}
+const form = document.querySelector(".feedback-modal-form");
+const input = form.querySelector(".feedback-modal-input");
+const textarea = form.querySelector(".feedback-modal-textarea");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); 
+
+  let hasError = false;
+
+  if (!input.value.trim()) {
+    input.classList.add("error");
+    hasError = true;
+  } else {
+    input.classList.remove("error");
+  }
+
+  if (!textarea.value.trim()) {
+    textarea.classList.add("error");
+    hasError = true;
+  } else {
+    textarea.classList.remove("error");
+  }
+
+  [input, textarea].forEach((el) => {
+  if (!el) return;
+
+  el.addEventListener("input", () => {
+    el.classList.remove("error");
+  });
+});
+  
+  if (!hasError) {
+    form.submit(); 
+  }
+});
+
+})();
