@@ -80,21 +80,18 @@ function createFeedbackSlide(feedback) {
 }
 
 async function initSwiper() {
-  const $ = window.jQuery;
-
   const container = document.getElementById('feedbacks-container');
   const feedbacks = await fetchFeedbacks();
 
   feedbacks.forEach(feedback => {
-    const slide = createFeedbackSlide(feedback);
-    container.appendChild(slide);
+    container.appendChild(createFeedbackSlide(feedback));
   });
 
   const swiper = new Swiper('.feedbacks-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
-    loop: false,
     spaceBetween: 20,
+    loop: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -102,52 +99,31 @@ async function initSwiper() {
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-      renderBullet: function (index, className) {
-        if (index < 3) {
-          return `<span class="${className} custom-bullet-${index}"></span>`;
-        }
-        return '';
-      },
+      dynamicBullets: true, 
     },
     on: {
       init: function () {
-        updateNavButtons(this, feedbacks);
-        updateCustomPagination(this);
+        updateNavButtons(this);
       },
       slideChange: function () {
-        updateNavButtons(this, feedbacks);
-        updateCustomPagination(this);
-      },
+        updateNavButtons(this);
+      }
     },
   });
 }
 
-function updateCustomPagination(swiperInstance) {
-  const bullets = swiperInstance.pagination.bullets;
-  if (!bullets || bullets.length === 0) return;
 
-  bullets.forEach(b => b.classList.remove('swiper-pagination-bullet-active'));
 
-  const index = swiperInstance.activeIndex;
 
-  if (index <= 2) {
-    bullets[0].classList.add('swiper-pagination-bullet-active');
-  } else if (index >= 3 && index <= 6) {
-    bullets[1].classList.add('swiper-pagination-bullet-active');
-  } else {
-    bullets[2].classList.add('swiper-pagination-bullet-active');
-  }
-}
-
-function updateNavButtons(swiperInstance, feedbacks) {
+function updateNavButtons(swiperInstance) {
   const prevButton = document.querySelector('.swiper-button-prev');
   const nextButton = document.querySelector('.swiper-button-next');
 
-  prevButton.classList.toggle('disabled', swiperInstance.activeIndex === 0);
-  nextButton.classList.toggle(
-    'disabled',
-    swiperInstance.activeIndex === feedbacks.length - 1
-  );
+  if (prevButton && nextButton) {
+    // isBeginning і isEnd — це вбудовані стани Swiper
+    prevButton.classList.toggle('disabled', swiperInstance.isBeginning);
+    nextButton.classList.toggle('disabled', swiperInstance.isEnd);
+  }
 }
 
 initSwiper();
