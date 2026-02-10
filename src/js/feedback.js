@@ -51,14 +51,39 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
         <span class="sr-only">Swipe to next slide</span>
       </div>
  <div class="swiper-pagination"></div>
-<button type="button" class="feedback-button" id="Leave feedback">
+<button type="button" class="feedback-button" id="Leave-feedback">
          Leave feedback
         </button>
- 
     </div>
+
+    <div class="feedback-modal-backdrop" hidden>
+  <div class="feedback-modal">
+
+    <button class="feedback-modal-close"></button>
+
+    <h2 class="feedback-modal-title">Submit feedback</h2>
+
+    <form class="feedback-modal-form">
+      <label>
+        Name
+        <input type="text" class="feedback-modal-input" placeholder="Emily">
+      </label>
+
+      <label>
+        Message
+        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+      </label>
+<div class="feedback-modal-stars"></div>
+
+      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
+    </form>
+  </div>
+</div>
   `;
 
 root.innerHTML = markup;
+
+
 
 function createFeedbackSlide(feedback) {
   const slide = document.createElement('div');
@@ -107,14 +132,17 @@ async function initSwiper() {
       clickable: true,
       dynamicBullets: true, 
     },
+
     on: {
-      init: function () {
-        updateNavButtons(this);
-      },
-      slideChange: function () {
-        updateNavButtons(this);
-      }
+    init: function () {
+    updateNavButtons(this, feedbacks); 
+     
     },
+    slideChange: function () {
+    updateNavButtons(this, feedbacks); 
+        updateCustomPagination(this);
+    }
+ },
   });
 }
 
@@ -126,10 +154,111 @@ function updateNavButtons(swiperInstance) {
   const nextButton = document.querySelector('.swiper-button-next');
 
   if (prevButton && nextButton) {
-    // isBeginning і isEnd — це вбудовані стани Swiper
     prevButton.classList.toggle('disabled', swiperInstance.isBeginning);
     nextButton.classList.toggle('disabled', swiperInstance.isEnd);
   }
 }
 
 initSwiper();
+
+(() => {
+  const openBtn = document.querySelector("#Leave-feedback");
+  const closeBtn = document.querySelector(".feedback-modal-close");
+  const modal = document.querySelector(".feedback-modal-backdrop");
+  const body = document.body;
+   
+
+  if (!openBtn || !closeBtn || !modal) {
+    console.log("not found");
+    return;
+  }
+
+  
+  openBtn.addEventListener("click", () => {
+    modal.removeAttribute("hidden");
+    body.classList.add("no-scroll");
+    createModalStars();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.setAttribute("hidden", "");
+    body.classList.remove("no-scroll");
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hasAttribute("hidden")) {
+      modal.setAttribute("hidden", "");
+      body.classList.remove("no-scroll");
+    }
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.setAttribute("hidden", "");
+      body.classList.remove("no-scroll");
+    }
+  });
+
+
+ function createModalStars(rating = 0) {
+  const starsContainer = document.querySelector(".feedback-modal-stars");
+  if (!starsContainer) return;
+
+  starsContainer.innerHTML = "";
+
+   for (let i = 1; i <= 5; i++) {
+    starsContainer.insertAdjacentHTML(
+      "beforeend",
+      `<svg class="star-icon ${i <= rating ? "selected" : ""}" width="18" height="18">
+         <use href="${spriteUrl}#star"></use>
+       </svg>`
+    );
+  }
+
+  const stars = starsContainer.querySelectorAll(".star-icon");
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      stars.forEach((s, i) => {
+        if (i <= index) s.classList.add("selected");
+        else s.classList.remove("selected");
+      });
+    });
+  });
+}
+const form = document.querySelector(".feedback-modal-form");
+const input = form.querySelector(".feedback-modal-input");
+const textarea = form.querySelector(".feedback-modal-textarea");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); 
+
+  let hasError = false;
+
+  if (!input.value.trim()) {
+    input.classList.add("error");
+    hasError = true;
+  } else {
+    input.classList.remove("error");
+  }
+
+  if (!textarea.value.trim()) {
+    textarea.classList.add("error");
+    hasError = true;
+  } else {
+    textarea.classList.remove("error");
+  }
+
+  [input, textarea].forEach((el) => {
+  if (!el) return;
+
+  el.addEventListener("input", () => {
+    el.classList.remove("error");
+  });
+});
+  
+  if (!hasError) {
+    form.submit(); 
+  }
+});
+
+})();
