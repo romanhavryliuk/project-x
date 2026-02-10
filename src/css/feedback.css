@@ -56,10 +56,14 @@ h2.feedback-title-hidden {
 
 .star-empty {
   fill: #fff;
-  }
+}
 
 .star-filled {
   fill: #764191;
+}
+
+.star-rating {
+  display: flex;
 }
 
 .feedback-section-wrapper {

@@ -57,6 +57,11 @@ h3 {
   letter-spacing: -0.02em;
 }
 
+svg {
+  fill: #fff;
+  display: block;
+}
+
 /* Typography Utility Classes */
 .text-muted {
   color: var(--clr-gray-400);
