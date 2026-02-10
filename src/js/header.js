@@ -6,17 +6,17 @@ header.innerHTML = `
 <div class="container">
 
 <nav class="page-nav">
-      <a href="./" class="logo"
-        ><svg class="icon logo">
+      <a href="./" class="logo" aria-label="ArtistsHub - back to main page">
+        <svg class="icon logo">
           <use href="main-logo.svg#icon-logo"></use>
         </svg>
       </a>
-      <button type="button" class="burger-icon-btn" id="burger-icon-btn">
+      <button type="button" class="burger-icon-btn" id="burger-icon-btn" aria-label="Open navigation menu">
         <svg class="icon burger-icon">
           <use href="sprite.svg#burger"></use>
         </svg>
       </button>
-      <button type="button" class="close-icon-btn" id="close-icon-btn">
+      <button type="button" class="close-icon-btn" id="close-icon-btn" aria-label="Close navigation menu">
           <svg class="icon close-icon">
             <use href="sprite.svg#close-x"></use>
           </svg>
