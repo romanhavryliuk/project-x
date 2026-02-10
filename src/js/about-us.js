@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const section = document.querySelector('.about-section');  
 
     section.innerHTML = `
-        <div class="about-container">
+        <div class="about-container container">
             <div class="about-team-photo">
             <picture>
                 <source media="(min-width: 1440px)" 

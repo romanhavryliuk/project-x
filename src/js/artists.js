@@ -36,6 +36,7 @@ export async function renderArtistsSection() {
           <h2 class="artists-title">Artist</h2>
           <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
         </div>
+        <div class="artists-list-wrapper">
         <ul class="artists-list">
           ${allArtists
             .map(
@@ -64,11 +65,11 @@ export async function renderArtistsSection() {
             )
             .join('')}
         </ul>
-
         <button type="button"  class="load-more ${isHidden}">Load More
-          <svg class="load-more-icon" width="14" height="14">
-            <use href="sprite.svg#arrow-down"></use>
-          </svg></button>
+        <svg class="load-more-icon" width="14" height="14">
+        <use href="sprite.svg#arrow-down"></use>
+        </svg></button>
+        </div>
       </div>
     `;
 
