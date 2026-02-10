@@ -7,6 +7,19 @@
     justify-content: center;
 }
 
+.feedback-section,
+.artists-section {
+    position: relative;
+}
+
+.feedback-section .loader-backdrop,
+.artists-section .loader-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.35);
+}
+
 .is-hidden {
     display: none;
 }
