@@ -3,7 +3,8 @@ h2.feedback-title-hidden {
 }
 
 .feedback-section {
-  padding: 64px 16px 171px;
+  padding: 64px 16px 64px;
+  min-height: 579px;
   background: #060307;
 }
 
@@ -47,6 +48,11 @@ h2.feedback-title-hidden {
   font-weight: 700;
   margin: 0 auto;
   text-align: center;
+  height: 144px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .feedback-author {
@@ -351,7 +357,7 @@ h2.feedback-title-hidden {
 @media (min-width: 768px) {
   .feedback-section {
     padding: 64px 32px;
-    min-height: 396px;
+    min-height: 589px;
   }
 
   .feedbacks-swiper {
@@ -432,7 +438,7 @@ h2.feedback-title-hidden {
 @media (min-width: 1440px) {
   .feedback-section {
     padding: 112px 64px;
-    min-height: 587px;
+    min-height: 907px;
   }
 
   .feedback-section .feedbacks-swiper {
