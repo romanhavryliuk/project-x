@@ -65,7 +65,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;document.getElementById("hero_explore").addEventListener("click",function(){const t=document.getElementById("artists");t&&t.scrollIntoView({behavior:"smooth",block:"start"})});const D=`<div class="loader-backdrop is-hidden" data-loader>
+`;document.getElementById("hero_explore").addEventListener("click",function(){const t=document.getElementById("artists");t&&t.scrollIntoView({behavior:"smooth",block:"start"})});const R=`<div class="loader-backdrop is-hidden" data-loader>
   <div class="flower-spinner">
     <div class="dots-container">
       <div class="bigger-dot">
@@ -74,7 +74,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
   </div>
 </div>
-`,l=new Map;function k(t){const e=document.querySelector(t);e&&(e.querySelector("[data-loader]")||e.insertAdjacentHTML("afterbegin",D))}function S(t){return document.querySelector(`${t} [data-loader]`)}function _(t){var s;const e=(l.get(t)??0)+1;l.set(t,e),(s=S(t))==null||s.classList.remove("is-hidden")}function L(t){var s;const e=(l.get(t)??0)-1;e<=0?(l.set(t,0),(s=S(t))==null||s.classList.add("is-hidden")):l.set(t,e)}const d=document.querySelector("#artists");k("#artists");const f=8;let h=1,g=null;function F(){d.querySelector(".artists-container")||d.insertAdjacentHTML("beforeend",`
+`,l=new Map;function k(t){const e=document.querySelector(t);e&&(e.querySelector("[data-loader]")||e.insertAdjacentHTML("afterbegin",R))}function S(t){return document.querySelector(`${t} [data-loader]`)}function _(t){var s;const e=(l.get(t)??0)+1;l.set(t,e),(s=S(t))==null||s.classList.remove("is-hidden")}function L(t){var s;const e=(l.get(t)??0)-1;e<=0?(l.set(t,0),(s=S(t))==null||s.classList.add("is-hidden")):l.set(t,e)}const d=document.querySelector("#artists");k("#artists");const f=8;let h=1,g=null;function D(){d.querySelector(".artists-container")||d.insertAdjacentHTML("beforeend",`
     <div class="container artists-container">
       <div class="artists-header-wrapper">  
         <h2 class="artists-title">Artist</h2>
@@ -86,7 +86,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
         <div id="artists-pagination" class="tui-pagination"></div>
       </div>
     </div>
-    `)}function R(t){const e=d.querySelector(".artists-list");e.innerHTML=t.map(s=>`
+    `)}"scrollRestoration"in history&&(history.scrollRestoration="manual");function F(t){const e=d.querySelector(".artists-list");e.innerHTML=t.map(s=>`
       <li class="artist-card" data-id="${s._id}">
         <div class="artist-image-wrapper">
           <img class="artist-image"
@@ -115,7 +115,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
           </svg>
         </button>
       </li>
-    `).join("")}async function E(t=1){F(),_("#artists");try{const e=await $.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:f,page:t}}),{artists:s,totalArtists:o}=e.data;R(s);const a=d.querySelector("#artists-pagination");g||(g=new H(a,{totalItems:o,itemsPerPage:f,visiblePages:5,page:t,centerAlign:!0}),g.on("afterMove",r=>{h=r.page,E(h),d.scrollIntoView({behavior:"smooth",block:"start"})}));const i=Math.ceil(o/f);a.style.display=i<=1?"none":""}catch(e){console.error("Помилка завантаження артистів:",e)}finally{L("#artists")}}E(h);const y=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums");k("#artist-modal");const U=$.create({baseURL:"https://sound-wave.b.goit.study/api"});function V({strArtist:t,strArtistThumb:e,intFormedYear:s,intDiedYear:o,strGender:a,intMembers:i,strCountry:r,strBiographyEN:c,genres:M}){let u;s&&s!=="null"?o&&o!=="null"?u=`${s}–${o}`:u=`${s}–present`:u="Information missing";const q=` 
+    `).join("")}async function E(t=1){D(),_("#artists");try{const e=await $.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:f,page:t}}),{artists:s,totalArtists:o}=e.data;F(s);const a=d.querySelector("#artists-pagination");g||(g=new H(a,{totalItems:o,itemsPerPage:f,visiblePages:5,page:t,centerAlign:!0}),g.on("afterMove",r=>{h=r.page,E(h),d.scrollIntoView({behavior:"smooth",block:"start"})}));const i=Math.ceil(o/f);a.style.display=i<=1?"none":""}catch(e){console.error("Помилка завантаження артистів:",e)}finally{L("#artists")}}E(h);const y=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums");k("#artist-modal");const U=$.create({baseURL:"https://sound-wave.b.goit.study/api"});function V({strArtist:t,strArtistThumb:e,intFormedYear:s,intDiedYear:o,strGender:a,intMembers:i,strCountry:r,strBiographyEN:c,genres:M}){let u;s&&s!=="null"?o&&o!=="null"?u=`${s}–${o}`:u=`${s}–present`:u="Information missing";const q=` 
     <div class="artist-modal-header">
    
       <h2 class="artist-title">${t}</h2>
