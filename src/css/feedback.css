@@ -444,6 +444,10 @@ h2.feedback-title-hidden {
     width: 1315px;
   }
 
+  .feedbacks-swiper {
+    min-height: 430px;
+  }
+
   .feedbacks-swiper .swiper-wrapper {
     min-height: 392px;
   }

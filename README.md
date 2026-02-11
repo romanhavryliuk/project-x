@@ -27,6 +27,7 @@
 - **Бібліотеки інтерфейсу:**
   - `swiper` — для сучасних слайдерів.
   - `raty-js` — для функціоналу рейтингів.
+  - `tui-pagination` — для реалізації функціональної пагінації сторінок.
   - `epic-spinners` — для кастомних лоадерів завантаження.
 - **Менеджер пакетів:** npm.
 
@@ -55,9 +56,6 @@ npm install
 
 # Запуск у режимі розробки
 npm run dev
-
-# Запуск у режимі продакшена
-npm run build
 ```
 
 ---
@@ -91,6 +89,7 @@ and optimized asset loading.
 - **UI/UX Enhancements:**
   - `swiper` — powers the interactive and touch-friendly sliders.
   - `raty-js` — implements the star-rating system for client testimonials.
+  - `tui-pagination` — manages complex navigation and pagination for content lists.
   - `epic-spinners` — providing professional loading animations for a better
     user experience.
 - **Environment:** Node.js & npm.
