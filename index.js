@@ -268,7 +268,7 @@ import{a as M,P as j,j as q,S as P,N,b as C}from"./assets/vendor-BJGcNjwn.js";(f
 
       <label>
         Message
-        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+        <textarea name="message" class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
       </label>
 <div class="feedback-modal-stars"></div>
 
