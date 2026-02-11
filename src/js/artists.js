@@ -32,11 +32,11 @@ function ensureLayout() {
   );
 }
 
-if ('scrollRestoration' in history) {
-  // 'auto' - стандартна поведінка (браузер намагається повернути на місце)
-  // 'manual' - якщо ти хочеш повністю керувати скролом сам
-  history.scrollRestoration = 'manual'; 
-}
+// if ('scrollRestoration' in history) {
+//   // 'auto' - стандартна поведінка (браузер намагається повернути на місце)
+//   // 'manual' - якщо ти хочеш повністю керувати скролом сам
+//   history.scrollRestoration = 'manual'; 
+// }
 
 function renderArtistsList(artists) {
   const listEl = artistsSection.querySelector('.artists-list');
