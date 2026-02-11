@@ -70,7 +70,7 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
       <label>
         Message
-        <textarea name="message" class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
       </label>
 <div class="feedback-modal-stars"></div>
 

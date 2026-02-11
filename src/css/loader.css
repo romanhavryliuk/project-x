@@ -26,7 +26,7 @@
 
 .flower-spinner,
 .flower-spinner * {
-    will-change: transform;
+    box-sizing: border-box;
 }
 
 .flower-spinner {
