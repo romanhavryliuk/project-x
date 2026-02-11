@@ -44,7 +44,6 @@ main {
 
 html {
   height: 100%;
-  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   font-size: 16px;
 }
