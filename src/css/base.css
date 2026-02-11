@@ -38,7 +38,13 @@
   padding: 0;
 }
 
+main {
+  flex-grow: 1;
+}
+
 html {
+  height: 100%;
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -49,6 +55,8 @@ body {
   color: var(--clr-white);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Typography Adaptation */
