@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  min-height: 5485px;
 }
 
 .artists-header-wrapper {
@@ -144,7 +145,6 @@
   opacity: 0.6;
 }
 
-/* Клас для приховування */
 .is-hidden {
   display: none;
 }
@@ -217,6 +217,9 @@
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
+  .artists-container {
+    min-height: 5750px;
+  }
   .artists-list-wrapper {
     gap: 64px;
   }
@@ -264,6 +267,7 @@
 @media screen and (min-width: 1440px) {
   .artists-container {
     gap: 80px;
+    min-height: 2963px;
   }
 
   .artists-section {
