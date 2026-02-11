@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import $ from 'jquery';
 import 'raty-js';
+import spriteUrl from '/sprite.svg';
 window.jQuery = $;
 window.$ = $;
 import { mountLoader, showLoader, hideLoader } from './loader.js';
@@ -37,13 +38,13 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
     <div class="swiper-wrapper" id="feedbacks-container">
     
     </div>
-          <div class="swiper-button-prev" id="feedbacks-button-p" aria-label="Previous feedback">
+          <div class="swiper-button-prev" id="feedbacks-button-p">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-left"></use>
         </svg>
       </div>
 
-      <div class="swiper-button-next" id="feedbacks-button-n" aria-label="Next feedback">
+      <div class="swiper-button-next" id="feedbacks-button-n">
        <svg class="icons-arrow">
         <use href="sprite.svg#arrow-right"></use>
         </svg>
@@ -79,7 +80,7 @@ const markup = `<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 </div>
   `;
 
-root.innerHTML = markup;
+root.insertAdjacentHTML('afterbegin', markup);
 
 
 
@@ -120,7 +121,7 @@ async function initSwiper() {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     spaceBetween: 20,
-    loop: true,
+    loop: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -134,7 +135,9 @@ async function initSwiper() {
     on: {
       init: function () {
         updateNavButtons(this, feedbacks);
-     
+      },
+      slideChange: function () {
+        updateNavButtons(this);
       },
     }
   });

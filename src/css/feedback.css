@@ -153,7 +153,10 @@ h2.feedback-title-hidden {
   justify-content: center;
   align-items: center;
   margin: 30px auto 64px;
-  ;
+  
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 .feedback-button span {
@@ -325,10 +328,7 @@ h2.feedback-title-hidden {
   height: 47px;
 
   background: #764191;
-  border: none;
   border-radius: 12px;
-  color: #fff;
-  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
@@ -338,6 +338,10 @@ h2.feedback-title-hidden {
     inset 0px 2px 1px rgba(255, 255, 255, 0.25),
     inset 0px 0px 0px 1px rgba(6, 3, 7, 0.15),
     inset 0px -2px 1px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      opacity: 0.6;
+    }
 } 
 
 @media (max-width: 767px) {
