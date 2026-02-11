@@ -7,14 +7,14 @@ import $ from 'jquery';
 import 'raty-js';
 window.jQuery = $;
 window.$ = $;
-import { mountLoader, showLoader, hideLoader } from './loader.js';
-mountLoader('.feedback-section');
+// import { mountLoader, showLoader, hideLoader } from './loader.js';
+// mountLoader('.feedback-section');
 
 
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
 async function fetchFeedbacks() {
-  showLoader('.feedback-section');
+  // showLoader('.feedback-section');
   try {
     const response = await fetch(API_URL);
     const result = await response.json();
@@ -24,9 +24,9 @@ async function fetchFeedbacks() {
   } catch (error) {
     console.error('Error fetching feedbacks:', error);
     return [];
-  } finally {
-    hideLoader('.feedback-section');
-  }
+  // } finally {
+  //   hideLoader('.feedback-section');
+    }
 }
 
 const root = document.querySelector('.feedback-root-container');
