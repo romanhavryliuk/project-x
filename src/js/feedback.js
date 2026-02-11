@@ -10,7 +10,6 @@ window.$ = $;
 // import { mountLoader, showLoader, hideLoader } from './loader.js';
 // mountLoader('.feedback-section');
 
-
 const API_URL = 'https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1';
 
 async function fetchFeedbacks() {
