@@ -1,0 +1,266 @@
+/* =========================================
+   ARTISTS FILTER STYLES (Mobile First)
+   ========================================= */
+
+.filters-panel {
+    position: relative;
+    width: 100%;
+    max-width: 288px;
+    margin: 0 auto 32px;
+    font-family: var(--font-family);
+}
+
+/* --- Mobile / Tablet Toggle Button --- */
+.search-and-filters-toggle {
+    width: 100%;
+    height: 48px;
+    background-color: var(--overlay-light);
+    border: 1px solid var(--overlay-border);
+    border-radius: 12px;
+    color: var(--clr-white);
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-and-filters-toggle .dropdown-icon {
+    fill: transparent;
+    stroke: var(--clr-white);
+    transition: transform 0.3s ease;
+}
+
+.search-and-filters-toggle.open .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* --- Випадаючий блок фільтрів (Mobile/Tablet) --- */
+.filters-content {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background-color: #0d0d0d;
+    /* Темний фон як на макеті */
+    border: 1px solid var(--overlay-border);
+    border-radius: 16px;
+    padding: 16px;
+    z-index: 30;
+
+    /* Сховано за замовчуванням */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.filters-content.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* --- Внутрішні елементи (Заголовок, Reset) --- */
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters-title {
+    font-family: var(--third-family);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--clr-white);
+}
+
+.filters-reset-btn {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--clr-white);
+    text-decoration: underline;
+    background: transparent;
+}
+
+.filters-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --- Search --- */
+.artists-search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid var(--overlay-border);
+    border-radius: 12px;
+    color: var(--clr-white);
+    font-size: 16px;
+    padding-left: 44px;
+    padding-right: 16px;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus,
+.search-input:hover {
+    border-color: var(--clr-white);
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: transparent;
+    stroke: var(--clr-white);
+}
+
+/* --- Dropdowns --- */
+.dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid var(--overlay-border);
+    border-radius: 12px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--clr-white);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown-toggle:hover {
+    border-color: var(--clr-white);
+}
+
+.dropdown-toggle.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+}
+
+.dropdown-toggle.open .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-icon {
+    fill: transparent;
+    stroke: var(--clr-white);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #0d0d0d;
+    border: 1px solid var(--overlay-border);
+    border-top: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 8px 0;
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+.dropdown-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdown-menu li {
+    padding: 12px 16px;
+    font-size: 16px;
+    color: var(--clr-white);
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Фіолетовий скролбар */
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: var(--clr-primary);
+    border-radius: 10px;
+}
+
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+
+@media screen and (min-width: 768px) {
+    .filters-panel {
+        max-width: 704px;
+        margin-bottom: 48px;
+    }
+
+    .search-and-filters-toggle {
+        width: 233px;
+        /* Ширина як у твоєму оригінальному коді */
+    }
+
+    .filters-content {
+        max-width: 304px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .filters-panel {
+        max-width: 304px;
+        margin: 0;
+    }
+
+    .search-and-filters-toggle {
+        display: none;
+        /* Ховаємо мобільну кнопку */
+    }
+
+    .filters-content {
+        position: static;
+        /* Стає частиною потоку */
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        max-width: 100%;
+    }
+}
