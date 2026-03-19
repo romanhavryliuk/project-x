@@ -7,3 +7,4 @@ import './js/about-us.js';
 import './js/feedback.js';
 import './js/footer.js';
 import './js/artist-dialog-modal.js';
+import './js/filletr.js'; // або правильний шлях до файлу
