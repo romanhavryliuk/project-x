@@ -256,10 +256,10 @@
     align-items: center;
     display: flex
 }
- 
- .artist-form {
+
+.artist-form {
     margin: auto;
-     overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -353,9 +353,11 @@
         width: 576px;
         height: 354px;
     }
-    .artist_form_albums{
+
+    .artist_form_albums {
         width: 1184px;
     }
+
     .artist_form_upper_container {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -387,7 +389,8 @@
     .artist-modal-header {
         margin-bottom: 48px;
     }
-        .artist-form {
+
+    .artist-form {
         flex-direction: column;
         gap: 48px;
 
