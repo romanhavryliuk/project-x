@@ -1,0 +1,49 @@
+<div class="filters-panel">
+    <button class="search-and-filters-toggle">
+        <span>Search & Filters</span>
+        <svg class="dropdown-icon" width="24" height="24" aria-hidden="true">
+            <use href="./sprite.svg#icon-chevron-down"></use>
+        </svg>
+    </button>
+
+    <div class="filters-content">
+        <header class="filters-header">
+            <h3 class="filters-title">Filters</h3>
+            <button class="filters-reset-btn">Reset</button>
+        </header>
+
+        <div class="filters-inputs">
+            <div class="artists-search-wrapper">
+                <svg class="search-icon" width="20" height="20" aria-hidden="true">
+                    <use href="./sprite.svg#icon-search"></use>
+                </svg>
+                <input class="search-input" type="text" placeholder="Search" autocomplete="off" />
+            </div>
+
+            <div class="dropdown-container artists-dropdown-sort">
+                <button class="dropdown-toggle dropdown-toggle-sort">
+                    <span class="dropdown-label">Sorting</span>
+                    <svg class="dropdown-icon" width="24" height="24" aria-hidden="true">
+                        <use href="./sprite.svg#icon-chevron-down"></use>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-sort">
+                    <li data-value="">Default</li>
+                    <li data-value="asc">A-Z</li>
+                    <li data-value="desc">Z-A</li>
+                </ul>
+            </div>
+
+            <div class="dropdown-container artists-dropdown-genres">
+                <button class="dropdown-toggle dropdown-toggle-genres">
+                    <span class="dropdown-label">Genre</span>
+                    <svg class="dropdown-icon" width="24" height="24" aria-hidden="true">
+                        <use href="./sprite.svg#icon-chevron-down"></use>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-genres">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
