@@ -1,4 +1,4 @@
-import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const v=document.querySelector(".header");v.innerHTML=`
+import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const y=document.querySelector(".header");y.innerHTML=`
 <div class="container">
 
 <nav class="page-nav">
@@ -47,7 +47,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
       </ul>
       </div>
 
-      </div>`;const N=document.querySelector(".burger-icon-btn"),I=document.querySelector(".close-icon-btn"),w=document.querySelector(".menu-modal"),C=document.querySelectorAll(".mobile-section-link");N.addEventListener("click",()=>{v.classList.add("menu-open"),w.classList.add("is-open"),document.body.style.overflow="hidden"});I.addEventListener("click",()=>{v.classList.remove("menu-open"),w.classList.remove("is-open"),document.body.style.overflow="auto"});C.forEach(t=>{t.addEventListener("click",()=>{v.classList.remove("menu-open"),w.classList.remove("is-open"),document.body.style.overflow="auto"})});const O=document.querySelector("#hero");O.innerHTML=`
+      </div>`;const I=document.querySelector(".burger-icon-btn"),C=document.querySelector(".close-icon-btn"),A=document.querySelector(".menu-modal"),D=document.querySelectorAll(".mobile-section-link");I.addEventListener("click",()=>{y.classList.add("menu-open"),A.classList.add("is-open"),document.body.style.overflow="hidden"});C.addEventListener("click",()=>{y.classList.remove("menu-open"),A.classList.remove("is-open"),document.body.style.overflow="auto"});D.forEach(t=>{t.addEventListener("click",()=>{y.classList.remove("menu-open"),A.classList.remove("is-open"),document.body.style.overflow="auto"})});const O=document.querySelector("#hero");O.innerHTML=`
   <div class="container hero_container">
     <div class="hero_blok">
       <h1 class="title_hero">Discover Your Next Favorite Artist Today</h1>
@@ -65,7 +65,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;document.getElementById("hero_explore").addEventListener("click",function(){const t=document.getElementById("artists");t&&t.scrollIntoView({behavior:"smooth",block:"start"})});const D=`<div class="loader-backdrop is-hidden" data-loader>
+`;document.getElementById("hero_explore").addEventListener("click",function(){const t=document.getElementById("artists");t&&t.scrollIntoView({behavior:"smooth",block:"start"})});const R=`<div class="loader-backdrop is-hidden" data-loader>
   <div class="flower-spinner">
     <div class="dots-container">
       <div class="bigger-dot">
@@ -74,7 +74,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
   </div>
 </div>
-`,l=new Map;function k(t){const e=document.querySelector(t);e&&(e.querySelector("[data-loader]")||e.insertAdjacentHTML("afterbegin",D))}function S(t){return document.querySelector(`${t} [data-loader]`)}function _(t){var s;const e=(l.get(t)??0)+1;l.set(t,e),(s=S(t))==null||s.classList.remove("is-hidden")}function L(t){var s;const e=(l.get(t)??0)-1;e<=0?(l.set(t,0),(s=S(t))==null||s.classList.add("is-hidden")):l.set(t,e)}const d=document.querySelector("#artists");k("#artists");const f=8;let h=1,g=null;function F(){d.querySelector(".artists-container")||d.insertAdjacentHTML("beforeend",`
+`,v=new Map;function x(t){const e=document.querySelector(t);e&&(e.querySelector("[data-loader]")||e.insertAdjacentHTML("afterbegin",R))}function q(t){return document.querySelector(`${t} [data-loader]`)}function E(t){var s;const e=(v.get(t)??0)+1;v.set(t,e),(s=q(t))==null||s.classList.remove("is-hidden")}function $(t){var s;const e=(v.get(t)??0)-1;e<=0?(v.set(t,0),(s=q(t))==null||s.classList.add("is-hidden")):v.set(t,e)}const b=document.querySelector("#artists");x("#artists");const w=8;let L=1,k=null;function F(){b.querySelector(".artists-container")||b.insertAdjacentHTML("beforeend",`
     <div class="container artists-container">
       <div class="artists-header-wrapper">  
         <h2 class="artists-title">Artist</h2>
@@ -86,7 +86,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
         <div id="artists-pagination" class="tui-pagination"></div>
       </div>
     </div>
-    `)}function R(t){const e=d.querySelector(".artists-list");e.innerHTML=t.map(s=>`
+    `)}function U(t){const e=b.querySelector(".artists-list");e.innerHTML=t.map(s=>`
       <li class="artist-card" data-id="${s._id}">
         <div class="artist-image-wrapper">
           <img class="artist-image"
@@ -115,7 +115,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
           </svg>
         </button>
       </li>
-    `).join("")}async function E(t=1){F(),_("#artists");try{const e=await $.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:f,page:t}}),{artists:s,totalArtists:o}=e.data;R(s);const a=d.querySelector("#artists-pagination");g||(g=new H(a,{totalItems:o,itemsPerPage:f,visiblePages:5,page:t,centerAlign:!0}),g.on("afterMove",r=>{h=r.page,E(h),d.scrollIntoView({behavior:"smooth",block:"start"})}));const i=Math.ceil(o/f);a.style.display=i<=1?"none":""}catch(e){console.error("Помилка завантаження артистів:",e)}finally{L("#artists")}}E(h);const y=document.querySelector(".artist_form_upper"),n=document.querySelector(".artist_form_albums");k("#artist-modal");const U=$.create({baseURL:"https://sound-wave.b.goit.study/api"});function V({strArtist:t,strArtistThumb:e,intFormedYear:s,intDiedYear:o,strGender:a,intMembers:i,strCountry:r,strBiographyEN:c,genres:M}){let u;s&&s!=="null"?o&&o!=="null"?u=`${s}–${o}`:u=`${s}–present`:u="Information missing";const q=` 
+    `).join("")}async function T(t=1){F(),E("#artists");try{const e=await M.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:w,page:t}}),{artists:s,totalArtists:o}=e.data;U(s);const a=b.querySelector("#artists-pagination");k||(k=new H(a,{totalItems:o,itemsPerPage:w,visiblePages:5,page:t,centerAlign:!0}),k.on("afterMove",r=>{L=r.page,T(L),b.scrollIntoView({behavior:"smooth",block:"start"})}));const i=Math.ceil(o/w);a.style.display=i<=1?"none":""}catch(e){console.error("Помилка завантаження артистів:",e)}finally{$("#artists")}}T(L);const _=document.querySelector(".artist_form_upper"),m=document.querySelector(".artist_form_albums");x("#artist-modal");const W=M.create({baseURL:"https://sound-wave.b.goit.study/api"});function G({strArtist:t,strArtistThumb:e,intFormedYear:s,intDiedYear:o,strGender:a,intMembers:i,strCountry:r,strBiographyEN:l,genres:u}){let n;s&&s!=="null"?o&&o!=="null"?n=`${s}–${o}`:n=`${s}–present`:n="Information missing";const p=` 
     <div class="artist-modal-header">
    
       <h2 class="artist-title">${t}</h2>
@@ -131,7 +131,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
           <ul class="stats-list parent-upper">
             <li class="stats-item upper-grid-one">
               <span class="stats-label">Years active</span>
-              <span class="stats-value">${u}</span>
+              <span class="stats-value">${n}</span>
             </li>
             <li class="stats-item upper-grid-two">
               <span class="stats-label">Sex</span>
@@ -150,15 +150,15 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
         <div class="artist-modal-biography">
           <h3 class="bio-title">Biography</h3>
           <p class="bio-text">
-            ${c}
+            ${l}
           </p>
         </div>
         <ul class="genre-list">
-        ${M.map(T=>`<li class="genre-item"><p class="genre-name">${T}</p></li>`).join("")}
+        ${u.map(f=>`<li class="genre-item"><p class="genre-name">${f}</p></li>`).join("")}
         </ul>
 </div>
     </div>
-  `;y.insertAdjacentHTML("beforeend",q)}function W(t){y&&(y.innerHTML=""),n&&(n.innerHTML=""),_("#artist-modal"),fetch(`https://sound-wave.b.goit.study/api/artists/${t}`).then(e=>{if(!e.ok)throw new Error(e.status);return e.json()}).then(e=>V(e)).catch(e=>console.log("Error fetching artist data:",e)),G(t)}async function z(t){try{return(await U.get(`/artists/${t}/albums`)).data}catch(e){throw console.error("Error fetching artist albums:",e),e}}async function G(t){try{const e=await z(t);if(!e.albumsList||e.albumsList.length===0){n&&(n.innerHTML="<p>Альбомів не знайдено</p>");return}const s=a=>{const i=Math.floor(Number(a)/1e3),r=Math.floor(i/60),c=i%60;return`${r}:${c.toString().padStart(2,"0")}`},o=`
+  `;_.insertAdjacentHTML("beforeend",p)}function V(t){_&&(_.innerHTML=""),m&&(m.innerHTML=""),E("#artist-modal"),fetch(`https://sound-wave.b.goit.study/api/artists/${t}`).then(e=>{if(!e.ok)throw new Error(e.status);return e.json()}).then(e=>G(e)).catch(e=>console.log("Error fetching artist data:",e)),K(t)}async function z(t){try{return(await W.get(`/artists/${t}/albums`)).data}catch(e){throw console.error("Error fetching artist albums:",e),e}}async function K(t){try{const e=await z(t);if(!e.albumsList||e.albumsList.length===0){m&&(m.innerHTML="<p>Альбомів не знайдено</p>");return}const s=a=>{const i=Math.floor(Number(a)/1e3),r=Math.floor(i/60),l=i%60;return`${r}:${l.toString().padStart(2,"0")}`},o=`
   <h2 class="albums-title">Albums</h2> 
   <div class="albums-list"> 
     ${e.albumsList.map(a=>`
@@ -189,7 +189,7 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
       </div>
     `).join("")}
   </div> 
-`;n&&(n.innerHTML=o)}catch(e){console.error("Error rendering artist albums:",e)}finally{L("#artist-modal")}}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".about-section");t.innerHTML=`
+`;m&&(m.innerHTML=o)}catch(e){console.error("Error rendering artist albums:",e)}finally{$("#artist-modal")}}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".about-section");t.innerHTML=`
         <div class="about-container container">
             <div class="about-team-photo">
             <picture>
@@ -230,55 +230,62 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
                 </p>
             </div>
         </div>
-    `});const p="/project-x/sprite.svg",K="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1",x=document.querySelector(".feedback-root-container"),X=()=>{x&&(x.innerHTML=`
-    <h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
-    <div class="swiper feedbacks-swiper">
-      <div class="swiper-wrapper" id="feedbacks-container"></div>
-      
-      <div class="swiper-button-prev" id="feedbacks-button-p">
-        <svg class="icons-arrow"><use href="${p}#arrow-left"></use></svg>
-      </div>
+    `});x(".feedback-section");const X="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function Y(){E(".feedback-section");try{const e=await(await fetch(X)).json();return(Array.isArray(e.data)?e.data:[]).slice(0,10)}catch(t){return console.error("Error fetching feedbacks:",t),[]}finally{$(".feedback-section")}}const J=document.querySelector(".feedback-root-container"),Q=`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
-      <div class="swiper-button-next" id="feedbacks-button-n">
-        <svg class="icons-arrow"><use href="${p}#arrow-right"></use></svg>
-      </div>
-      
-      <div class="swiper-pagination"></div>
+  <div class="swiper feedbacks-swiper">
+    <div class="swiper-wrapper" id="feedbacks-container">
+    
     </div>
+          <div class="swiper-button-prev" id="feedbacks-button-p" aria-label="Previous feedback">
+       <svg class="icons-arrow">
+        <use href="sprite.svg#arrow-left"></use>
+        </svg>
+      </div>
 
-    <button type="button" class="feedback-button" id="Leave-feedback">Leave feedback</button>
+      <div class="swiper-button-next" id="feedbacks-button-n" aria-label="Next feedback">
+       <svg class="icons-arrow">
+        <use href="sprite.svg#arrow-right"></use>
+        </svg>
+      </div>
+ <div class="swiper-pagination"></div>
+ </div>
+ <button type="button" class="feedback-button" id="Leave-feedback">
+          Leave feedback
+         </button>
 
     <div class="feedback-modal-backdrop" hidden>
-      <div class="feedback-modal">
-        <button class="feedback-modal-close"></button>
-        <h2 class="feedback-modal-title">Submit feedback</h2>
-        <form class="feedback-modal-form">
-          <label>Name
-            <input type="text" class="feedback-modal-input" placeholder="Emily">
-          </label>
-          <label>Message
-            <textarea name="message" class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
-          </label>
-          <div class="feedback-modal-stars"></div>
-          <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
-        </form>
-      </div>
-    </div>
-  `)};async function Y(){try{const e=await(await fetch(K)).json();return Array.isArray(e.data)?e.data.slice(0,10):[]}catch(t){return console.error("Error fetching feedbacks:",t),[]}}function J(t){const e=Math.round(Number(t)||0);return Array.from({length:5},(s,o)=>`
-    <svg class="star-icon ${o<e?"star-filled":"star-empty"}" width="18" height="18">
-      <use href="${p}#star"></use>
-    </svg>
-  `).join("")}async function Q(){X(),k(".feedback-root-container");const t=document.getElementById("feedbacks-container");try{_(".feedback-root-container");const e=await Y();if(!e.length){t.innerHTML='<div class="swiper-slide">No feedbacks yet.</div>';return}t.innerHTML=e.map(s=>`
-      <div class="swiper-slide feedback-content">
-        <div class="star-rating">${J(s.rating)}</div>
-        <div class="feedback-text">${s.descr||""}</div>
-        <div class="feedback-author">${s.name||""}</div>
-      </div>
-    `).join(""),new B(".feedbacks-swiper",{modules:[j,P],slidesPerView:1,spaceBetween:20,observer:!0,observeParents:!0,resizeObserver:!0,navigation:{nextEl:"#feedbacks-button-n",prevEl:"#feedbacks-button-p"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0},breakpoints:{768:{slidesPerView:1},1440:{slidesPerView:1}},on:{init:function(){A(this)},slideChange:function(){A(this)}}})}catch(e){console.error("Critical error in feedback module:",e),t.innerHTML='<div class="error-message">Something went wrong.</div>'}finally{L(".feedback-root-container")}}function A(t){const e=document.querySelector("#feedbacks-button-p"),s=document.querySelector("#feedbacks-button-n");e&&s&&(e.classList.toggle("disabled",t.isBeginning),s.classList.toggle("disabled",t.isEnd))}(()=>{document.addEventListener("click",e=>{const s=document.querySelector(".feedback-modal-backdrop");s&&(e.target.closest("#Leave-feedback")&&(s.removeAttribute("hidden"),document.body.classList.add("no-scroll"),t()),(e.target.closest(".feedback-modal-close")||e.target===s)&&(s.setAttribute("hidden",""),document.body.classList.remove("no-scroll")))});function t(e=0){const s=document.querySelector(".feedback-modal-stars");s&&(s.innerHTML=Array.from({length:5},(o,a)=>`
-      <svg class="star-icon ${a<e?"selected":""}" width="18" height="18" data-index="${a+1}">
-        <use href="${p}#star"></use>
-      </svg>
-    `).join(""),s.addEventListener("click",o=>{const a=o.target.closest(".star-icon");if(!a)return;const i=parseInt(a.dataset.index);s.querySelectorAll(".star-icon").forEach((r,c)=>{r.classList.toggle("selected",c<i)})}))}document.addEventListener("submit",e=>{if(e.target.classList.contains("feedback-modal-form")){e.preventDefault();const s=e.target,o=s.querySelector(".feedback-modal-input"),a=s.querySelector(".feedback-modal-textarea");let i=!1;[o,a].forEach(r=>{r.value.trim()?r.classList.remove("error"):(r.classList.add("error"),i=!0),r.oninput=()=>r.classList.remove("error")}),i||(console.log("Form submitted!"),s.reset(),document.querySelector(".feedback-modal-backdrop").setAttribute("hidden",""))}})})();Q();const Z=document.querySelector(".footer__container");Z.innerHTML=`
+  <div class="feedback-modal">
+
+    <button class="feedback-modal-close"></button>
+
+    <h2 class="feedback-modal-title">Submit feedback</h2>
+
+    <form class="feedback-modal-form">
+      <label>
+        Name
+        <input type="text" class="feedback-modal-input" placeholder="Emily">
+      </label>
+
+      <label>
+        Message
+        <textarea class="feedback-modal-textarea" placeholder="Type your message..."></textarea>
+      </label>
+<div class="feedback-modal-stars"></div>
+
+      <button type="submit" class="feedback-modal-button" id="submit-button">Submit</button>
+    </form>
+  </div>
+</div>
+  `;J.innerHTML=Q;function Z(t){const e=document.createElement("div");e.classList.add("swiper-slide","feedback-content");const s=Number(t.rating)||0,o=Math.round(s);let a="";for(let i=1;i<=5;i++){const r=i<=o?"star-filled":"star-empty";a+=`
+<svg class="star-icon ${r}" width="18" height="18">
+ <use href="sprite.svg#star"></use>
+</svg>`}return e.innerHTML=`
+<div class="star-rating">${a}</div>
+<div class="feedback-text">${t.descr||""}</div>
+<div class="feedback-author">${t.name||""}</div>
+`,e}async function ee(){const t=document.getElementById("feedbacks-container");(await Y()).forEach(s=>{t.appendChild(Z(s))}),new P(".feedbacks-swiper",{modules:[j,N],slidesPerView:1,spaceBetween:20,loop:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0},on:{init:function(){te(this)}}})}function te(t){const e=document.querySelector(".swiper-button-prev"),s=document.querySelector(".swiper-button-next");e&&s&&(e.classList.toggle("disabled",t.isBeginning),s.classList.toggle("disabled",t.isEnd))}ee();(()=>{const t=document.querySelector("#Leave-feedback"),e=document.querySelector(".feedback-modal-close"),s=document.querySelector(".feedback-modal-backdrop"),o=document.body;if(!t||!e||!s){console.log("not found");return}t.addEventListener("click",()=>{s.removeAttribute("hidden"),o.classList.add("no-scroll"),i()}),e.addEventListener("click",()=>{s.setAttribute("hidden",""),o.classList.remove("no-scroll")}),window.addEventListener("keydown",n=>{n.key==="Escape"&&!s.hasAttribute("hidden")&&(s.setAttribute("hidden",""),o.classList.remove("no-scroll"))}),s.addEventListener("click",n=>{n.target===s&&(s.setAttribute("hidden",""),o.classList.remove("no-scroll"))});let a=0;function i(n=0){const c=document.querySelector(".feedback-modal-stars");if(!c)return;c.innerHTML="";for(let p=1;p<=5;p++)c.insertAdjacentHTML("beforeend",`<svg class="star-icon ${p<=n?"selected":""}" width="18" height="18">
+         <use href="sprite.svg#star"></use>
+       </svg>`);const d=c.querySelectorAll(".star-icon");d.forEach((p,f)=>{p.addEventListener("click",()=>{a=f+1,d.forEach((S,B)=>{B<=f?S.classList.add("selected"):S.classList.remove("selected")})})})}const r=document.querySelector(".feedback-modal-form"),l=r.querySelector(".feedback-modal-input"),u=r.querySelector(".feedback-modal-textarea");r.addEventListener("submit",async n=>{n.preventDefault();let c=!1;if(l.value.trim()?l.classList.remove("error"):(l.classList.add("error"),c=!0),u.value.trim()?u.classList.remove("error"):(u.classList.add("error"),c=!0),[l,u].forEach(d=>{d&&d.addEventListener("input",()=>{d.classList.remove("error")})}),!c){const d={name:l.value.trim(),descr:u.value.trim(),rating:a};console.log("Form submitted with data:",d)}})})();const se=document.querySelector(".footer__container");se.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link" aria-label="ArtistsHub - back to main page">
@@ -316,5 +323,5 @@ import{a as $,P as H,S as B,N as j,b as P}from"./assets/vendor-C0vgnQQC.js";(fun
       © ${new Date().getFullYear()} Project-X
     </div>
   </div>
-`;const m=document.querySelector("#artist-modal"),b=document.body;document.addEventListener("click",t=>{const e=t.target.closest(".js-open-modal-artist");if(e){const s=e.dataset.id;W(s);const o=window.innerWidth-document.documentElement.clientWidth;o>0&&(b.style.paddingRight=`${o}px`),b.classList.add("no-scroll"),m.showModal();return}(t.target.closest("#close-modal-artist")||t.target===m)&&m.close()});m.addEventListener("close",()=>{b.classList.remove("no-scroll"),b.style.paddingRight=""});
+`;const g=document.querySelector("#artist-modal"),h=document.body;document.addEventListener("click",t=>{const e=t.target.closest(".js-open-modal-artist");if(e){const s=e.dataset.id;V(s);const o=window.innerWidth-document.documentElement.clientWidth;o>0&&(h.style.paddingRight=`${o}px`),h.classList.add("no-scroll"),g.showModal();return}(t.target.closest("#close-modal-artist")||t.target===g)&&g.close()});g.addEventListener("close",()=>{h.classList.remove("no-scroll"),h.style.paddingRight=""});
 //# sourceMappingURL=index.js.map
