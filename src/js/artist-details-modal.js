@@ -31,7 +31,7 @@ function renderArtistProfile({
     yearsInfo = 'Information missing';
   } else if (isDead) {
     // Є і початок, і кінець
-    yearsInfo = `${intFormedYear}–${intDiedYear}`;
+    yearsInfo = `${intFormedYear}-${intDiedYear}`;
   } else {
     // Є початок, але немає кінця (або там написано "null")
     yearsInfo = `${intFormedYear}–present`;
