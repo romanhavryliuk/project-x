@@ -233,6 +233,13 @@ function resetPagination() {
 
 function renderArtistsList(artists) {
   const listEl = artistsSection.querySelector('.artists-list');
+
+  if (!artists || artists.length === 0) {
+    listEl.innerHTML =
+      '<li class="no-artists-message"><p>No artists found.</p></li>';
+    return;
+  }
+
   listEl.innerHTML = artists
     .map(
       artist => `

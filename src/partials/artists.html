@@ -1,1 +1,65 @@
-<section class="artists-section" id="artists"></section>
+<section class="artists-section" id="artists">
+  <aside class="filters-sidebar">
+    <h2 class="filters-title">Filters</h2>
+
+    <details class="filter-section" open>
+      <summary class="filter-header">
+        Search and Filters
+        <span class="chevron"></span>
+      </summary>
+
+      <div class="filter-content">
+        <div class="search-container">
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            id="filter-search"
+            placeholder="Search"
+            class="search-input"
+          />
+        </div>
+
+        <details class="sub-section" open>
+          <summary class="sub-header">
+            Sorting
+            <span class="chevron"></span>
+          </summary>
+
+          <div class="sort-options">
+            <label class="sort-label">
+              <input type="radio" name="sort-order" value="default" checked />
+              <span class="sort-text">Default</span>
+            </label>
+            <label class="sort-label">
+              <input type="radio" name="sort-order" value="asc" />
+              <span class="sort-text">A-Z</span>
+            </label>
+            <label class="sort-label">
+              <input type="radio" name="sort-order" value="desc" />
+              <span class="sort-text">Z-A</span>
+            </label>
+          </div>
+        </details>
+
+        <details class="sub-section">
+          <summary class="sub-header">
+            Genre
+            <span class="chevron"></span>
+          </summary>
+          <div class="genre-options"></div>
+        </details>
+      </div>
+    </details>
+  </aside>
+</section>
