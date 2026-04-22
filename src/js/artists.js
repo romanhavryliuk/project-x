@@ -62,6 +62,7 @@ function ensureLayout() {
             </svg>
           </button>
           <ul class="artists-dropdown-list" role="listbox" hidden>
+            <li class="artists-dropdown-item" data-value="" role="option">Default</li>
             <li class="artists-dropdown-item" data-value="name_asc" role="option">A &rarr; Z</li>
             <li class="artists-dropdown-item" data-value="name_desc" role="option">Z &rarr; A</li>
           </ul>
@@ -88,12 +89,14 @@ async function fetchGenres() {
       '[data-dropdown="genre"] .artists-dropdown-list'
     );
     if (!genreList) return;
-    genreList.innerHTML = genres
-      .map(
-        g =>
-          `<li class="artists-dropdown-item" data-value="${g}" role="option">${g}</li>`
-      )
-      .join('');
+    genreList.innerHTML =
+      `<li class="artists-dropdown-item" data-value="" role="option">All Genres</li>` +
+      genres
+        .map(
+          g =>
+            `<li class="artists-dropdown-item" data-value="${g.genre}" role="option">${g.genre}</li>`
+        )
+        .join('');
   } catch (err) {
     console.error('Failed to fetch genres:', err);
   }
@@ -142,10 +145,10 @@ function initFilterEvents() {
 
       if (type === 'genre') {
         selectedGenre = value;
-        label.textContent = value;
+        label.textContent = value || 'Genre';
       } else if (type === 'sort') {
         selectedSort = value;
-        label.textContent = item.textContent;
+        label.textContent = value ? item.textContent : 'Sort';
       }
 
       closeAllDropdowns();
@@ -263,11 +266,16 @@ export async function renderArtistsSection(pageToRender = 1) {
   try {
     const params = { limit, page: pageToRender };
     if (selectedGenre) params.genre = selectedGenre;
-    if (selectedSort) params.sort = selectedSort;
-    if (searchQuery) params.search = searchQuery;
+    if (searchQuery) params.name = searchQuery;
 
     const response = await axios.get(`${API_BASE}/artists`, { params });
-    const { artists, totalArtists } = response.data;
+    let { artists, totalArtists } = response.data;
+
+    if (selectedSort === 'name_asc') {
+      artists = [...artists].sort((a, b) => a.strArtist.localeCompare(b.strArtist));
+    } else if (selectedSort === 'name_desc') {
+      artists = [...artists].sort((a, b) => b.strArtist.localeCompare(a.strArtist));
+    }
 
     const paginationEl = artistsSection.querySelector('#artists-pagination');
     const totalPages = Math.ceil(totalArtists / limit);
