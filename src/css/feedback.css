@@ -330,6 +330,10 @@ h2.feedback-title-hidden {
   fill: #764191;
 }
 
+.feedback-modal-stars.error .star-icon {
+  fill: var(--clr-error);
+}
+
 .feedback-modal-button {
   width: 288px;
   height: 47px;

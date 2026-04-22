@@ -1,5 +1,3 @@
-
-
 .artists-section {
   padding: 64px 0;
 }
@@ -96,7 +94,8 @@
 .artist-description {
   font-size: 18px;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* ← скільки рядків показувати */
+  -webkit-line-clamp: 2;
+  /* ← скільки рядків показувати */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -147,6 +146,166 @@
 
 .is-hidden {
   display: none;
+}
+
+/* ------- Filter bar ------- */
+
+.artists-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Search */
+
+.artists-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.artists-search-input {
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: var(--clr-white);
+  font-size: 14px;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.artists-search-input::placeholder {
+  color: var(--clr-gray-600);
+}
+
+.artists-search-input:focus {
+  border-color: var(--clr-primary);
+}
+
+.artists-search-btn {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--clr-white);
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.artists-search-btn svg {
+  fill: var(--clr-white);
+  display: block;
+}
+
+/* Dropdowns */
+
+.artists-dropdown {
+  position: relative;
+}
+
+.artists-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: var(--clr-white);
+  font-size: 14px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--clr-primary);
+  }
+}
+
+.artists-dropdown-chevron {
+  fill: var(--clr-white);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.artists-dropdown-btn[aria-expanded="true"] .artists-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.artists-dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background: var(--clr-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 4px 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+}
+
+.artists-dropdown-item {
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--clr-white);
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(118, 65, 145, 0.25);
+  }
+
+  &.is-selected {
+    background: var(--clr-primary);
+  }
+}
+
+/* Reset button */
+
+.artists-reset-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--clr-primary);
+  border-radius: 8px;
+  color: var(--clr-primary);
+  font-size: 14px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Empty state */
+
+.artists-empty {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--clr-gray-400);
+  list-style: none;
 }
 
 /* ------- Pagination styles ------- */
@@ -220,6 +379,7 @@
   .artists-container {
     min-height: 5750px;
   }
+
   .artists-list-wrapper {
     gap: 64px;
   }
@@ -292,5 +452,3 @@
     width: 170px;
   }
 }
-
-
