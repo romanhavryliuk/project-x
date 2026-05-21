@@ -21,70 +21,92 @@ function ensureLayout() {
   if (artistsSection.querySelector('.artists-container')) return;
 
   artistsSection.insertAdjacentHTML(
-    'beforeend',
-    `
+  'beforeend',
+  `
+  <div class="container artists-container">
+    <div class="artists-header-wrapper">
+      <h2 class="artists-title">Artists</h2>
+      <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+    </div>
+
     <div class="artists-filters-section">
-  <div class="artists-filters-head">
-    <p class="artists-filters-label">Filters</p>
-    <button class="artists-reset-btn" type="button">Reset</button>
-  </div>
-
-  <div class="artists-filters-control">
-    <button
-      class="artists-filters-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="artists-filters-panel"
-    >
-      Search and Filters
-      <svg class="artists-filters-chevron" width="16" height="16">
-        <use href="${spriteUrl}#chevron-down"></use>
-      </svg>
-    </button>
-
-    <div class="artists-filters" id="artists-filters-panel">
-      <div class="artists-search-wrapper">
-        <input
-          type="text"
-          class="artists-search-input"
-          placeholder="Search"
-          aria-label="Search artists"
-        />
-        <button class="artists-search-btn" type="button" aria-label="Search">
-          <svg width="20" height="20">
-            <use href="${spriteUrl}#search"></use>
-          </svg>
-        </button>
+      <div class="artists-filters-head">
+        <p class="artists-filters-label">Filters</p>
+        <button class="artists-reset-btn" type="button">Reset</button>
       </div>
 
-      <div class="artists-dropdown" data-dropdown="sort">
-        <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
-          <span class="artists-dropdown-label">Sorting</span>
-          <svg class="artists-dropdown-chevron" width="16" height="16">
+      <div class="artists-filters-control">
+        <button
+          class="artists-filters-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="artists-filters-panel"
+        >
+          Search and Filters
+          <svg class="artists-filters-chevron" width="16" height="16">
             <use href="${spriteUrl}#chevron-down"></use>
           </svg>
         </button>
-        <ul class="artists-dropdown-list" role="listbox" hidden>
-          <li class="artists-dropdown-item" data-value="" role="option">Default</li>
-          <li class="artists-dropdown-item" data-value="name_asc" role="option">A-Z</li>
-          <li class="artists-dropdown-item" data-value="name_desc" role="option">Z-A</li>
-        </ul>
-      </div>
 
-      <div class="artists-dropdown" data-dropdown="genre">
-        <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
-          <span class="artists-dropdown-label">Genre</span>
-          <svg class="artists-dropdown-chevron" width="16" height="16">
-            <use href="${spriteUrl}#chevron-down"></use>
-          </svg>
-        </button>
-        <ul class="artists-dropdown-list" role="listbox" hidden></ul>
+        <div class="artists-filters" id="artists-filters-panel">
+          <div class="artists-search-wrapper">
+            <input
+              type="text"
+              class="artists-search-input"
+              placeholder="Search"
+              aria-label="Search artists"
+            />
+            <button class="artists-search-btn" type="button" aria-label="Search">
+              <svg width="20" height="20">
+                <use href="${spriteUrl}#search"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="artists-dropdown" data-dropdown="sort">
+            <button
+              class="artists-dropdown-btn"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span class="artists-dropdown-label">Sorting</span>
+              <svg class="artists-dropdown-chevron" width="16" height="16">
+                <use href="${spriteUrl}#chevron-down"></use>
+              </svg>
+            </button>
+            <ul class="artists-dropdown-list" role="listbox" hidden>
+              <li class="artists-dropdown-item" data-value="" role="option">Default</li>
+              <li class="artists-dropdown-item" data-value="name_asc" role="option">A-Z</li>
+              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z-A</li>
+            </ul>
+          </div>
+
+          <div class="artists-dropdown" data-dropdown="genre">
+            <button
+              class="artists-dropdown-btn"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span class="artists-dropdown-label">Genre</span>
+              <svg class="artists-dropdown-chevron" width="16" height="16">
+                <use href="${spriteUrl}#chevron-down"></use>
+              </svg>
+            </button>
+            <ul class="artists-dropdown-list" role="listbox" hidden></ul>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="artists-list-wrapper">
+      <ul class="artists-list"></ul>
+      <div id="artists-pagination" class="tui-pagination"></div>
+    </div>
   </div>
-</div>
-    `
-  );
+  `
+);
   initFilterEvents();
 }
 
@@ -157,13 +179,16 @@ function initFilterEvents() {
     '.artists-filters-toggle'
   );
   const filtersPanel = artistsSection.querySelector('.artists-filters');
+  if (filtersToggleBtn && filtersPanel) {
   filtersToggleBtn.addEventListener('click', () => {
     const isOpen = filtersToggleBtn.getAttribute('aria-expanded') === 'true';
+
     filtersToggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
     filtersPanel.classList.toggle('is-open', !isOpen);
   });
+}
 
-  // Dropdown toggle – one open at a time
+  // Dropdown toggle - one open at a time
   artistsSection.addEventListener('click', e => {
     const btn = e.target.closest('.artists-dropdown-btn');
     if (btn) {
@@ -233,7 +258,9 @@ function initFilterEvents() {
   // Reset
   const resetBtn = artistsSection.querySelector('.artists-reset-btn');
 
-resetBtn.addEventListener('click', resetArtistsFilters);
+if (resetBtn) {
+  resetBtn.addEventListener('click', resetArtistsFilters);
+}
 }
 
 function resetPagination() {
@@ -298,7 +325,7 @@ function renderEmptyState() {
       <h3 class="artists-empty-title">Silence on the stage...</h3>
        <p class="artists-empty-text">
         Looks like no artists match your filters.
-        Try changing them or hit “Reset Filters” to bring back the beat.
+Try changing them or hit "Reset Filters" to bring back the beat.
       </p>
       <button class="artists-empty-reset" type="button">Reset filters</button>
     </li>
