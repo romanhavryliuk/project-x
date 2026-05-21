@@ -43,7 +43,7 @@ function ensureLayout() {
             <input
               type="text"
               class="artists-search-input"
-              placeholder="Search artists..."
+              placeholder="Search"
               aria-label="Search artists"
             />
             <button class="artists-search-btn" type="button" aria-label="Search">
@@ -169,7 +169,7 @@ function initFilterEvents() {
         label.textContent = value || 'Genre';
       } else if (type === 'sort') {
         selectedSort = value;
-        label.textContent = value ? item.textContent : 'Sort';
+        label.textContent = value ? item.textContent : 'Sorting';
       }
 
       closeAllDropdowns();
@@ -214,7 +214,7 @@ function initFilterEvents() {
       artistsSection.querySelectorAll('.artists-dropdown').forEach(dd => {
         const type = dd.dataset.dropdown;
         dd.querySelector('.artists-dropdown-label').textContent =
-          type === 'genre' ? 'Genre' : 'Sort';
+          type === 'genre' ? 'Genre' : 'Sorting';
         dd.querySelectorAll('.artists-dropdown-item').forEach(i =>
           i.classList.remove('is-selected')
         );

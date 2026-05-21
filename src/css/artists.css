@@ -156,7 +156,10 @@
 }
 
 .artists-filters-label {
-  font-size: 14px;
+  font-family: var(--third-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
   color: var(--clr-white);
   margin-bottom: 8px;
 }
@@ -164,18 +167,20 @@
 .artists-filters-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
-  padding: 8px 16px;
-  width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: var(--clr-white);
-  font-size: 14px;
+  padding: 10px 24px;
+  width: 288px;
+  height: 47px;
+  border-radius: 12px;
+  font-size: 18px;
   font-family: var(--font-family);
+  font-weight: 500;
   cursor: pointer;
+  line-height: 1.5;
   transition: border-color 0.2s;
+  /* box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(6, 3, 7, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1); */
+  background: rgba(255, 255, 255, 0.1);
 
   &:hover {
     border-color: var(--clr-primary);
@@ -196,7 +201,10 @@
   display: none;
   flex-direction: column;
   gap: 12px;
-  margin-top: 12px;
+  background: #1e1c1f;
+  padding: 12px;
+  border-radius: 12px;
+
 }
 
 .artists-filters.is-open {
@@ -211,16 +219,22 @@
   align-items: center;
   flex: 1 1 180px;
   min-width: 180px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
 }
 
 .artists-search-input {
   width: 100%;
-  padding: 8px 40px 8px 12px;
+  padding: 8px 12px 8px 40px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 12px;
   color: var(--clr-white);
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
   font-family: var(--font-family);
   outline: none;
   transition: border-color 0.2s;
@@ -236,7 +250,7 @@
 
 .artists-search-btn {
   position: absolute;
-  right: 8px;
+  left: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,6 +274,16 @@
 
 .artists-dropdown {
   position: relative;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.artists-dropdown-list {
+  border-radius: 0 0 12px 12px;
+
 }
 
 .artists-dropdown-btn {
@@ -269,16 +293,16 @@
   padding: 8px 12px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 12px;
   color: var(--clr-white);
-  font-size: 14px;
+  font-size: 18px;
   font-family: var(--font-family);
   cursor: pointer;
   white-space: nowrap;
   transition: border-color 0.2s;
 
   &:hover {
-    border-color: var(--clr-primary);
+    /* border-color: var(--clr-primary); */
   }
 }
 
@@ -286,6 +310,11 @@
   fill: var(--clr-white);
   flex-shrink: 0;
   transition: transform 0.2s;
+}
+
+.artists-dropdown-btn[aria-expanded="true"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .artists-dropdown-btn[aria-expanded="true"] .artists-dropdown-chevron {
@@ -301,7 +330,7 @@
   overflow-y: auto;
   background: var(--clr-surface);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 4px 0;
   z-index: 100;
   list-style: none;
@@ -329,9 +358,9 @@
 .artists-reset-btn {
   padding: 8px 16px;
   background: transparent;
-  border: 1px solid var(--clr-primary);
-  border-radius: 8px;
-  color: var(--clr-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
   font-size: 14px;
   font-family: var(--font-family);
   cursor: pointer;
@@ -426,8 +455,8 @@
   .artists-dropdown-list {
     position: static;
     width: 100%;
-    margin-top: 4px;
-    border-radius: 8px;
+    /* margin-top: 4px; */
+    /* border-radius: 8px; */
   }
 
   .artists-reset-btn {
