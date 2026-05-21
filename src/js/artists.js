@@ -25,13 +25,13 @@ function ensureLayout() {
     `
     <div class="container artists-container">
        <div class="artists-header-wrapper">
-        <h2 class="artists-title">Artist</h2>
+        <h2 class="artists-title">Artists</h2>
         <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
       </div>
 
       <div class="artists-filters-section">
         <button class="artists-filters-toggle" type="button" aria-expanded="false" aria-controls="artists-filters-panel">
-          Filters
+          Search and Filters
           <svg class="artists-filters-chevron" width="16" height="16">
             <use href="${spriteUrl}#chevron-down"></use>
           </svg>
@@ -274,7 +274,7 @@ function renderArtistsList(artists) {
         <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
           Learn More
           <svg class="learn-more-icon" width="8" height="14">
-            <use href="sprite.svg#learn-more"></use>
+            <use href="${spriteUrl}#learn-more"></use>
           </svg>
         </button>
       </li>
@@ -289,8 +289,11 @@ function renderEmptyState() {
     <li class="artists-empty">
       <div class="artists-empty-icon" aria-hidden="true">!</div>
       <h3 class="artists-empty-title">Silence on the stage...</h3>
-      <p class="artists-empty-text">Looks like no artists match your filters. Try changing them or hit "Reset Filters" to bring back the beat.</p>
-      <button class="artists-empty-reset" type="button">Reset Filters</button>
+       <p class="artists-empty-text">
+        Looks like no artists match your filters.
+        Try changing them or hit “Reset Filters” to bring back the beat.
+      </p>
+      <button class="artists-empty-reset" type="button">Reset filters</button>
     </li>
   `;
   artistsSection
