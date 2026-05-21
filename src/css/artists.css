@@ -1,5 +1,3 @@
-
-
 .artists-section {
   padding: 64px 0;
 }
@@ -96,7 +94,8 @@
 .artist-description {
   font-size: 18px;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* ← скільки рядків показувати */
+  -webkit-line-clamp: 2;
+  /* ← скільки рядків показувати */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -147,6 +146,367 @@
 
 .is-hidden {
   display: none;
+}
+
+/* ------- Filter bar ------- */
+
+.artists-filters-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.artists-filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.artists-filters-label {
+  font-family: var(--third-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--clr-white);
+  margin-bottom: 8px;
+}
+
+.artists-filters-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  width: 288px;
+  height: 47px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+  /* box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(6, 3, 7, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.1); */
+  background: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    border-color: var(--clr-primary);
+  }
+}
+
+.artists-filters-chevron {
+  fill: var(--clr-white);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.artists-filters-toggle[aria-expanded='true'] .artists-filters-chevron {
+  transform: rotate(180deg);
+}
+
+.artists-filters {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  background: #1e1c1f;
+  padding: 12px;
+  border-radius: 12px;
+
+}
+
+.artists-filters.is-open {
+  display: flex;
+}
+
+/* Search */
+
+.artists-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 180px;
+  min-width: 180px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.artists-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 40px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--clr-white);
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.artists-search-input::placeholder {
+  color: var(--clr-gray-600);
+}
+
+.artists-search-input:focus {
+  border-color: var(--clr-primary);
+}
+
+.artists-search-btn {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--clr-white);
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.artists-search-btn svg {
+  fill: var(--clr-white);
+  display: block;
+}
+
+/* Dropdowns */
+
+.artists-dropdown {
+  position: relative;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.artists-dropdown-list {
+  border-radius: 0 0 12px 12px;
+  clip-path: inset(0 0 0 0 round 0 0 12px 12px);
+}
+
+.artists-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--clr-white);
+  font-size: 18px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+
+  &:hover {
+    /* border-color: var(--clr-primary); */
+  }
+}
+
+.artists-dropdown-chevron {
+  fill: var(--clr-white);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.artists-dropdown-btn[aria-expanded="true"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.artists-dropdown-btn[aria-expanded="true"] .artists-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.artists-dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100%;
+  max-height: 220px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--clr-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 0px;
+  /* border-radius: 8px; */
+  padding: 4px 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+}
+
+.artists-dropdown-item {
+  padding: 8px 14px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(118, 65, 145, 0.25);
+  }
+
+  &.is-selected {
+    background: var(--clr-primary);
+  }
+}
+
+/* Custom scrollbar */
+
+.artists-dropdown-list {
+  scrollbar-width: thin;
+  scrollbar-color: #7b5ea7 transparent;
+}
+
+.artists-dropdown-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-thumb {
+  background: #7b5ea7;
+  border-radius: 2px;
+  border-right: 6px solid transparent;
+  background-clip: padding-box;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-thumb:hover {
+  background: #9b5bbf;
+  background-clip: padding-box;
+}
+
+/* Reset button */
+
+.artists-reset-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--font-family);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Empty state */
+
+.artists-container.has-empty-state {
+  min-height: auto;
+}
+
+.artists-empty {
+  width: 100%;
+  padding: 40px 24px;
+  text-align: center;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.artists-empty-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--clr-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--clr-primary);
+  flex-shrink: 0;
+}
+
+.artists-empty-title {
+  font-family: var(--second-family);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--clr-white);
+  line-height: 1.3;
+}
+
+.artists-empty-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.artists-empty-reset {
+  padding: 12px 24px;
+  width: 100%;
+  background: var(--clr-primary);
+  border: none;
+  border-radius: 10px;
+  color: var(--clr-white);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+/* ------- Mobile filter overrides (max-width: 767px) ------- */
+
+@media screen and (max-width: 767px) {
+  .artists-filters-toggle {
+    width: 100%;
+  }
+
+  .artists-search-wrapper {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .artists-dropdown {
+    width: 100%;
+  }
+
+  .artists-dropdown-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .artists-dropdown-list {
+    position: static;
+    width: 100%;
+  }
 }
 
 /* ------- Pagination styles ------- */
@@ -217,9 +577,54 @@
 /* ------- Tablet styles ------- */
 
 @media screen and (min-width: 768px) {
+
+  .artists-filters-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .artists-filters-toggle {
+    width: auto;
+  }
+
+  .artists-filters {
+    position: absolute;
+    top: calc(100%);
+    right: 0;
+    width: 304px;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  .artists-filters .artists-search-wrapper {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .artists-filters .artists-dropdown {
+    width: 100%;
+  }
+
+  .artists-filters .artists-dropdown-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .artists-filters .artists-dropdown-list {
+    position: static;
+    width: 100%;
+    background: none;
+  }
+
+
+
   .artists-container {
     min-height: 5750px;
   }
+
   .artists-list-wrapper {
     gap: 64px;
   }
@@ -265,19 +670,64 @@
 /* ------- Desktop styles ------- */
 
 @media screen and (min-width: 1440px) {
-  .artists-container {
-    gap: 80px;
-    min-height: 2963px;
-  }
 
   .artists-section {
     padding: 112px 0;
-    /* width: 1440px; */
   }
 
   .artists-subtitle {
     font-size: 60px;
-    width: 523px;
+  }
+
+  .artists-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    column-gap: 48px;
+    row-gap: 48px;
+    min-height: 0;
+  }
+
+  .artists-header-wrapper {
+    grid-column: 1 / -1;
+  }
+
+  .artists-filters-section {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: static;
+    gap: 0;
+    align-self: start;
+  }
+
+  .artists-filters-toggle {
+    display: none;
+  }
+
+  .artists-filters-label {
+    display: block;
+  }
+
+  .artists-filters {
+    display: flex !important;
+    position: static;
+    top: auto;
+    right: auto;
+    width: 100%;
+    padding: 12px;
+    gap: 12px;
+    z-index: auto;
+    background: none;
+    border-radius: 12px;
+  }
+
+  .artists-reset-btn {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    width: auto;
+    margin-bottom: 8px;
+    color: #fff;
   }
 
   .artist-card {
@@ -288,9 +738,48 @@
     height: 393px;
   }
 
+  .artists-list {
+    gap: 32px;
+  }
+
   .load-more {
     width: 170px;
   }
+
+  .artists-dropdown-item {
+    background: none;
+  }
+
+  /* Scrollbar — desktop only */
+  .artists-dropdown-list {
+    clip-path: none;
+    scrollbar-width: thin;
+    scrollbar-color: #764191 transparent;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-thumb {
+    background: #764191;
+    border-radius: 100px;
+    border: 3px solid #1e1c1f;
+    border-right-width: 10px;
+    background-clip: padding-box;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-thumb:hover {
+    background: #9b5bbf;
+    background-clip: padding-box;
+  }
+
 }
-
-
