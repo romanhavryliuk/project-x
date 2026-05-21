@@ -283,7 +283,7 @@
 
 .artists-dropdown-list {
   border-radius: 0 0 12px 12px;
-
+  clip-path: inset(0 0 0 0 round 0 0 12px 12px);
 }
 
 .artists-dropdown-btn {
@@ -327,6 +327,7 @@
   left: 0;
   min-width: 100%;
   max-height: 220px;
+  overflow-x: hidden;
   overflow-y: auto;
   background: var(--clr-surface);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -339,8 +340,11 @@
 
 .artists-dropdown-item {
   padding: 8px 14px;
-  font-size: 14px;
-  color: var(--clr-white);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
   cursor: pointer;
   transition: background 0.15s;
 
@@ -361,7 +365,8 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
 
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
   font-family: var(--font-family);
   cursor: pointer;
   white-space: nowrap;
