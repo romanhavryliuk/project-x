@@ -155,6 +155,12 @@
   flex-direction: column;
 }
 
+.artists-filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .artists-filters-label {
   font-family: var(--third-family);
   font-size: 18px;
@@ -331,6 +337,7 @@
   overflow-y: auto;
   background: var(--clr-surface);
   border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 0px;
   /* border-radius: 8px; */
   padding: 4px 0;
   z-index: 100;
@@ -357,6 +364,37 @@
   }
 }
 
+/* Custom scrollbar */
+
+.artists-dropdown-list {
+  scrollbar-width: thin;
+  scrollbar-color: #7b5ea7 transparent;
+}
+
+.artists-dropdown-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-thumb {
+  background: #7b5ea7;
+  border-radius: 2px;
+  border-right: 6px solid transparent;
+  background-clip: padding-box;
+}
+
+.artists-dropdown-list::-webkit-scrollbar-thumb:hover {
+  background: #9b5bbf;
+  background-clip: padding-box;
+}
+
 /* Reset button */
 
 .artists-reset-btn {
@@ -378,6 +416,10 @@
 }
 
 /* Empty state */
+
+.artists-container.has-empty-state {
+  min-height: auto;
+}
 
 .artists-empty {
   width: 100%;
@@ -443,6 +485,10 @@
 /* ------- Mobile filter overrides (max-width: 767px) ------- */
 
 @media screen and (max-width: 767px) {
+  .artists-filters-toggle {
+    width: 100%;
+  }
+
   .artists-search-wrapper {
     flex: 1 1 100%;
     min-width: 0;
@@ -460,13 +506,6 @@
   .artists-dropdown-list {
     position: static;
     width: 100%;
-    /* margin-top: 4px; */
-    /* border-radius: 8px; */
-  }
-
-  .artists-reset-btn {
-    width: 100%;
-    text-align: center;
   }
 }
 
@@ -539,19 +578,48 @@
 
 @media screen and (min-width: 768px) {
 
-  .artists-filters-toggle,
-  .artists-filters-label {
-    display: none;
+  .artists-filters-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .artists-filters-toggle {
+    width: auto;
   }
 
   .artists-filters {
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 0;
+    position: absolute;
+    top: calc(100%);
+    right: 0;
+    width: 304px;
+    flex-direction: column;
+    z-index: 10;
   }
+
+  .artists-filters .artists-search-wrapper {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .artists-filters .artists-dropdown {
+    width: 100%;
+  }
+
+  .artists-filters .artists-dropdown-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .artists-filters .artists-dropdown-list {
+    position: static;
+    width: 100%;
+    background: none;
+  }
+
+
 
   .artists-container {
     min-height: 5750px;
@@ -602,19 +670,64 @@
 /* ------- Desktop styles ------- */
 
 @media screen and (min-width: 1440px) {
-  .artists-container {
-    gap: 80px;
-    min-height: 2963px;
-  }
 
   .artists-section {
     padding: 112px 0;
-    /* width: 1440px; */
   }
 
   .artists-subtitle {
     font-size: 60px;
-    width: 523px;
+  }
+
+  .artists-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    column-gap: 48px;
+    row-gap: 48px;
+    min-height: 0;
+  }
+
+  .artists-header-wrapper {
+    grid-column: 1 / -1;
+  }
+
+  .artists-filters-section {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: static;
+    gap: 0;
+    align-self: start;
+  }
+
+  .artists-filters-toggle {
+    display: none;
+  }
+
+  .artists-filters-label {
+    display: block;
+  }
+
+  .artists-filters {
+    display: flex !important;
+    position: static;
+    top: auto;
+    right: auto;
+    width: 100%;
+    padding: 12px;
+    gap: 12px;
+    z-index: auto;
+    background: none;
+    border-radius: 12px;
+  }
+
+  .artists-reset-btn {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    width: auto;
+    margin-bottom: 8px;
+    color: #fff;
   }
 
   .artist-card {
@@ -625,7 +738,48 @@
     height: 393px;
   }
 
+  .artists-list {
+    gap: 32px;
+  }
+
   .load-more {
     width: 170px;
   }
+
+  .artists-dropdown-item {
+    background: none;
+  }
+
+  /* Scrollbar — desktop only */
+  .artists-dropdown-list {
+    clip-path: none;
+    scrollbar-width: thin;
+    scrollbar-color: #764191 transparent;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-thumb {
+    background: #764191;
+    border-radius: 100px;
+    border: 3px solid #1e1c1f;
+    border-right-width: 10px;
+    background-clip: padding-box;
+  }
+
+  .artists-dropdown-list::-webkit-scrollbar-thumb:hover {
+    background: #9b5bbf;
+    background-clip: padding-box;
+  }
+
 }

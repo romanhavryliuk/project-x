@@ -30,15 +30,19 @@ function ensureLayout() {
       </div>
 
       <div class="artists-filters-section">
-        <p class="artists-filters-label">Filters</p>
         <button class="artists-filters-toggle" type="button" aria-expanded="false" aria-controls="artists-filters-panel">
-          Search and Filters
+          Filters
           <svg class="artists-filters-chevron" width="16" height="16">
             <use href="${spriteUrl}#chevron-down"></use>
           </svg>
         </button>
 
         <div class="artists-filters" id="artists-filters-panel">
+          <div class="artists-filters-header">
+            <p class="artists-filters-label">Filters</p>
+            <button class="artists-reset-btn" type="button">Reset</button>
+          </div>
+
           <div class="artists-search-wrapper">
             <input
               type="text"
@@ -62,8 +66,8 @@ function ensureLayout() {
             </button>
             <ul class="artists-dropdown-list" role="listbox" hidden>
               <li class="artists-dropdown-item" data-value="" role="option">Default</li>
-              <li class="artists-dropdown-item" data-value="name_asc" role="option">A &rarr; Z</li>
-              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z &rarr; A</li>
+              <li class="artists-dropdown-item" data-value="name_asc" role="option">A - Z</li>
+              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z - A</li>
             </ul>
           </div>
 
@@ -76,8 +80,6 @@ function ensureLayout() {
             </button>
             <ul class="artists-dropdown-list" role="listbox" hidden></ul>
           </div>
-
-          <button class="artists-reset-btn" type="button">Reset</button>
         </div>
       </div>
 
@@ -235,6 +237,9 @@ function resetPagination() {
 
 function renderArtistsList(artists) {
   const listEl = artistsSection.querySelector('.artists-list');
+  artistsSection
+    .querySelector('.artists-container')
+    .classList.remove('has-empty-state');
 
   if (!artists || artists.length === 0) {
     listEl.innerHTML =
@@ -285,9 +290,12 @@ function renderEmptyState() {
       <div class="artists-empty-icon" aria-hidden="true">!</div>
       <h3 class="artists-empty-title">Silence on the stage...</h3>
       <p class="artists-empty-text">Looks like no artists match your filters. Try changing them or hit "Reset Filters" to bring back the beat.</p>
-      <button class="artists-empty-reset" type="button">Reset filters</button>
+      <button class="artists-empty-reset" type="button">Reset Filters</button>
     </li>
   `;
+  artistsSection
+    .querySelector('.artists-container')
+    .classList.add('has-empty-state');
   listEl.querySelector('.artists-empty-reset').addEventListener('click', () => {
     artistsSection.querySelector('.artists-reset-btn').click();
   });
