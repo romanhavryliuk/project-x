@@ -1,4 +1,4 @@
-import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const y=document.querySelector(".header");y.innerHTML=`
+import{a as T,P as R,S as D,N as O,b as G}from"./assets/vendor-C0vgnQQC.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))i(r);new MutationObserver(r=>{for(const a of r)if(a.type==="childList")for(const n of a.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function s(r){const a={};return r.integrity&&(a.integrity=r.integrity),r.referrerPolicy&&(a.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?a.credentials="include":r.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(r){if(r.ep)return;r.ep=!0;const a=s(r);fetch(r.href,a)}})();const E=document.querySelector(".header");E.innerHTML=`
 <div class="container">
 
 <nav class="page-nav">
@@ -47,7 +47,7 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
       </ul>
       </div>
 
-      </div>`;const I=document.querySelector(".burger-icon-btn"),C=document.querySelector(".close-icon-btn"),A=document.querySelector(".menu-modal"),D=document.querySelectorAll(".mobile-section-link");I.addEventListener("click",()=>{y.classList.add("menu-open"),A.classList.add("is-open"),document.body.style.overflow="hidden"});C.addEventListener("click",()=>{y.classList.remove("menu-open"),A.classList.remove("is-open"),document.body.style.overflow="auto"});D.forEach(t=>{t.addEventListener("click",()=>{y.classList.remove("menu-open"),A.classList.remove("is-open"),document.body.style.overflow="auto"})});const O=document.querySelector("#hero");O.innerHTML=`
+      </div>`;const U=document.querySelector(".burger-icon-btn"),W=document.querySelector(".close-icon-btn"),B=document.querySelector(".menu-modal"),V=document.querySelectorAll(".mobile-section-link");U.addEventListener("click",()=>{E.classList.add("menu-open"),B.classList.add("is-open"),document.body.style.overflow="hidden"});W.addEventListener("click",()=>{E.classList.remove("menu-open"),B.classList.remove("is-open"),document.body.style.overflow="auto"});V.forEach(e=>{e.addEventListener("click",()=>{E.classList.remove("menu-open"),B.classList.remove("is-open"),document.body.style.overflow="auto"})});const z=document.querySelector("#hero");z.innerHTML=`
   <div class="container hero_container">
     <div class="hero_blok">
       <h1 class="title_hero">Discover Your Next Favorite Artist Today</h1>
@@ -65,7 +65,7 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
     <div class="hero_image"></div>
   </div>
-`;document.getElementById("hero_explore").addEventListener("click",function(){const t=document.getElementById("artists");t&&t.scrollIntoView({behavior:"smooth",block:"start"})});const R=`<div class="loader-backdrop is-hidden" data-loader>
+`;document.getElementById("hero_explore").addEventListener("click",function(){const e=document.getElementById("artists");e&&e.scrollIntoView({behavior:"smooth",block:"start"})});const Z=`<div class="loader-backdrop is-hidden" data-loader>
   <div class="flower-spinner">
     <div class="dots-container">
       <div class="bigger-dot">
@@ -74,11 +74,65 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
     </div>
   </div>
 </div>
-`,v=new Map;function x(t){const e=document.querySelector(t);e&&(e.querySelector("[data-loader]")||e.insertAdjacentHTML("afterbegin",R))}function q(t){return document.querySelector(`${t} [data-loader]`)}function E(t){var s;const e=(v.get(t)??0)+1;v.set(t,e),(s=q(t))==null||s.classList.remove("is-hidden")}function $(t){var s;const e=(v.get(t)??0)-1;e<=0?(v.set(t,0),(s=q(t))==null||s.classList.add("is-hidden")):v.set(t,e)}const b=document.querySelector("#artists");x("#artists");const w=8;let L=1,k=null;function F(){b.querySelector(".artists-container")||b.insertAdjacentHTML("beforeend",`
+`,h=new Map;function H(e){const t=document.querySelector(e);t&&(t.querySelector("[data-loader]")||t.insertAdjacentHTML("afterbegin",Z))}function N(e){return document.querySelector(`${e} [data-loader]`)}function P(e){var s;const t=(h.get(e)??0)+1;h.set(e,t),(s=N(e))==null||s.classList.remove("is-hidden")}function j(e){var s;const t=(h.get(e)??0)-1;t<=0?(h.set(e,0),(s=N(e))==null||s.classList.add("is-hidden")):h.set(e,t)}const w="/project-x/sprite.svg",F="https://sound-wave.b.goit.study/api",l=document.querySelector("#artists");H("#artists");const q=8;let m=1,f=null,_="",S="",A="";function K(){l.querySelector(".artists-container")||(l.insertAdjacentHTML("beforeend",`
     <div class="container artists-container">
-      <div class="artists-header-wrapper">  
+       <div class="artists-header-wrapper">
         <h2 class="artists-title">Artist</h2>
         <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+      </div>
+
+      <div class="artists-filters-section">
+        <button class="artists-filters-toggle" type="button" aria-expanded="false" aria-controls="artists-filters-panel">
+          Filters
+          <svg class="artists-filters-chevron" width="16" height="16">
+            <use href="${w}#chevron-down"></use>
+          </svg>
+        </button>
+
+        <div class="artists-filters" id="artists-filters-panel">
+          <div class="artists-filters-header">
+            <p class="artists-filters-label">Filters</p>
+            <button class="artists-reset-btn" type="button">Reset</button>
+          </div>
+
+          <div class="artists-search-wrapper">
+            <input
+              type="text"
+              class="artists-search-input"
+              placeholder="Search"
+              aria-label="Search artists"
+            />
+            <button class="artists-search-btn" type="button" aria-label="Search">
+              <svg width="20" height="20">
+                <use href="${w}#search"></use>
+              </svg>
+            </button>
+          </div>
+
+          <div class="artists-dropdown" data-dropdown="sort">
+            <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox">
+              <span class="artists-dropdown-label">Sorting</span>
+              <svg class="artists-dropdown-chevron" width="16" height="16">
+                <use href="${w}#chevron-down"></use>
+              </svg>
+            </button>
+            <ul class="artists-dropdown-list" role="listbox" hidden>
+              <li class="artists-dropdown-item" data-value="" role="option">Default</li>
+              <li class="artists-dropdown-item" data-value="name_asc" role="option">A - Z</li>
+              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z - A</li>
+            </ul>
+          </div>
+
+          <div class="artists-dropdown" data-dropdown="genre">
+            <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox">
+              <span class="artists-dropdown-label">Genre</span>
+              <svg class="artists-dropdown-chevron" width="16" height="16">
+                <use href="${w}#chevron-down"></use>
+              </svg>
+            </button>
+            <ul class="artists-dropdown-list" role="listbox" hidden></ul>
+          </div>
+        </div>
       </div>
 
       <div class="artists-list-wrapper">
@@ -86,7 +140,7 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
         <div id="artists-pagination" class="tui-pagination"></div>
       </div>
     </div>
-    `)}function U(t){const e=b.querySelector(".artists-list");e.innerHTML=t.map(s=>`
+    `),X())}async function Q(){try{const{data:e}=await T.get(`${F}/genres`),t=Array.isArray(e)?e:e.genres??[],s=l.querySelector('[data-dropdown="genre"] .artists-dropdown-list');if(!s)return;s.innerHTML='<li class="artists-dropdown-item" data-value="" role="option">All Genres</li>'+t.map(i=>`<li class="artists-dropdown-item" data-value="${i.genre}" role="option">${i.genre}</li>`).join("")}catch(e){console.error("Failed to fetch genres:",e)}}function k(){l.querySelectorAll(".artists-dropdown").forEach(e=>{e.querySelector(".artists-dropdown-list").hidden=!0,e.querySelector(".artists-dropdown-btn").setAttribute("aria-expanded","false")})}function X(){const e=l.querySelector(".artists-filters-toggle"),t=l.querySelector(".artists-filters");e.addEventListener("click",()=>{const a=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",a?"false":"true"),t.classList.toggle("is-open",!a)}),l.addEventListener("click",a=>{const n=a.target.closest(".artists-dropdown-btn");if(n){const c=n.closest(".artists-dropdown").querySelector(".artists-dropdown-list"),u=!c.hidden;k(),u||(c.hidden=!1,n.setAttribute("aria-expanded","true"));return}const o=a.target.closest(".artists-dropdown-item");if(o){const d=o.closest(".artists-dropdown"),c=d.dataset.dropdown,u=o.dataset.value,p=d.querySelector(".artists-dropdown-label");d.querySelectorAll(".artists-dropdown-item").forEach(v=>v.classList.toggle("is-selected",v===o)),c==="genre"?(_=u,p.textContent=u||"Genre"):c==="sort"&&(S=u,p.textContent=u?o.textContent:"Sorting"),k(),m=1,$(),g(1);return}a.target.closest(".artists-dropdown")||k()});const s=l.querySelector(".artists-search-input"),i=l.querySelector(".artists-search-btn");function r(){A=s.value.trim(),m=1,$(),g(1)}i.addEventListener("click",r),s.addEventListener("keydown",a=>{a.key==="Enter"&&r()}),l.querySelector(".artists-reset-btn").addEventListener("click",()=>{_="",S="",A="",s.value="",l.querySelectorAll(".artists-dropdown").forEach(a=>{const n=a.dataset.dropdown;a.querySelector(".artists-dropdown-label").textContent=n==="genre"?"Genre":"Sorting",a.querySelectorAll(".artists-dropdown-item").forEach(o=>o.classList.remove("is-selected"))}),k(),m=1,$(),g(1)})}function $(){f=null;const e=l.querySelector("#artists-pagination");e&&(e.innerHTML="")}function Y(e){const t=l.querySelector(".artists-list");if(l.querySelector(".artists-container").classList.remove("has-empty-state"),!e||e.length===0){t.innerHTML='<li class="no-artists-message"><p>No artists found.</p></li>';return}t.innerHTML=e.map(s=>`
       <li class="artist-card" data-id="${s._id}">
         <div class="artist-image-wrapper">
           <img class="artist-image"
@@ -95,11 +149,11 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
             loading="lazy"
             width="343" height="432"
           />
-        </div>  
+        </div>
 
         <div class="artist-content-wrapper">
           <ul class="genres-list">
-            ${(s.genres??[]).map(o=>`<li class="genres-item">${o}</li>`).join("")}
+            ${(s.genres??[]).map(i=>`<li class="genres-item">${i}</li>`).join("")}
           </ul>
 
           <div class="artist-title-wrapper">
@@ -109,21 +163,28 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
         </div>
 
         <button class="artist-button js-open-modal-artist" type="button" data-id="${s._id}">
-          Learn More 
+          Learn More
           <svg class="learn-more-icon" width="8" height="14">
             <use href="sprite.svg#learn-more"></use>
           </svg>
         </button>
       </li>
-    `).join("")}async function T(t=1){F(),E("#artists");try{const e=await M.get("https://sound-wave.b.goit.study/api/artists",{params:{limit:w,page:t}}),{artists:s,totalArtists:o}=e.data;U(s);const a=b.querySelector("#artists-pagination");k||(k=new H(a,{totalItems:o,itemsPerPage:w,visiblePages:5,page:t,centerAlign:!0}),k.on("afterMove",r=>{L=r.page,T(L),b.scrollIntoView({behavior:"smooth",block:"start"})}));const i=Math.ceil(o/w);a.style.display=i<=1?"none":""}catch(e){console.error("Помилка завантаження артистів:",e)}finally{$("#artists")}}T(L);const _=document.querySelector(".artist_form_upper"),m=document.querySelector(".artist_form_albums");x("#artist-modal");const W=M.create({baseURL:"https://sound-wave.b.goit.study/api"});function G({strArtist:t,strArtistThumb:e,intFormedYear:s,intDiedYear:o,strGender:a,intMembers:i,strCountry:r,strBiographyEN:l,genres:u}){let n;s&&s!=="null"?o&&o!=="null"?n=`${s}–${o}`:n=`${s}–present`:n="Information missing";const p=` 
+    `).join("")}function J(){const e=l.querySelector(".artists-list");e.innerHTML=`
+    <li class="artists-empty">
+      <div class="artists-empty-icon" aria-hidden="true">!</div>
+      <h3 class="artists-empty-title">Silence on the stage...</h3>
+      <p class="artists-empty-text">Looks like no artists match your filters. Try changing them or hit "Reset Filters" to bring back the beat.</p>
+      <button class="artists-empty-reset" type="button">Reset Filters</button>
+    </li>
+  `,l.querySelector(".artists-container").classList.add("has-empty-state"),e.querySelector(".artists-empty-reset").addEventListener("click",()=>{l.querySelector(".artists-reset-btn").click()})}async function g(e=1){K(),P("#artists");try{const t={limit:q,page:e};_&&(t.genre=_),A&&(t.name=A);const s=await T.get(`${F}/artists`,{params:t});let{artists:i,totalArtists:r}=s.data;S==="name_asc"?i=[...i].sort((o,d)=>o.strArtist.localeCompare(d.strArtist)):S==="name_desc"&&(i=[...i].sort((o,d)=>d.strArtist.localeCompare(o.strArtist)));const a=l.querySelector("#artists-pagination"),n=Math.ceil(r/q);if(!i.length){J(),a.style.display="none";return}Y(i),f?f.reset(r):(f=new R(a,{totalItems:r,itemsPerPage:q,visiblePages:5,page:e,centerAlign:!0}),f.on("afterMove",o=>{m=o.page,g(m),l.scrollIntoView({behavior:"smooth",block:"start"})})),a.style.display=n<=1?"none":""}catch(t){console.error("Помилка завантаження артистів:",t)}finally{j("#artists")}}g(m);Q();const M=document.querySelector(".artist_form_upper"),b=document.querySelector(".artist_form_albums");H("#artist-modal");const ee=T.create({baseURL:"https://sound-wave.b.goit.study/api"});function te({strArtist:e,strArtistThumb:t,intFormedYear:s,intDiedYear:i,strGender:r,intMembers:a,strCountry:n,strBiographyEN:o,genres:d}){let c;s&&s!=="null"?i&&i!=="null"?c=`${s}–${i}`:c=`${s}–present`:c="Information missing";const v=` 
     <div class="artist-modal-header">
    
-      <h2 class="artist-title">${t}</h2>
+      <h2 class="artist-title">${e}</h2>
     </div>
     <div class="artist_form_upper_container">
       <!-- img -->
       <div class="artist-modal-img">
-        <img class="artist_form_upper_img" src="${e}" alt="" width="654" height="402" />
+        <img class="artist_form_upper_img" src="${t}" alt="" width="654" height="402" />
       </div>
 <div class="artist_form_upper_info_container">
   
@@ -131,39 +192,39 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
           <ul class="stats-list parent-upper">
             <li class="stats-item upper-grid-one">
               <span class="stats-label">Years active</span>
-              <span class="stats-value">${n}</span>
+              <span class="stats-value">${c}</span>
             </li>
             <li class="stats-item upper-grid-two">
               <span class="stats-label">Sex</span>
-              <span class="stats-value">${a}</span>
+              <span class="stats-value">${r}</span>
             </li>
             <li class="stats-item upper-grid-three">
               <span class="stats-label">Members</span>
-              <span class="stats-value">${i}</span>
+              <span class="stats-value">${a}</span>
             </li>
             <li class="stats-item upper-grid-four">
               <span class="stats-label">Country</span>
-              <span class="stats-value">${r}</span>
+              <span class="stats-value">${n}</span>
             </li>
           </ul>
         </div>
         <div class="artist-modal-biography">
           <h3 class="bio-title">Biography</h3>
           <p class="bio-text">
-            ${l}
+            ${o}
           </p>
         </div>
         <ul class="genre-list">
-        ${u.map(f=>`<li class="genre-item"><p class="genre-name">${f}</p></li>`).join("")}
+        ${d.map(y=>`<li class="genre-item"><p class="genre-name">${y}</p></li>`).join("")}
         </ul>
 </div>
     </div>
-  `;_.insertAdjacentHTML("beforeend",p)}function V(t){_&&(_.innerHTML=""),m&&(m.innerHTML=""),E("#artist-modal"),fetch(`https://sound-wave.b.goit.study/api/artists/${t}`).then(e=>{if(!e.ok)throw new Error(e.status);return e.json()}).then(e=>G(e)).catch(e=>console.log("Error fetching artist data:",e)),K(t)}async function z(t){try{return(await W.get(`/artists/${t}/albums`)).data}catch(e){throw console.error("Error fetching artist albums:",e),e}}async function K(t){try{const e=await z(t);if(!e.albumsList||e.albumsList.length===0){m&&(m.innerHTML="<p>Альбомів не знайдено</p>");return}const s=a=>{const i=Math.floor(Number(a)/1e3),r=Math.floor(i/60),l=i%60;return`${r}:${l.toString().padStart(2,"0")}`},o=`
+  `;M.insertAdjacentHTML("beforeend",v)}function se(e){M&&(M.innerHTML=""),b&&(b.innerHTML=""),P("#artist-modal"),fetch(`https://sound-wave.b.goit.study/api/artists/${e}`).then(t=>{if(!t.ok)throw new Error(t.status);return t.json()}).then(t=>te(t)).catch(t=>console.log("Error fetching artist data:",t)),re(e)}async function ae(e){try{return(await ee.get(`/artists/${e}/albums`)).data}catch(t){throw console.error("Error fetching artist albums:",t),t}}async function re(e){try{const t=await ae(e);if(!t.albumsList||t.albumsList.length===0){b&&(b.innerHTML="<p>Альбомів не знайдено</p>");return}const s=r=>{const a=Math.floor(Number(r)/1e3),n=Math.floor(a/60),o=a%60;return`${n}:${o.toString().padStart(2,"0")}`},i=`
   <h2 class="albums-title">Albums</h2> 
   <div class="albums-list"> 
-    ${e.albumsList.map(a=>`
+    ${t.albumsList.map(r=>`
       <div class="album-container">
-        <h3 class="album-name">${a.strAlbum}</h3>
+        <h3 class="album-name">${r.strAlbum}</h3>
         <div class="tracks-list">
           <div class="tracks-header">
             <span class="track-span">Track</span>
@@ -171,12 +232,12 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
             <span class="link-span">Link</span>
           </div>
 
-          ${a.tracks.map(i=>`
+          ${r.tracks.map(a=>`
             <ul class="track-row">
-              <li class="track-title">${i.strTrack}</li> 
-              <li class="track-duration">${s(i.intDuration)}</li> 
+              <li class="track-title">${a.strTrack}</li> 
+              <li class="track-duration">${s(a.intDuration)}</li> 
               <li class="track-link">
-                ${i.movie?`<a href="${i.movie}" target="_blank">
+                ${a.movie?`<a href="${a.movie}" target="_blank">
                     <svg class="youtube-icon" width="24" height="24" aria-hidden="true">
                       <use href="sprite.svg#youtube"></use>
                     </svg>
@@ -189,7 +250,7 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
       </div>
     `).join("")}
   </div> 
-`;m&&(m.innerHTML=o)}catch(e){console.error("Error rendering artist albums:",e)}finally{$("#artist-modal")}}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".about-section");t.innerHTML=`
+`;b&&(b.innerHTML=i)}catch(t){console.error("Error rendering artist albums:",t)}finally{j("#artist-modal")}}document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelector(".about-section");e.innerHTML=`
         <div class="about-container container">
             <div class="about-team-photo">
             <picture>
@@ -230,7 +291,7 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
                 </p>
             </div>
         </div>
-    `});x(".feedback-section");const X="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function Y(){E(".feedback-section");try{const e=await(await fetch(X)).json();return(Array.isArray(e.data)?e.data:[]).slice(0,10)}catch(t){return console.error("Error fetching feedbacks:",t),[]}finally{$(".feedback-section")}}const J=document.querySelector(".feedback-root-container"),Q=`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
+    `});H(".feedback-section");const ie="https://sound-wave.b.goit.study/api/feedbacks?limit=10&page=1";async function oe(){P(".feedback-section");try{const t=await(await fetch(ie)).json();return(Array.isArray(t.data)?t.data:[]).slice(0,10)}catch(e){return console.error("Error fetching feedbacks:",e),[]}finally{j(".feedback-section")}}const ne=document.querySelector(".feedback-root-container"),le=`<h2 class="feedback-title-hidden">Feedbacks our visitors</h2>
 
   <div class="swiper feedbacks-swiper">
     <div class="swiper-wrapper" id="feedbacks-container">
@@ -276,16 +337,16 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
     </form>
   </div>
 </div>
-  `;J.innerHTML=Q;function Z(t){const e=document.createElement("div");e.classList.add("swiper-slide","feedback-content");const s=Number(t.rating)||0,o=Math.round(s);let a="";for(let i=1;i<=5;i++){const r=i<=o?"star-filled":"star-empty";a+=`
-<svg class="star-icon ${r}" width="18" height="18">
+  `;ne.innerHTML=le;function ce(e){const t=document.createElement("div");t.classList.add("swiper-slide","feedback-content");const s=Number(e.rating)||0,i=Math.round(s);let r="";for(let a=1;a<=5;a++){const n=a<=i?"star-filled":"star-empty";r+=`
+<svg class="star-icon ${n}" width="18" height="18">
  <use href="sprite.svg#star"></use>
-</svg>`}return e.innerHTML=`
-<div class="star-rating">${a}</div>
-<div class="feedback-text">${t.descr||""}</div>
-<div class="feedback-author">${t.name||""}</div>
-`,e}async function ee(){const t=document.getElementById("feedbacks-container");(await Y()).forEach(s=>{t.appendChild(Z(s))}),new P(".feedbacks-swiper",{modules:[j,N],slidesPerView:1,spaceBetween:20,loop:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0},on:{init:function(){te(this)}}})}function te(t){const e=document.querySelector(".swiper-button-prev"),s=document.querySelector(".swiper-button-next");e&&s&&(e.classList.toggle("disabled",t.isBeginning),s.classList.toggle("disabled",t.isEnd))}ee();(()=>{const t=document.querySelector("#Leave-feedback"),e=document.querySelector(".feedback-modal-close"),s=document.querySelector(".feedback-modal-backdrop"),o=document.body;if(!t||!e||!s){console.log("not found");return}t.addEventListener("click",()=>{s.removeAttribute("hidden"),o.classList.add("no-scroll"),i()}),e.addEventListener("click",()=>{s.setAttribute("hidden",""),o.classList.remove("no-scroll")}),window.addEventListener("keydown",n=>{n.key==="Escape"&&!s.hasAttribute("hidden")&&(s.setAttribute("hidden",""),o.classList.remove("no-scroll"))}),s.addEventListener("click",n=>{n.target===s&&(s.setAttribute("hidden",""),o.classList.remove("no-scroll"))});let a=0;function i(n=0){const c=document.querySelector(".feedback-modal-stars");if(!c)return;c.innerHTML="";for(let p=1;p<=5;p++)c.insertAdjacentHTML("beforeend",`<svg class="star-icon ${p<=n?"selected":""}" width="18" height="18">
+</svg>`}return t.innerHTML=`
+<div class="star-rating">${r}</div>
+<div class="feedback-text">${e.descr||""}</div>
+<div class="feedback-author">${e.name||""}</div>
+`,t}async function de(){const e=document.getElementById("feedbacks-container");(await oe()).forEach(s=>{e.appendChild(ce(s))}),new D(".feedbacks-swiper",{modules:[O,G],slidesPerView:1,spaceBetween:20,loop:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination",clickable:!0,dynamicBullets:!0},on:{init:function(){ue(this)}}})}function ue(e){const t=document.querySelector(".swiper-button-prev"),s=document.querySelector(".swiper-button-next");t&&s&&(t.classList.toggle("disabled",e.isBeginning),s.classList.toggle("disabled",e.isEnd))}de();(()=>{const e=document.querySelector("#Leave-feedback"),t=document.querySelector(".feedback-modal-close"),s=document.querySelector(".feedback-modal-backdrop"),i=document.body;if(!e||!t||!s){console.log("not found");return}e.addEventListener("click",()=>{s.removeAttribute("hidden"),i.classList.add("no-scroll"),a()}),t.addEventListener("click",()=>{s.setAttribute("hidden",""),i.classList.remove("no-scroll")}),window.addEventListener("keydown",c=>{c.key==="Escape"&&!s.hasAttribute("hidden")&&(s.setAttribute("hidden",""),i.classList.remove("no-scroll"))}),s.addEventListener("click",c=>{c.target===s&&(s.setAttribute("hidden",""),i.classList.remove("no-scroll"))});let r=0;function a(c=0){const u=document.querySelector(".feedback-modal-stars");if(!u)return;u.innerHTML="";for(let v=1;v<=5;v++)u.insertAdjacentHTML("beforeend",`<svg class="star-icon ${v<=c?"selected":""}" width="18" height="18">
          <use href="sprite.svg#star"></use>
-       </svg>`);const d=c.querySelectorAll(".star-icon");d.forEach((p,f)=>{p.addEventListener("click",()=>{a=f+1,d.forEach((S,B)=>{B<=f?S.classList.add("selected"):S.classList.remove("selected")})})})}const r=document.querySelector(".feedback-modal-form"),l=r.querySelector(".feedback-modal-input"),u=r.querySelector(".feedback-modal-textarea");r.addEventListener("submit",async n=>{n.preventDefault();let c=!1;if(l.value.trim()?l.classList.remove("error"):(l.classList.add("error"),c=!0),u.value.trim()?u.classList.remove("error"):(u.classList.add("error"),c=!0),[l,u].forEach(d=>{d&&d.addEventListener("input",()=>{d.classList.remove("error")})}),!c){const d={name:l.value.trim(),descr:u.value.trim(),rating:a};console.log("Form submitted with data:",d)}})})();const se=document.querySelector(".footer__container");se.innerHTML=`
+       </svg>`);const p=u.querySelectorAll(".star-icon");p.forEach((v,y)=>{v.addEventListener("click",()=>{r=y+1,p.forEach((C,I)=>{I<=y?C.classList.add("selected"):C.classList.remove("selected")})})})}const n=document.querySelector(".feedback-modal-form"),o=n.querySelector(".feedback-modal-input"),d=n.querySelector(".feedback-modal-textarea");n.addEventListener("submit",async c=>{c.preventDefault();let u=!1;if(o.value.trim()?o.classList.remove("error"):(o.classList.add("error"),u=!0),d.value.trim()?d.classList.remove("error"):(d.classList.add("error"),u=!0),[o,d].forEach(p=>{p&&p.addEventListener("input",()=>{p.classList.remove("error")})}),!u){const p={name:o.value.trim(),descr:d.value.trim(),rating:r};console.log("Form submitted with data:",p)}})})();const pe=document.querySelector(".footer__container");pe.innerHTML=`
   <div class="footer__content">
     <div class="footer__logo">
      <a href="index.html" class="footer__logo-link" aria-label="ArtistsHub - back to main page">
@@ -323,5 +384,5 @@ import{a as M,P as H,S as P,N as j,b as N}from"./assets/vendor-C0vgnQQC.js";(fun
       © ${new Date().getFullYear()} Project-X
     </div>
   </div>
-`;const g=document.querySelector("#artist-modal"),h=document.body;document.addEventListener("click",t=>{const e=t.target.closest(".js-open-modal-artist");if(e){const s=e.dataset.id;V(s);const o=window.innerWidth-document.documentElement.clientWidth;o>0&&(h.style.paddingRight=`${o}px`),h.classList.add("no-scroll"),g.showModal();return}(t.target.closest("#close-modal-artist")||t.target===g)&&g.close()});g.addEventListener("close",()=>{h.classList.remove("no-scroll"),h.style.paddingRight=""});
+`;const L=document.querySelector("#artist-modal"),x=document.body;document.addEventListener("click",e=>{const t=e.target.closest(".js-open-modal-artist");if(t){const s=t.dataset.id;se(s);const i=window.innerWidth-document.documentElement.clientWidth;i>0&&(x.style.paddingRight=`${i}px`),x.classList.add("no-scroll"),L.showModal();return}(e.target.closest("#close-modal-artist")||e.target===L)&&L.close()});L.addEventListener("close",()=>{x.classList.remove("no-scroll"),x.style.paddingRight=""});
 //# sourceMappingURL=index.js.map
