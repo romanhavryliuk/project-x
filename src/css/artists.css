@@ -204,7 +204,6 @@
 }
 
 .artists-filters {
-  position: absolute;
   display: none;
   flex-direction: column;
   gap: 12px;
