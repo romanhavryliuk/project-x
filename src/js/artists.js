@@ -21,28 +21,34 @@ function ensureLayout() {
   if (artistsSection.querySelector('.artists-container')) return;
 
   artistsSection.insertAdjacentHTML(
-    'beforeend',
-    `
-    <div class="container artists-container">
-       <div class="artists-header-wrapper">
-        <h2 class="artists-title">Artist</h2>
-        <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+  'beforeend',
+  `
+  <div class="container artists-container">
+    <div class="artists-header-wrapper">
+      <h2 class="artists-title">Artists</h2>
+      <h3 class="artists-subtitle">Explore Your New Favorite Artists</h3>
+    </div>
+
+    <div class="artists-filters-section">
+      <div class="artists-filters-head">
+        <p class="artists-filters-label">Filters</p>
+        <button class="artists-reset-btn" type="button">Reset</button>
       </div>
 
-      <div class="artists-filters-section">
-        <button class="artists-filters-toggle" type="button" aria-expanded="false" aria-controls="artists-filters-panel">
-          Filters
+      <div class="artists-filters-control">
+        <button
+          class="artists-filters-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="artists-filters-panel"
+        >
+          Search and Filters
           <svg class="artists-filters-chevron" width="16" height="16">
             <use href="${spriteUrl}#chevron-down"></use>
           </svg>
         </button>
 
         <div class="artists-filters" id="artists-filters-panel">
-          <div class="artists-filters-header">
-            <p class="artists-filters-label">Filters</p>
-            <button class="artists-reset-btn" type="button">Reset</button>
-          </div>
-
           <div class="artists-search-wrapper">
             <input
               type="text"
@@ -58,7 +64,12 @@ function ensureLayout() {
           </div>
 
           <div class="artists-dropdown" data-dropdown="sort">
-            <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox">
+            <button
+              class="artists-dropdown-btn"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
               <span class="artists-dropdown-label">Sorting</span>
               <svg class="artists-dropdown-chevron" width="16" height="16">
                 <use href="${spriteUrl}#chevron-down"></use>
@@ -66,13 +77,18 @@ function ensureLayout() {
             </button>
             <ul class="artists-dropdown-list" role="listbox" hidden>
               <li class="artists-dropdown-item" data-value="" role="option">Default</li>
-              <li class="artists-dropdown-item" data-value="name_asc" role="option">A - Z</li>
-              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z - A</li>
+              <li class="artists-dropdown-item" data-value="name_asc" role="option">A-Z</li>
+              <li class="artists-dropdown-item" data-value="name_desc" role="option">Z-A</li>
             </ul>
           </div>
 
           <div class="artists-dropdown" data-dropdown="genre">
-            <button class="artists-dropdown-btn" type="button" aria-haspopup="listbox">
+            <button
+              class="artists-dropdown-btn"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
               <span class="artists-dropdown-label">Genre</span>
               <svg class="artists-dropdown-chevron" width="16" height="16">
                 <use href="${spriteUrl}#chevron-down"></use>
@@ -82,14 +98,15 @@ function ensureLayout() {
           </div>
         </div>
       </div>
-
-      <div class="artists-list-wrapper">
-        <ul class="artists-list"></ul>
-        <div id="artists-pagination" class="tui-pagination"></div>
-      </div>
     </div>
-    `
-  );
+
+    <div class="artists-list-wrapper">
+      <ul class="artists-list"></ul>
+      <div id="artists-pagination" class="tui-pagination"></div>
+    </div>
+  </div>
+  `
+);
   initFilterEvents();
 }
 
@@ -124,19 +141,54 @@ function closeAllDropdowns() {
   });
 }
 
+// Reset
+function resetArtistsFilters() {
+  const searchInput = artistsSection.querySelector('.artists-search-input');
+
+  selectedGenre = '';
+  selectedSort = '';
+  searchQuery = '';
+
+  if (searchInput) {
+    searchInput.value = '';
+  }
+
+  artistsSection.querySelectorAll('.artists-dropdown').forEach(dropdown => {
+    const type = dropdown.dataset.dropdown;
+    const label = dropdown.querySelector('.artists-dropdown-label');
+
+    if (label) {
+      label.textContent = type === 'genre' ? 'Genre' : 'Sorting';
+    }
+
+    dropdown.querySelectorAll('.artists-dropdown-item').forEach(item => {
+      item.classList.remove('is-selected');
+    });
+  });
+
+  closeAllDropdowns();
+
+  page = 1;
+  resetPagination();
+  renderArtistsSection(1);
+}
+
 function initFilterEvents() {
   // Mobile filter panel toggle
   const filtersToggleBtn = artistsSection.querySelector(
     '.artists-filters-toggle'
   );
   const filtersPanel = artistsSection.querySelector('.artists-filters');
+  if (filtersToggleBtn && filtersPanel) {
   filtersToggleBtn.addEventListener('click', () => {
     const isOpen = filtersToggleBtn.getAttribute('aria-expanded') === 'true';
+
     filtersToggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
     filtersPanel.classList.toggle('is-open', !isOpen);
   });
+}
 
-  // Dropdown toggle – one open at a time
+  // Dropdown toggle - one open at a time
   artistsSection.addEventListener('click', e => {
     const btn = e.target.closest('.artists-dropdown-btn');
     if (btn) {
@@ -187,7 +239,7 @@ function initFilterEvents() {
     }
   });
 
-  // Search – button click or Enter
+  // Search - button click or Enter
   const searchInput = artistsSection.querySelector('.artists-search-input');
   const searchBtn = artistsSection.querySelector('.artists-search-btn');
 
@@ -204,29 +256,11 @@ function initFilterEvents() {
   });
 
   // Reset
-  artistsSection
-    .querySelector('.artists-reset-btn')
-    .addEventListener('click', () => {
-      selectedGenre = '';
-      selectedSort = '';
-      searchQuery = '';
-      searchInput.value = '';
+  const resetBtn = artistsSection.querySelector('.artists-reset-btn');
 
-      // Reset dropdown labels
-      artistsSection.querySelectorAll('.artists-dropdown').forEach(dd => {
-        const type = dd.dataset.dropdown;
-        dd.querySelector('.artists-dropdown-label').textContent =
-          type === 'genre' ? 'Genre' : 'Sorting';
-        dd.querySelectorAll('.artists-dropdown-item').forEach(i =>
-          i.classList.remove('is-selected')
-        );
-      });
-
-      closeAllDropdowns();
-      page = 1;
-      resetPagination();
-      renderArtistsSection(1);
-    });
+if (resetBtn) {
+  resetBtn.addEventListener('click', resetArtistsFilters);
+}
 }
 
 function resetPagination() {
@@ -274,7 +308,7 @@ function renderArtistsList(artists) {
         <button class="artist-button js-open-modal-artist" type="button" data-id="${artist._id}">
           Learn More
           <svg class="learn-more-icon" width="8" height="14">
-            <use href="sprite.svg#learn-more"></use>
+            <use href="${spriteUrl}#learn-more"></use>
           </svg>
         </button>
       </li>
@@ -289,16 +323,19 @@ function renderEmptyState() {
     <li class="artists-empty">
       <div class="artists-empty-icon" aria-hidden="true">!</div>
       <h3 class="artists-empty-title">Silence on the stage...</h3>
-      <p class="artists-empty-text">Looks like no artists match your filters. Try changing them or hit "Reset Filters" to bring back the beat.</p>
-      <button class="artists-empty-reset" type="button">Reset Filters</button>
+       <p class="artists-empty-text">
+        Looks like no artists match your filters.
+Try changing them or hit "Reset Filters" to bring back the beat.
+      </p>
+      <button class="artists-empty-reset" type="button">Reset filters</button>
     </li>
   `;
   artistsSection
     .querySelector('.artists-container')
     .classList.add('has-empty-state');
-  listEl.querySelector('.artists-empty-reset').addEventListener('click', () => {
-    artistsSection.querySelector('.artists-reset-btn').click();
-  });
+  listEl
+  .querySelector('.artists-empty-reset')
+  .addEventListener('click', resetArtistsFilters);
 }
 
 export async function renderArtistsSection(pageToRender = 1) {
