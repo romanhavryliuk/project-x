@@ -386,7 +386,7 @@ export async function renderArtistsSection(pageToRender = 1) {
         artistsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     } else {
-      pagination.reset(totalArtists);
+      pagination(totalArtists);
     }
 
     // const totalPages = Math.ceil(totalArtists / limit);
